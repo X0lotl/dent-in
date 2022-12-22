@@ -13,7 +13,7 @@ export default {
 };
 </script>
 <template>
-  <div class="bg-stone-700 h-30 flex justify-around">
+  <div class="bg-neutral-700 w-full h-30 flex justify-around fixed">
     <div class="flex justify-between container">
       <img class="m6 w-40 h-auto mr-20" src="../../assets/logo2.png" />
       <HeaderButton insideText="Про нас"></HeaderButton>

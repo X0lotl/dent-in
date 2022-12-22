@@ -11,5 +11,5 @@ export default {
 };
 </script>
 <template>
-    <button class="text-white m-6 font-bold text-lg hover:text-cyan-300 transition duration-200 font-sans" >{{ insideText }}</button>
+    <button class="text-white m-3 font-bold text-lg hover:text-cyan-300 transition duration-200" >{{ insideText }}</button>
 </template>
