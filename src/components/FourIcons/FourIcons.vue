@@ -6,13 +6,13 @@ export default {
   components: {
     SectionTitle,
     Icon,
-  },
+  }
 };
 </script>
 <template>
   <div class="container text-center">
     <SectionTitle title="ЗАБОТИМСЯ О ЗДОРОВЬЕ ВАШИХ ЗУБОВ"></SectionTitle>
-    <div class="grid grid-cols-4">
+    <div id="icons" class="grid">
       <Icon title="НАДЕЖНОСТЬ" text="Гарантии выполненной работы на долгие годы"><img src="../../assets/shild.svg"></Icon>
       <Icon title="ПЕРСОНАЛИЗАЦИЯ" text="Радушный прием и безграничное внимание доктора"><img src="../../assets/heart.svg"></Icon>
       <Icon title="ИННОВАЦИОННОСТЬ" text="Новейшие техники лечения сложных заболеваний"><img src="../../assets/innovation.svg"></Icon>
@@ -20,3 +20,8 @@ export default {
     </div>
   </div>
 </template>
+<style scoped>
+#icons {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+</style>
