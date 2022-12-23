@@ -3,6 +3,7 @@ import Header from "./components/Header/Header.vue";
 import BigMessage from "./components/BigMessage/BigMessage.vue";
 import FourIcons from "./components/FourIcons/FourIcons.vue";
 import ImgWithText from "./components/ImgWithText/ImgWithText.vue";
+import NumbersOnBackground from "./components/NumbersOnBackground/NumbersOnBackground.vue";
 
 export default {
   name: "App",
@@ -11,6 +12,7 @@ export default {
     BigMessage,
     FourIcons,
     ImgWithText,
+    NumbersOnBackground,
   },
 };
 </script>
@@ -52,6 +54,8 @@ export default {
       <img class="w-[160rem]" src="./assets/team.png" />
     </ImgWithText>
   </div>
+  <NumbersOnBackground></NumbersOnBackground>
+  <div class="h-[2000px]"></div>
 </template>
 
 <style scoped></style>
