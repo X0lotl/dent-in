@@ -4,6 +4,7 @@ import BigMessage from "./components/BigMessage/BigMessage.vue";
 import FourIcons from "./components/FourIcons/FourIcons.vue";
 import ImgWithText from "./components/ImgWithText/ImgWithText.vue";
 import NumbersOnBackground from "./components/NumbersOnBackground/NumbersOnBackground.vue";
+import Services from "./components/Services/Services.vue";
 
 export default {
   name: "App",
@@ -13,6 +14,7 @@ export default {
     FourIcons,
     ImgWithText,
     NumbersOnBackground,
+    Services,
   },
 };
 </script>
@@ -55,6 +57,7 @@ export default {
     </ImgWithText>
   </div>
   <NumbersOnBackground></NumbersOnBackground>
+  <Services></Services>
   <div class="h-[2000px]"></div>
 </template>
 

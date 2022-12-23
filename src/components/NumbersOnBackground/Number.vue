@@ -13,8 +13,8 @@ export default {
 };
 </script>
 <template>
-  <div class="text-white text-center">
-    <p class="text-5xl">{{ MainNumber }}</p>
+  <div class="text-white text-center m-6">
+    <p class="text-5xl m-4">{{ MainNumber }}</p>
     <p class="text-xl">{{title }}</p>
   </div>
 </template>
