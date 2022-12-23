@@ -6,7 +6,7 @@ export default {
   },
   setup(props) {
         let insideText = props.insideText;
-        return insideText;
+        return {insideText};
     }
 };
 </script>

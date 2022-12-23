@@ -6,7 +6,7 @@ export default {
     },
     setup(props) {
         const title = props.title;
-        return title
+        return {title}
     }
 }
 </script>

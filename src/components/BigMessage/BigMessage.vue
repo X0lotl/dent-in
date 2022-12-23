@@ -8,10 +8,10 @@ export default {
 };
 </script>
 <template>
-  <div class="h-[35rem] background bg-cover flex justify-center text-white font-medium">
+  <div class="h-[38rem] background bg-cover flex justify-center text-white font-medium">
     <div class="container">
       <h1 class="mt-48 text-6xl">Стоматологический центр "Дент-Ин"</h1>
-      <h2 class="text-3xl mt-10 mb-10">
+      <h2 class="text-3xl mt-10 mb-16">
         Высший пилотаж в стоматологии. Мы работаем для тех, кто выбирает лучшее!
       </h2>
       <AppointmentButton></AppointmentButton>
