@@ -6,6 +6,7 @@ import ImgWithText from "./components/ImgWithText/ImgWithText.vue";
 import NumbersOnBackground from "./components/NumbersOnBackground/NumbersOnBackground.vue";
 import Services from "./components/Services/Services.vue";
 import Reviews from "./components/Reviews/Reviews.vue";
+import Footer from "./components/Footer/Footer.vue";
 
 export default {
   name: "App",
@@ -17,6 +18,7 @@ export default {
     NumbersOnBackground,
     Services,
     Reviews,
+    Footer
   },
 };
 </script>
@@ -61,7 +63,7 @@ export default {
   <NumbersOnBackground></NumbersOnBackground>
   <Services></Services>
   <Reviews></Reviews>
-  <div class="h-[2000px]"></div>
+  <Footer></Footer>
 </template>
 
 <style scoped></style>
