@@ -5,6 +5,7 @@ import FourIcons from "./components/FourIcons/FourIcons.vue";
 import ImgWithText from "./components/ImgWithText/ImgWithText.vue";
 import NumbersOnBackground from "./components/NumbersOnBackground/NumbersOnBackground.vue";
 import Services from "./components/Services/Services.vue";
+import Reviews from "./components/Reviews/Reviews.vue";
 
 export default {
   name: "App",
@@ -15,6 +16,7 @@ export default {
     ImgWithText,
     NumbersOnBackground,
     Services,
+    Reviews,
   },
 };
 </script>
@@ -58,6 +60,7 @@ export default {
   </div>
   <NumbersOnBackground></NumbersOnBackground>
   <Services></Services>
+  <Reviews></Reviews>
   <div class="h-[2000px]"></div>
 </template>
 
