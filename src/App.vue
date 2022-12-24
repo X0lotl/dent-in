@@ -27,7 +27,7 @@ export default {
   <Header></Header>
   <BigMessage></BigMessage>
   <FourIcons></FourIcons>
-  <div class="bg-slate-100 pt-5 mt-10">
+  <div class="bg-neutral-200 pt-5 mt-10">
     <ImgWithText
       :imgNeedToBeLeft="true"
       title="ЗАБОТА О ДОЛГОЛЕТИИ ВАШИХ ЗУБОВ В ДНК НАШЕЙ КЛИНИКИ"
@@ -43,7 +43,7 @@ export default {
         'Современное оборудование',
       ]"
     >
-      <img class="w-[160rem]" src="./assets/baby.png" />
+      <img class="w-[160rem" src="./assets/baby.png" />
     </ImgWithText>
   </div>
   <div>
@@ -57,7 +57,7 @@ export default {
         'Инновационные технологии ',
       ]"
     >
-      <img class="w-[160rem]" src="./assets/team.png" />
+      <img class="w-[160rem] rounded-md" src="./assets/team2.png" />
     </ImgWithText>
   </div>
   <NumbersOnBackground></NumbersOnBackground>

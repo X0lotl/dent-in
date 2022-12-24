@@ -42,7 +42,7 @@ export default {
 </script>
 <template>
   <div class="bg-slate-100">
-    <div class="container pt-10 pb-10">
+    <div class="container pt-1 pb-10">
       <SectionTitle title="ОТЗЫВЫ"></SectionTitle>
       <div class="pt-10 grid lg:grid-cols-2 md:grid-cols-1">
         <Review

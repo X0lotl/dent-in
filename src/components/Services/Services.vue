@@ -27,7 +27,7 @@ export default {
 <template>
     <div class="container">
         <SectionTitle title="УСЛУГИ"></SectionTitle>
-        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 mb-16">
             <Service v-for="(thisService, index) in this.services" :title="thisService.title" :text="thisService.text"></Service>
         </div>
     </div>

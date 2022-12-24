@@ -14,7 +14,7 @@ export default {
 };
 </script>
 <template>
-  <div class="bg-white m-3 p-5 flex justify-between">
+  <div class="bg-white m-3 p-5 flex justify-between rounded-md">
     <slot></slot>
     <div>
       <p class="text-2xl font-bold">{{ reviewerName }}</p>
