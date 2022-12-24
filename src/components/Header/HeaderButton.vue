@@ -2,14 +2,18 @@
 export default {
   name: "HeaderButton",
   props: {
-    insideText: String
+    buttonData: Object,
   },
   setup(props) {
-        let insideText = props.insideText;
-        return {insideText};
-    }
+    const buttonData = props.buttonData;
+    return { buttonData };
+  },
 };
 </script>
 <template>
-    <button class="text-white m-3 font-bold text-lg hover:text-cyan-300 transition duration-200" >{{ insideText }}</button>
+  <button
+    class="text-white m-3 font-bold text-lg hover:text-cyan-300 transition duration-200"
+  >
+    {{ buttonData.title }}
+  </button>
 </template>

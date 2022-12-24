@@ -1,4 +1,5 @@
 <script>
+import jsonData from "./assets/data.json"
 import Header from "./components/Header/Header.vue";
 import BigMessage from "./components/BigMessage/BigMessage.vue";
 import FourIcons from "./components/FourIcons/FourIcons.vue";
@@ -18,13 +19,18 @@ export default {
     NumbersOnBackground,
     Services,
     Reviews,
-    Footer
+    Footer,
+  },
+  data() {
+    return {
+      data: jsonData
+    };
   },
 };
 </script>
 
 <template>
-  <Header></Header>
+  <Header :headerData = this.data.headerData></Header>
   <BigMessage></BigMessage>
   <FourIcons></FourIcons>
   <div class="bg-neutral-200 pt-5 mt-10">
@@ -43,7 +49,7 @@ export default {
         'Современное оборудование',
       ]"
     >
-      <img class="w-[160rem" src="./assets/baby.png" />
+      <img class="w-[160rem]" src="./assets/baby.png" />
     </ImgWithText>
   </div>
   <div>
@@ -57,7 +63,7 @@ export default {
         'Инновационные технологии ',
       ]"
     >
-      <img class="w-[160rem] rounded-md" src="./assets/team2.png" />
+      <img class="w-`[160rem] rounded-md" src="./assets/team2.png" />
     </ImgWithText>
   </div>
   <NumbersOnBackground></NumbersOnBackground>

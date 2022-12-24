@@ -1,0 +1,27 @@
+{
+  "headerData": {
+    "logoSrc": "src/assets/logo2.png",
+    "headerButtonsData": [
+      {
+        "title": "Про нас",
+        "link": ""
+      },
+      {
+        "title": "Послуги",
+        "link": ""
+      },
+      {
+        "title": "Ціни",
+        "link": ""
+      },
+      {
+        "title": "Лікарі",
+        "link": ""
+      },
+      {
+        "title": "Контакти",
+        "link": ""
+      }
+    ]
+  }
+}

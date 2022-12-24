@@ -8,19 +8,25 @@ export default {
   components: {
     HeaderButton,
     LanguagePicker,
-    AppointmentButton
+    AppointmentButton,
+  },
+  props: {
+    headerData: Object,
+  },
+  setup(props) {
+    const headerData = props.headerData;
+    return { headerData };
   },
 };
 </script>
 <template>
   <div class="bg-neutral-700 w-full h-30 flex justify-around fixed">
     <div class="flex justify-between container">
-      <img class="m6 w-40 h-auto mr-20" src="../../assets/logo2.png" />
-      <HeaderButton insideText="Про нас"></HeaderButton>
-      <HeaderButton insideText="Послуги"></HeaderButton>
-      <HeaderButton insideText="Ціни"></HeaderButton>
-      <HeaderButton insideText="Лікарі"></HeaderButton>
-      <HeaderButton insideText="Контакти"></HeaderButton>
+      <img class="m6 w-40 h-auto mr-20" :src="headerData.logoSrc" />
+      <HeaderButton
+        v-for="headerButton in headerData.headerButtonsData"
+        :buttonData="headerButton"
+      ></HeaderButton>
       <LanguagePicker></LanguagePicker>
       <AppointmentButton></AppointmentButton>
     </div>
