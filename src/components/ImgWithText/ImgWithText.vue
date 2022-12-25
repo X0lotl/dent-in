@@ -19,10 +19,10 @@ export default {
   >
     <img
       v-if="imageWithTextData.imgNeedToBeLeft === true"
-      class="w-[160rem]"
+      class="w-[160rem] p-4"
       :src="imageWithTextData.imgSrc"
     />
-    <div class="ml-8 mr-8">
+    <div class="ml-8 mr-8 p-4">
       <p class="text-2xl font-normal">
         {{ imageWithTextData.title }}
       </p>
@@ -38,7 +38,7 @@ export default {
     </div>
     <img
       v-if="imageWithTextData.imgNeedToBeLeft === false"
-      class="w-[160rem]"
+      class="w-[160rem] p-4"
       :src="imageWithTextData.imgSrc"
     />
   </div>
