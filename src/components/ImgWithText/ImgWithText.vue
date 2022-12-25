@@ -31,7 +31,7 @@ export default {
         {{ imageWithTextData.mainText }}
         <div class="text-stone-700 mt-5">
           <p v-for="(item, index) in imageWithTextData.list">
-            <i class="fa-solid fa-check text-emerald-500"></i> {{ item }}
+            <i class="fa-solid fa-check text-emerald-500" ></i> {{ item }}
           </p>
         </div>
       </div>

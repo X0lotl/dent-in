@@ -20,7 +20,7 @@ export default {
 };
 </script>
 <template>
-  <div class="bg-neutral-700 w-full h-30 flex justify-around fixed">
+  <div class="bg-neutral-800 w-full h-30 flex justify-around fixed">
     <div class="flex justify-between container">
       <img class="m6 w-40 h-auto mr-20" :src="headerData.logoSrc" />
       <HeaderButton
