@@ -1,5 +1,5 @@
 <script>
-import jsonData from "./assets/data.json"
+import jsonData from "./assets/data.json";
 import Header from "./components/Header/Header.vue";
 import BigMessage from "./components/BigMessage/BigMessage.vue";
 import FourIcons from "./components/FourIcons/FourIcons.vue";
@@ -23,52 +23,27 @@ export default {
   },
   data() {
     return {
-      data: jsonData
+      data: jsonData,
     };
   },
 };
 </script>
 
 <template>
-  <Header :headerData = this.data.headerData></Header>
-  <BigMessage></BigMessage>
-  <FourIcons></FourIcons>
+  <Header :headerData="this.data.headerData"></Header>
+  <BigMessage :bigMessageData="this.data.bigMessageData"></BigMessage>
+  <FourIcons :fourIconsData="this.data.fourIconsData"></FourIcons>
   <div class="bg-neutral-200 pt-5 mt-10">
-    <ImgWithText
-      :imgNeedToBeLeft="true"
-      title="ЗАБОТА О ДОЛГОЛЕТИИ ВАШИХ ЗУБОВ В ДНК НАШЕЙ КЛИНИКИ"
-      subTitle="Наши врачи - опытные практикующие профессионалы."
-      mainText="
-          Мы используем современные методики лечения, лучшие зарубежные
-          материалы, применяем индивидуальный подход в работе с каждым
-          пациентом, гарантируем длительный результат. Комплексный
-          профилактический план для любого возраста."
-      :list="[
-        'Европейские протоколы лечения:',
-        'Высокопрофессиональные врачи',
-        'Современное оборудование',
-      ]"
-    >
-      <img class="w-[160rem]" src="./assets/baby.png" />
+    <ImgWithText :imageWithTextData="this.data.imagesWithText[0]">
     </ImgWithText>
   </div>
   <div>
-    <ImgWithText
-      :imgNeedToBeLeft="false"
-      title="ОПЫТ И ПРОФЕССИОНАЛИЗМ "
-      mainText="За плечами многолетней истории клиники стоит опытный персонал, передовые технологии, инновационная техническая база и талантливое руководство. Здесь царит атмосфера доброжелательности, доверия и внимания. Профессиональная деятельность стоматологии “Дент-ин” аккредитована и лицензируется Министерством здравоохранения Украины."
-      :list="[
-        '20 лет на рынке',
-        'Высококачественные материалы  ',
-        'Инновационные технологии ',
-      ]"
-    >
-      <img class="w-`[160rem] rounded-md" src="./assets/team2.png" />
+    <ImgWithText :imageWithTextData="this.data.imagesWithText[1]">
     </ImgWithText>
   </div>
-  <NumbersOnBackground></NumbersOnBackground>
-  <Services></Services>
-  <Reviews></Reviews>
+  <NumbersOnBackground :numbersOnBackgroundData="this.data.numbersOnBackgroundData"></NumbersOnBackground>
+  <Services :servicesData="this.data.servicesData"></Services>
+  <Reviews :reviewsData="this.data.reviewsData"></Reviews>
   <Footer></Footer>
 </template>
 

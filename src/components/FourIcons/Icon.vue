@@ -2,14 +2,12 @@
 export default {
   name: "Icon",
   props: {
-    title: String,
-    text: String,
+    iconData: Object
   },
   setup(props) {
-    const title = props.title;
-    const text = props.text;
+    const iconData = props.iconData;
 
-    return { title, text };
+    return { iconData };
   },
 };
 </script>
@@ -19,10 +17,10 @@ export default {
       <div
         class="rounded-[50%] h-40 w-40 flex justify-center align-middle p-8 hover:bg-blue-400 transition duration-700"
       >
-        <slot></slot>
+      <img :src="iconData.iconSrc">
       </div>
     </div>
-    <p class="text-2xl mt-7">{{ title }}</p>
-    <p class="mt-5 text-stone-700">{{ text }}</p>
+    <p class="text-2xl mt-7">{{ iconData.title }}</p>
+    <p class="mt-5 text-stone-700">{{ iconData.text }}</p>
   </div>
 </template>

@@ -1,19 +1,24 @@
 <script>
-import Number from './Number.vue';
+import Number from "./Number.vue";
+
 export default {
   name: "NumbersOnBackground",
   components: {
     Number,
+}, props: {
+    numbersOnBackgroundData: Array
+  }, setup(props) {
+    const numbersOnBackgroundData = props.numbersOnBackgroundData;
+    return {numbersOnBackgroundData};
   }
 };
 </script>
 <template>
   <div id="background" class="">
-    <div class= "container grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-36">
-    <Number MainNumber="1" title="Стоматологический центр"></Number>
-    <Number MainNumber="12" title="Опытных врачей"></Number>
-    <Number MainNumber="21" title="Год работаем для Вас"></Number>
-    <Number MainNumber="7,000" title="Довольных пациентов"></Number>
+    <div
+      class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-36"
+    >
+      <Number v-for="numberData in numbersOnBackgroundData" :numberData="numberData"></Number>
     </div>
   </div>
 </template>

@@ -2,44 +2,45 @@
 export default {
   name: "ImgWithText",
   props: {
-    imgNeedToBeLeft: Boolean,
-    title: String,
-    subTitle: String,
-    mainText: String,
-    list: {
-      type: Array,
-    },
+    imageWithTextData: Object,
   },
   setup(props) {
-    const imgNeedToBeLeft = props.imgNeedToBeLeft;
-    const subTitle = props.subTitle;
-    const title = props.title;
-    const mainText = props.mainText;
-    const list = [...props.list];
+    const imageWithTextData = props.imageWithTextData;
 
-    return { imgNeedToBeLeft, title, subTitle, mainText, list };
+    return { imageWithTextData };
   },
 };
 </script>
 
 <template>
-  <div class="container grid lg:grid-cols-2 md:grid-cols-1 pt-20 pb-20" id="cards">
-    <slot v-if="imgNeedToBeLeft === true"></slot>
+  <div
+    class="container grid lg:grid-cols-2 md:grid-cols-1 pt-20 pb-20"
+    id="cards"
+  >
+    <img
+      v-if="imageWithTextData.imgNeedToBeLeft === true"
+      class="w-[160rem]"
+      :src="imageWithTextData.imgSrc"
+    />
     <div class="ml-8 mr-8">
       <p class="text-2xl font-normal">
-        {{ title }}
+        {{ imageWithTextData.title }}
       </p>
       <div class="text-stone-700 mt-5">
-        <p class="mb-2">{{ subTitle }}</p>
-        {{ mainText }}
+        <p class="mb-2">{{ imageWithTextData.subTitle }}</p>
+        {{ imageWithTextData.mainText }}
         <div class="text-stone-700 mt-5">
-          <p v-for="(item, index) in list">
+          <p v-for="(item, index) in imageWithTextData.list">
             <i class="fa-solid fa-check text-emerald-500"></i> {{ item }}
           </p>
         </div>
       </div>
     </div>
-    <slot v-if="imgNeedToBeLeft === false"></slot>
+    <img
+      v-if="imageWithTextData.imgNeedToBeLeft === false"
+      class="w-[160rem]"
+      :src="imageWithTextData.imgSrc"
+    />
   </div>
 </template>
 o
