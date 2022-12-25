@@ -18,10 +18,10 @@ export default {
 </script>
 <template>
   <div class="container">
-    <SectionTitle title="УСЛУГИ"></SectionTitle>
+    <SectionTitle :title=servicesData.servicesTitle></SectionTitle>
     <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 mb-16">
       <Service
-        v-for="(thisService, index) in this.servicesData"
+        v-for="(thisService, index) in this.servicesData.servicesArray"
         :title="thisService.title"
         :text="thisService.text"
       ></Service>

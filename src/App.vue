@@ -1,5 +1,5 @@
 <script>
-import jsonData from "./assets/data.json";
+import jsonData from "./assets/ua.json";
 import Header from "./components/Header/Header.vue";
 import BigMessage from "./components/BigMessage/BigMessage.vue";
 import FourIcons from "./components/FourIcons/FourIcons.vue";
