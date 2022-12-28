@@ -22,6 +22,7 @@ module.exports = {
         },
         blue: {
           400: "#3476b9",
+          500: "#1b408d"
         },
         emerald: {
           500: "#0cb4ce",

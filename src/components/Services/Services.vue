@@ -8,7 +8,7 @@ export default {
     Service,
   },
   props: {
-    servicesData: Array,
+    servicesData: Object,
   },
   setup(props) {
     const servicesData = props.servicesData;

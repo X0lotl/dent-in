@@ -1,5 +1,6 @@
 <script>
-import jsonData from "./assets/uk.json";
+import uaJson from "./assets/uk.json";
+import ruJson from "./assets/ru.json";
 import Header from "./components/Header/Header.vue";
 import BigMessage from "./components/BigMessage/BigMessage.vue";
 import FourIcons from "./components/FourIcons/FourIcons.vue";
@@ -22,15 +23,30 @@ export default {
     Footer,
   },
   data() {
+    let languages = [
+        {
+          title: "🇺🇦 Українська",
+          jsonFile: uaJson,
+        },
+        {
+          title: "🇷🇺 Російська",
+          jsonFile: ruJson,
+        },
+      ]
     return {
-      data: jsonData,
+      data: uaJson, languages
+      
     };
   },
 };
 </script>
 
 <template>
-  <Header :headerData="this.data.headerData"></Header>
+  <Header
+    :languages="languages"
+    :data="this.data"
+    :headerData="this.data.headerData"
+  ></Header>
   <BigMessage :bigMessageData="this.data.bigMessageData"></BigMessage>
   <FourIcons :fourIconsData="this.data.fourIconsData"></FourIcons>
   <div class="bg-neutral-200 pt-5 mt-10">
@@ -41,7 +57,9 @@ export default {
     <ImgWithText :imageWithTextData="this.data.imagesWithText[1]">
     </ImgWithText>
   </div>
-  <NumbersOnBackground :numbersOnBackgroundData="this.data.numbersOnBackgroundData"></NumbersOnBackground>
+  <NumbersOnBackground
+    :numbersOnBackgroundData="this.data.numbersOnBackgroundData"
+  ></NumbersOnBackground>
   <Services :servicesData="this.data.servicesData"></Services>
   <Reviews :reviewsData="this.data.reviewsData"></Reviews>
   <Footer></Footer>

@@ -12,22 +12,28 @@ export default {
   },
   props: {
     headerData: Object,
+    data: Object,
+    languages: Array
   },
   setup(props) {
     const headerData = props.headerData;
-    return { headerData };
+    let data = props.data;
+    let languages = props.languages;
+
+    return { headerData, data, languages };
   },
 };
 </script>
 <template>
-  <div class="bg-neutral-800 w-full h-30 flex justify-around fixed">
+  <div class="bg-white w-full flex justify-around fixed">
     <div class="flex justify-between container">
-      <img class="m6 w-40 h-auto mr-20" :src="headerData.logoSrc" />
+      <img class="m6 w-50 p-2 h-auto mr-20" :src="headerData.logoSrc" />
       <HeaderButton
         v-for="headerButton in headerData.headerButtonsData"
         :buttonData="headerButton"
       ></HeaderButton>
-      <LanguagePicker></LanguagePicker>
+      <LanguagePicker :data="data" :languages="languages"></LanguagePicker>
+      
       <AppointmentButton></AppointmentButton>
     </div>
   </div>

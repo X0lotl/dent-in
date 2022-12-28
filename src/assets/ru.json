@@ -1,25 +1,29 @@
 {
+  "title": "ru",
+  "appointmentButtonData": {
+    "title": "Записаться на прием"
+  },
   "headerData": {
     "logoSrc": "src/assets/logo2.png",
     "headerButtonsData": [
       {
-        "title": "Про нас",
+        "title": "О нас",
         "link": ""
       },
       {
-        "title": "Послуги",
+        "title": "Услуги",
         "link": ""
       },
       {
-        "title": "Ціни",
+        "title": "Цены",
         "link": ""
       },
       {
-        "title": "Лікарі",
+        "title": "Врачи",
         "link": ""
       },
       {
-        "title": "Контакти",
+        "title": "Контакты",
         "link": ""
       }
     ]

@@ -12,7 +12,7 @@ export default {
 </script>
 <template>
   <button
-    class="text-white m-3 font-bold text-lg hover:text-cyan-300 transition duration-200"
+    class="text-blue-500 m-3 font-bold text-lg hover:text-cyan-300 transition duration-200"
   >
     {{ buttonData.title }}
   </button>

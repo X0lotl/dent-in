@@ -9,7 +9,7 @@ export default {
     Review,
   },
   props: {
-    reviewsData: Array,
+    reviewsData: Object,
   },
   setup(props) {
     const reviewsData = props.reviewsData;
