@@ -1,29 +1,47 @@
 <script>
 import SectionTitle from "../SectionTitle.vue";
 import Service from "./Service.vue";
+import axios from "axios";
+import { toHandlers } from "vue";
+
 export default {
   name: "Services",
   components: {
     SectionTitle,
     Service,
   },
-  props: {
-    servicesData: Object,
+  data() {
+    return { servicesData: [], url: "http://localhost:1337/api/services" };
   },
-  setup(props) {
-    const servicesData = props.servicesData;
-    return { servicesData };
-  },
+  mounted() {
+    axios
+      .get(this.url, { params: {
+        locale: this.$route.params.locale
+      } })
+      .then((res) => (this.servicesData = res.data.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  },updated() {
+    axios
+      .get(this.url, { params: {
+        locale: this.$route.params.locale
+      } })
+      .then((res) => (this.servicesData = res.data.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 };
 </script>
 <template>
-  <div class="container">
-    <SectionTitle :title=servicesData.servicesTitle></SectionTitle>
+  <div class="container text-black">
+    <SectionTitle title="Послуги"></SectionTitle>
     <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 mb-16">
       <Service
-        v-for="(thisService, index) in this.servicesData.servicesArray"
-        :title="thisService.title"
-        :text="thisService.text"
+        v-for="(thisService, index) in this.servicesData"
+        :title="thisService.attributes.title"
+        :text="thisService.attributes.text"
       ></Service>
     </div>
   </div>

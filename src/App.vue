@@ -1,68 +1,20 @@
 <script>
-import uaJson from "./assets/uk.json";
-import ruJson from "./assets/ru.json";
 import Header from "./components/Header/Header.vue";
-import BigMessage from "./components/BigMessage/BigMessage.vue";
-import FourIcons from "./components/FourIcons/FourIcons.vue";
-import ImgWithText from "./components/ImgWithText/ImgWithText.vue";
-import NumbersOnBackground from "./components/NumbersOnBackground/NumbersOnBackground.vue";
-import Services from "./components/Services/Services.vue";
-import Reviews from "./components/Reviews/Reviews.vue";
-import Footer from "./components/Footer/Footer.vue";
-
+import uaJson from "./assets/uk.json"
 export default {
-  name: "App",
+  name: "Home",
   components: {
     Header,
-    BigMessage,
-    FourIcons,
-    ImgWithText,
-    NumbersOnBackground,
-    Services,
-    Reviews,
-    Footer,
   },
   data() {
-    let languages = [
-        {
-          title: "🇺🇦 Українська",
-          jsonFile: uaJson,
-        },
-        {
-          title: "🇷🇺 Російська",
-          jsonFile: ruJson,
-        },
-      ]
     return {
-      data: uaJson, languages
-      
+      data: uaJson,
+      locale: "uk",
     };
   },
 };
 </script>
 
 <template>
-  <Header
-    :languages="languages"
-    :data="this.data"
-    :headerData="this.data.headerData"
-  ></Header>
-  <BigMessage :bigMessageData="this.data.bigMessageData"></BigMessage>
-  <FourIcons :fourIconsData="this.data.fourIconsData"></FourIcons>
-  <div class="bg-neutral-200 pt-5 mt-10">
-    <ImgWithText :imageWithTextData="this.data.imagesWithText[0]">
-    </ImgWithText>
-  </div>
-  <div>
-    <ImgWithText :imageWithTextData="this.data.imagesWithText[1]">
-    </ImgWithText>
-  </div>
-  <NumbersOnBackground
-    :numbersOnBackgroundData="this.data.numbersOnBackgroundData"
-  ></NumbersOnBackground>
-  <Services :servicesData="this.data.servicesData"></Services>
-  <Reviews :reviewsData="this.data.reviewsData"></Reviews>
-  <Footer></Footer>
+  <router-view :key="$route.fullPath"></router-view>
 </template>
-
-<style scoped></style>

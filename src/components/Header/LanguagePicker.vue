@@ -1,48 +1,33 @@
 <script>
-import Language from "./Language.vue";
 export default {
   name: "LanguagePicker",
-  components: {
-    Language,
+  data() {
+    return { selected: "" };
   },
   props: {
-    data: Object,
-    languages: Array,
-  },
-  data() {
-    return {
-      curentLanguage: this.data.title
-    }
+    locale: String,
   },
   setup(props) {
-    let data = props.data;
-    let languages = props.languages;
-
-    return { data, languages };
+    let locale = props.locale;
+    return { locale };
   },
   methods: {
-    changeLanguage(data, newLanguage) {
-      data = newLanguage
-    }
-  }
+    changeLanguage(e) {
+      this.$router.push({
+        path: `/${this.locale}`,
+      });
+      // this.$router.go(0);
+    },
+  },
 };
 </script>
 <template>
   <select
-    class="bg-transparent m-6 text-blue-500 font-sans font-bold text-lg"
-    v-model="curentLanguage" v-on:change="changeLanguage(data, curentLanguage)"
+    v-model="locale"
+    class="bg-transparent m-6 text-black font-sans font-bold text-lg"
+    v-on:change="changeLanguage($event)"
   >
-    <option v-for="thisLanguage in languages" :value="thisLanguage.jsonFile">
-      {{ thisLanguage.title}}
-    </option>
+    <option value="uk">Українська</option>
+    <option value="en">Англійська</option>
   </select>
-  
-  <!-- <select class="bg-transparent m-6 text-white font-sans font-bold text-lg">
-    <option value="UK">
-      <Language title=""></Language>
-    </option>
-    <option value="RU">
-      <Language title=""></Language>
-    </option>
-  </select> -->
 </template>

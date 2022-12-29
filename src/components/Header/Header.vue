@@ -13,26 +13,25 @@ export default {
   props: {
     headerData: Object,
     data: Object,
-    languages: Array
+    locale: String,
   },
   setup(props) {
     const headerData = props.headerData;
     let data = props.data;
-    let languages = props.languages;
-
-    return { headerData, data, languages };
+    let locale = props.locale;
+    return { headerData, data, locale };
   },
 };
 </script>
 <template>
-  <div class="bg-white w-full flex justify-around fixed">
+  <div class="bg-neutral-200 w-full flex justify-around fixed">
     <div class="flex justify-between container">
       <img class="m6 w-50 p-2 h-auto mr-20" :src="headerData.logoSrc" />
       <HeaderButton
         v-for="headerButton in headerData.headerButtonsData"
         :buttonData="headerButton"
       ></HeaderButton>
-      <LanguagePicker :data="data" :languages="languages"></LanguagePicker>
+      <LanguagePicker :locale="locale"></LanguagePicker>
       
       <AppointmentButton></AppointmentButton>
     </div>

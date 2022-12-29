@@ -17,6 +17,7 @@ module.exports = {
         },
       },
       colors: {
+        gold: "#8c7d44",
         neutral: {
           200: "#eeeeee",
         },
