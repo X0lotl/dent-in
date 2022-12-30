@@ -9,6 +9,7 @@ import NumbersOnBackground from "../components/NumbersOnBackground/NumbersOnBack
 import Services from "../components/Services/Services.vue";
 import Reviews from "../components/Reviews/Reviews.vue";
 import Footer from "../components/Footer/Footer.vue";
+import axios from "axios";
 
 export default {
   name: "Home",
@@ -23,37 +24,69 @@ export default {
     Footer,
   },
   props: {
-    locale: String,
-  },
-  setup(props) {
-    let locale = props.locale;
-    return { locale };
+    locale: {
+      default: "uk",
+      type: String,
+    },
   },
   data() {
     return {
       data: uaJson,
+      extraData: "",
+      imagesWithTextData: "",
     };
+  },
+  mounted() {
+    axios
+      .get("http://localhost:1337/api/extra-data-p", {
+        params: {
+          locale: this.$route.params.locale,
+        },
+      })
+      .then((res) => (this.extraData = res.data.data[0].attributes))
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get("http://localhost:1337/api/imges-with-text/", {
+        params: {
+          locale: this.$route.params.locale,
+          populate: "deep",
+        },
+      })
+      .then((res) => (this.imagesWithTextData = res.data.data))
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>
 
 <template>
-  <Header :locale="locale" :data="this.data" :headerData="this.data.headerData"></Header>
-  <BigMessage :bigMessageData="this.data.bigMessageData"></BigMessage>
-  <FourIcons :fourIconsData="this.data.fourIconsData"></FourIcons>
-  <div class="bg-neutral-200 pt-5 mt-10">
-    <ImgWithText :imageWithTextData="this.data.imagesWithText[0]">
-    </ImgWithText>
-  </div>
-  <div>
-    <ImgWithText :imageWithTextData="this.data.imagesWithText[1]">
-    </ImgWithText>
-  </div>
+  <Header :headerData="this.data.headerData"></Header>
+  <BigMessage></BigMessage>
+  <FourIcons
+    v-if="this.extraData.careTitle"
+    :sectionTitle="this.extraData.careTitle"
+  ></FourIcons>
+
+  <template v-if="this.imagesWithTextData">
+    <ImgWithText
+      v-for="image in this.imagesWithTextData"
+      :imageWithTextData="image.attributes"
+    ></ImgWithText>
+  </template>
   <NumbersOnBackground
     :numbersOnBackgroundData="this.data.numbersOnBackgroundData"
   ></NumbersOnBackground>
-  <Services></Services>
-  <Reviews :reviewsData="this.data.reviewsData"></Reviews>
+  <Services
+    v-if="this.extraData"
+    :sectionTitle="this.extraData.servicesTitle"
+  ></Services>
+  <Reviews
+    v-if="this.extraData"
+    :sectionTitle="this.extraData.reviewsTitle"
+  ></Reviews>
   <Footer></Footer>
 </template>
 

@@ -1,24 +1,41 @@
 <script>
+import axios from "axios";
 import Number from "./Number.vue";
 
 export default {
   name: "NumbersOnBackground",
   components: {
     Number,
-}, props: {
-    numbersOnBackgroundData: Array
-  }, setup(props) {
-    const numbersOnBackgroundData = props.numbersOnBackgroundData;
-    return {numbersOnBackgroundData};
-  }
+  },
+  data() {
+    return {
+      numbersOnBackgroundData: "",
+    };
+  },
+  mounted() {
+    axios
+      .get("http://localhost:1337/api/numbers-on-background", {
+        params: {
+          locale: this.$route.params.locale,
+        },
+      })
+      .then((res) => (this.numbersOnBackgroundData = res.data.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 </script>
 <template>
   <div id="background" class="">
     <div
       class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-36"
+      v-if="this.numbersOnBackgroundData"
     >
-      <Number v-for="numberData in numbersOnBackgroundData" :numberData="numberData"></Number>
+      <Number
+        v-for="numberData in this.numbersOnBackgroundData"
+        :numberData="numberData"
+      ></Number>
     </div>
   </div>
 </template>

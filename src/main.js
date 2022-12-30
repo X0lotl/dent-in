@@ -5,13 +5,13 @@ import App from "./App.vue";
 import About from "./pages/About.vue";
 import Home from "./pages/Home.vue";
 
-let locale = "uk"
+let locale
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     { path: "/:locale", name: "home", component: Home, props: {locale: locale} },
-    { path: "/about", name: "about", component: About },
+    { path: "/about/:locale", name: "about", component: About },
   ],
 });
 

@@ -13,7 +13,7 @@ export default {
 </script>
 <template>
   <div class="text-white text-center m-6">
-    <p class="text-5xl m-4">{{ numberData.number }}</p>
-    <p class="text-xl">{{ numberData.title }}</p>
+    <p class="text-5xl m-4">{{ numberData.attributes.number }}</p>
+    <p class="text-xl">{{ numberData.attributes.text }}</p>
   </div>
 </template>

@@ -4,30 +4,28 @@ export default {
   data() {
     return { selected: "" };
   },
-  props: {
-    locale: String,
-  },
-  setup(props) {
-    let locale = props.locale;
-    return { locale };
-  },
   methods: {
     changeLanguage(e) {
       this.$router.push({
-        path: `/${this.locale}`,
+        path: `/${e.target.value}`,
       });
-      // this.$router.go(0);
     },
   },
+  mounted() {
+    this.selected = "uk"
+  }, 
+  updated() {
+    this.selected = this.$route.params.locale
+  }
 };
 </script>
 <template>
   <select
-    v-model="locale"
-    class="bg-transparent m-6 text-black font-sans font-bold text-lg"
+    v-model="selected"
+    class="bg-transparent m-6 text-blue-500 font-sans font-bold text-lg"
     v-on:change="changeLanguage($event)"
   >
-    <option value="uk">Українська</option>
-    <option value="en">Англійська</option>
+    <option value="uk">🇺🇦 Українська</option>
+    <option value="en">🇬🇧 English</option>
   </select>
 </template>

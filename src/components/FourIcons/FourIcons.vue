@@ -1,4 +1,5 @@
 <script>
+import axios from "axios";
 import SectionTitle from "../SectionTitle.vue";
 import Icon from "./Icon.vue";
 export default {
@@ -6,21 +7,43 @@ export default {
   components: {
     SectionTitle,
     Icon,
-},
+  },
+  data() {
+    return {
+      fourIconsData: "",
+    };
+  },
   props: {
-    fourIconsData: Object,
+    sectionTitle: String,
   },
   setup(props) {
-    const fourIconsData = props.fourIconsData;
-    return { fourIconsData };
+    let sectionTitle = props.sectionTitle;
+    return { sectionTitle };
+  },
+  mounted() {  
+    axios
+      .get("http://localhost:1337/api/icons-with-text", {
+        params: {
+          locale: this.$route.params.locale,
+          populate: "deep",
+        },
+      })
+      .then((res) => (this.fourIconsData = res.data.data))
+      .catch((err) => {
+        console.log(err);
+      });
+      
   },
 };
 </script>
 <template>
   <div class="container text-center">
-    <SectionTitle title="ЗАБОТИМСЯ О ЗДОРОВЬЕ ВАШИХ ЗУБОВ"></SectionTitle>
+    <SectionTitle :title="sectionTitle"></SectionTitle>
     <div id="icons" class="grid">
-      <Icon v-for="newIcon in fourIconsData.iconsArray" :iconData="newIcon"></Icon>
+      <Icon
+        v-for="newIcon in fourIconsData"
+        :iconData="newIcon.attributes"
+      ></Icon>
     </div>
   </div>
 </template>

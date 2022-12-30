@@ -6,9 +6,9 @@ export default {
   },
   setup(props) {
     const iconData = props.iconData;
-
-    return { iconData };
-  },
+    const iconUrl = `http://localhost:1337${iconData.icon.data.attributes.url}`
+    return { iconData, iconUrl };
+  }
 };
 </script>
 <template>
@@ -17,10 +17,10 @@ export default {
       <div
         class="rounded-[50%] h-40 w-40 flex justify-center align-middle p-8 hover:bg-blue-400 transition duration-700"
       >
-      <img :src="iconData.iconSrc">
+      <img :src=iconUrl>
       </div>
     </div>
     <p class="text-2xl mt-7">{{ iconData.title }}</p>
-    <p class="mt-5 text-stone-700">{{ iconData.text }}</p>
+    <p class="mt-5 text-stone-700">{{ iconData.subTitle }}</p>
   </div>
 </template>

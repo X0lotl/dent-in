@@ -26,13 +26,20 @@ export default {
 <template>
   <div class="bg-neutral-200 w-full flex justify-around fixed">
     <div class="flex justify-between container">
-      <img class="m6 w-50 p-2 h-auto mr-20" :src="headerData.logoSrc" />
+      <router-link :to="{
+        name: `home`,
+        params: {
+          locale: this.$route.params.locale
+        }
+      }">
+        <img class="m6 w-50 p-2 h-auto mr-20" :src="headerData.logoSrc" />
+      </router-link>
       <HeaderButton
         v-for="headerButton in headerData.headerButtonsData"
         :buttonData="headerButton"
       ></HeaderButton>
       <LanguagePicker :locale="locale"></LanguagePicker>
-      
+
       <AppointmentButton></AppointmentButton>
     </div>
   </div>
