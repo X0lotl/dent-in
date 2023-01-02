@@ -1,15 +1,69 @@
 <script>
+import axios from "axios";
 import Header from "../components/Header/Header.vue";
+import AppointmentButton from "../components/Header/AppointmentButton.vue";
+import SectionTitle from "../components/SectionTitle.vue";
+import Doctor from "../components/Doctors/Doctor.vue";
+import Footer from "../components/Footer/Footer.vue";
 export default {
   name: "Team",
   components: {
     Header,
-  }, mounted() {
-  }
+    AppointmentButton,
+    SectionTitle,
+    Doctor,
+    Footer,
+  },
+  data() {
+    return {
+      doctorsData: "",
+      extraData: "",
+    };
+  },
+  mounted() {
+    axios
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/extra-data-p`, {
+        params: {
+          locale: this.$route.params.locale,
+        },
+      })
+      .then((res) => (this.extraData = res.data.data[0].attributes))
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/doctorsp`, {
+        params: {
+          locale: this.$route.params.locale,
+          populate: "deep",
+        },
+      })
+      .then((res) => (this.doctorsData = res.data.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 </script>
 <template>
   <Header></Header>
-  <h1 class="p-40">Команда</h1>
-  {{ }}
+  <div class="p-10"></div>
+
+  <SectionTitle
+    v-if="this.extraData"
+    :title="this.extraData.teamTitle"
+  ></SectionTitle>
+
+  <div
+    v-if="this.doctorsData"
+    class="container p-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+  >
+    <Doctor
+      v-for="doctor in this.doctorsData"
+      :doctorData="doctor.attributes"
+    ></Doctor>
+  </div>
+
+  <!-- <div class="h-96"></div> -->
+  <Footer></Footer>
 </template>

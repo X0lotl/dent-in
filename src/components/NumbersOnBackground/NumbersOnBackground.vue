@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       numbersOnBackgroundData: "",
+      imgSrc: "",
     };
   },
   mounted() {
@@ -19,7 +20,14 @@ export default {
           locale: this.$route.params.locale,
         },
       })
-      .then((res) => (this.numbersOnBackgroundData = res.data.data))
+      .then(
+        (res) => (
+          (this.numbersOnBackgroundData = res.data.data),
+          (this.imgSrc = `${
+            import.meta.env.VITE_STRAPI_URL
+          }/uploads/background_691718a341.jpg?updated_at=2023-01-02T16:33:44.953Z`)
+        )
+      )
       .catch((err) => {
         console.log(err);
       });
@@ -27,7 +35,11 @@ export default {
 };
 </script>
 <template>
-  <div id="background" class="">
+  <div
+    id="background"
+    class=""
+    :style="{ backgroundImage: `url(${this.imgSrc})` }"
+  >
     <div
       class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-36"
       v-if="this.numbersOnBackgroundData"
@@ -41,7 +53,6 @@ export default {
 </template>
 <style scoped>
 #background {
-  background-image: url("../../assets/background.jpg");
   background-attachment: fixed;
   background-position: 49.31% 52.43%;
 }
