@@ -18,7 +18,7 @@ export default {
     Service,
   },
   data() {
-    return { servicesData: [], url: "http://localhost:1337/api/services" };
+    return { servicesData: [], url: `${import.meta.env.VITE_STRAPI_URL}/api/services` };
   },
   mounted() {
     axios

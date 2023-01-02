@@ -24,14 +24,14 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:1337/api/reviews", {
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/reviews`, {
         params: {
           locale: this.$route.params.locale,
           populate: "deep",
         },
       })
       .then((res) => (this.reviews = res.data.data),
-      (this.imgSrc = `http://localhost:1337`))
+      (this.imgSrc = `${import.meta.env.VITE_STRAPI_URL}`))
       .catch((err) => {
         console.log(err);
       });

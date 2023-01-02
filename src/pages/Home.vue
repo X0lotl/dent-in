@@ -1,6 +1,4 @@
 <script>
-import uaJson from "../assets/uk.json";
-import ruJson from "../assets/ru.json";
 import Header from "../components/Header/Header.vue";
 import BigMessage from "../components/BigMessage/BigMessage.vue";
 import FourIcons from "../components/FourIcons/FourIcons.vue";
@@ -31,14 +29,13 @@ export default {
   },
   data() {
     return {
-      data: uaJson,
       extraData: "",
       imagesWithTextData: "",
     };
   },
   mounted() {
     axios
-      .get("http://localhost:1337/api/extra-data-p", {
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/extra-data-p`, {
         params: {
           locale: this.$route.params.locale,
         },
@@ -48,7 +45,7 @@ export default {
         console.log(err);
       });
     axios
-      .get("http://localhost:1337/api/imges-with-text/", {
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/imges-with-text/`, {
         params: {
           locale: this.$route.params.locale,
           populate: "deep",
@@ -63,22 +60,19 @@ export default {
 </script>
 
 <template>
-  <Header :headerData="this.data.headerData"></Header>
+  <Header></Header>
   <BigMessage></BigMessage>
   <FourIcons
     v-if="this.extraData.careTitle"
     :sectionTitle="this.extraData.careTitle"
   ></FourIcons>
-
   <template v-if="this.imagesWithTextData">
     <ImgWithText
       v-for="image in this.imagesWithTextData"
       :imageWithTextData="image.attributes"
     ></ImgWithText>
   </template>
-  <NumbersOnBackground
-    :numbersOnBackgroundData="this.data.numbersOnBackgroundData"
-  ></NumbersOnBackground>
+  <NumbersOnBackground></NumbersOnBackground>
   <Services
     v-if="this.extraData"
     :sectionTitle="this.extraData.servicesTitle"

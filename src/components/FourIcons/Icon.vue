@@ -6,7 +6,7 @@ export default {
   },
   setup(props) {
     const iconData = props.iconData;
-    const iconUrl = `http://localhost:1337${iconData.icon.data.attributes.url}`
+    const iconUrl = `${import.meta.env.VITE_STRAPI_URL}${iconData.icon.data.attributes.url}`
     return { iconData, iconUrl };
   }
 };

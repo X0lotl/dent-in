@@ -7,7 +7,11 @@ export default {
   methods: {
     changeLanguage(e) {
       this.$router.push({
-        path: `/${e.target.value}`,
+        // path: `/${e.target.value}`,
+        name: this.$route.name,
+        params: {
+          locale: e.target.value
+        }
       });
     },
   },
@@ -20,6 +24,7 @@ export default {
 };
 </script>
 <template>
+  
   <select
     v-model="selected"
     class="bg-transparent m-6 text-blue-500 font-sans font-bold text-lg"

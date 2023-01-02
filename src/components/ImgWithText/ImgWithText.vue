@@ -7,7 +7,7 @@ export default {
   },
   setup(props) {
     const imageWithTextData = props.imageWithTextData;
-    let imgSrc = `http://localhost:1337${imageWithTextData.Img.data[0].attributes.url}`;
+    let imgSrc = `${import.meta.env.VITE_STRAPI_URL}${imageWithTextData.Img.data[0].attributes.formats.small.url}`;
 
     return { imageWithTextData, imgSrc };
   },

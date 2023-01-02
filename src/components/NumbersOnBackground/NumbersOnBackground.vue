@@ -14,7 +14,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:1337/api/numbers-on-background", {
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/numbers-on-background`, {
         params: {
           locale: this.$route.params.locale,
         },

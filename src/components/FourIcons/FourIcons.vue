@@ -22,7 +22,7 @@ export default {
   },
   mounted() {  
     axios
-      .get("http://localhost:1337/api/icons-with-text", {
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/icons-with-text`, {
         params: {
           locale: this.$route.params.locale,
           populate: "deep",

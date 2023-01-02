@@ -6,7 +6,7 @@ export default {
     return { title: "" };
   }, mounted() {
     axios
-      .get('http://localhost:1337/api/extra-data-p', {
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/extra-data-p`, {
         params: {
           locale: this.$route.params.locale,
         },
