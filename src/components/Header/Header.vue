@@ -51,6 +51,7 @@ export default {
       >
         <img class="m6 w-50 p-2 h-auto mr-20" :src="this.logoSrc" />
       </router-link>
+      
       <HeaderButton
         v-for="headerButton in this.headerButtonsData"
         :buttonData="headerButton"

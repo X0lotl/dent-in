@@ -41,7 +41,7 @@ export default {
       <h1 class="text-4xl mt-20 md:text-6xl sm:text-5xl p-4 pb-0 italic">
         {{ this.bigMessageData.Title }}
       </h1>
-      <h2 class="text-2xl md:text-3xl sm:text-2xl mt-10 mb-16 p-4 pb-0">
+      <h2 class="text-2xl md:text-3xl sm:text-2xl mt-10 mb-16 p-1 pb-0">
         {{ this.bigMessageData.SubTitle }}
       </h2>
       <AppointmentButton></AppointmentButton>
