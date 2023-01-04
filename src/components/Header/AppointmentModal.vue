@@ -1,0 +1,112 @@
+<script>
+import MazPhoneNumberInput from "maz-ui/components/MazPhoneNumberInput";
+import MazInput from "maz-ui/components/MazInput";
+// read documentation https://louismazel.github.io/maz-ui-3/components/maz-phone-number-input
+const colors = {
+  blue: { name: "blue", hex: "#1b408d" },
+};
+export default {
+  name: "AppoinrmentModal",
+  components: {
+    MazPhoneNumberInput,
+    MazInput,
+  },
+  data() {
+    return {
+      appointmentData: {
+        name: "",
+        phone: "",
+        email: "",
+        comment: "",
+      },
+      results: {},
+    };
+  },
+  methods: {
+    close() {
+      this.$emit("close");
+    },
+  },
+};
+</script>
+
+<template>
+  <transition name="modal-fade">
+    <div
+      class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center"
+    >
+      <div
+        class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl "
+      >
+        <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
+          <h1 class="text-2xl">Записатись на прийом</h1>
+          <button
+            @click="close()"
+            class="rounded-full h-10 w-10 border-4 border-red-400 hover:border-red-600 hover:rotate-180 transition duration-200"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="pt-5">
+          <MazInput
+            :color="blue"
+            label="Ім'я та Прізвище"
+            v-model="appointmentData.name"
+          >
+          </MazInput>
+        </div>
+        <div class="pt-5">
+          <MazPhoneNumberInput
+            :color="blue"
+            @update="results = $event"
+            :success="results?.isValid"
+            default-country-code="UA"
+            :preferred-countries="['UA', 'US', 'PL']"
+            v-model="this.appointmentData.phone"
+            :translations="{
+              countrySelector: {
+                placeholder: 'Код країни',
+                error: 'Choose country',
+              },
+              phoneInput: {
+                placeholder: 'Номер телефону',
+                example: 'Приклад:',
+              },
+            }"
+          ></MazPhoneNumberInput>
+        </div>
+        <div class="pt-5">
+          <MazInput
+            :color="blue"
+            label="Email"
+            v-model="appointmentData.email"
+          >
+          </MazInput>
+        </div>
+        <div class="pt-5">
+          <MazInput
+            :color="blue"
+            label="Коментар"
+            v-model="appointmentData.comment"
+          >
+          </MazInput>
+        </div>
+        <div class="flex pt-5 justify-center">
+          <button class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300"> Записатись </button>
+        </div>
+      </div>
+    </div>
+  </transition>
+</template>
+
+<style scoped>
+.modal-fade-enter,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+</style>

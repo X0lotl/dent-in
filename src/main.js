@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import 'maz-ui/css/main.css'
 import "./style.css";
 import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";

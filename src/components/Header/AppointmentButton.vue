@@ -1,10 +1,10 @@
 <script>
 import axios from "axios";
-import Modal from "./Modal.vue";
+import AppointmentModal from "./AppointmentModal.vue";
 export default {
   name: "AppointmentButton",
   components: {
-    Modal,
+    AppointmentModal,
   },
   data() {
     return { title: "", isModalVisible: false };
@@ -28,7 +28,6 @@ export default {
       this.isModalVisible = true;
     },
     closeModal() {
-      console.log(2);
       this.isModalVisible = false;
     },
   },
@@ -41,6 +40,6 @@ export default {
   >
     {{ title }}
   </button>
-  <Modal v-show="this.isModalVisible" @close="closeModal"></Modal>
+  <AppointmentModal v-show="this.isModalVisible" @close="closeModal"></AppointmentModal>
 </template>
 <style scoped></style>
