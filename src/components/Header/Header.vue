@@ -15,7 +15,6 @@ export default {
     return {
       headerButtonsData: "",
       logoSrc: "",
-      
     };
   },
   mounted() {
@@ -36,11 +35,11 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-  }
+  },
 };
 </script>
 <template>
-  <div class="bg-neutral-200 w-full flex justify-around fixed">
+  <div class="bg-neutral-200 w-full flex justify-center fixed items-center">
     <div class="flex justify-between container">
       <router-link
         :to="{
@@ -50,13 +49,14 @@ export default {
           },
         }"
       >
-        <img class="m6 w-50 p-2 h-auto mr-20" :src="this.logoSrc" />
+        <img class="m6 p-2 h-28 mr-20" :src="this.logoSrc" />
       </router-link>
-      
+
       <HeaderButton
         v-for="headerButton in this.headerButtonsData"
         :buttonData="headerButton"
       ></HeaderButton>
+
       <LanguagePicker></LanguagePicker>
 
       <AppointmentButton></AppointmentButton>

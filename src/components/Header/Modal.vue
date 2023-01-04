@@ -2,7 +2,7 @@
 export default {
   name: "Modal",
   methods: {
-    close() {
+    close() { 
       this.$emit("close");
     },
   },
@@ -15,9 +15,9 @@ export default {
       <div
         class="overflow-auto shadow-2xl flex flex-col bg-slate-700 w-[500px] h-[500px]"
         
-        @click.stop
       >
         <div>
+            <button @click="close()" class="bg-red-300">Close me!</button>
         </div>
       </div>
     </div>

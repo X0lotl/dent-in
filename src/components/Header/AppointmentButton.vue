@@ -28,6 +28,7 @@ export default {
       this.isModalVisible = true;
     },
     closeModal() {
+      console.log(2);
       this.isModalVisible = false;
     },
   },
@@ -35,9 +36,11 @@ export default {
 </script>
 <template>
   <button @click="openModal"
-    class="text-white m-4 p-2 bg-emerald-600 font-sans text-lg font-bold hover:bg-emerald-700 p-5transition duration-200 rounded-md"
+    class="text-white h-20 p-2 mt-4 bg-emerald-600 font-sans text-lg font-bold hover:bg-emerald-700 p-5transition duration-200 rounded-md"
   >
     {{ title }}
   </button>
-  <Modal v-show="this.isModalVisible" @click="closeModal"></Modal>
+  <Modal v-show="this.isModalVisible" @close="closeModal"></Modal>
 </template>
+<style scoped>
+</style>
