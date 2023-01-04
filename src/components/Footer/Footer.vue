@@ -4,7 +4,7 @@ export default {
 };
 </script>
 <template>
-  <footer >
+  <footer>
     <div class="bg-neutral-800 text-neutral-200">
       <div class="container flex justify-center">
         <a href="https://facebook.com/dentinkiev/">

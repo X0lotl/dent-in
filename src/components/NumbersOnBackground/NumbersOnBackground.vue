@@ -38,7 +38,8 @@ export default {
   <div
     id="background"
     class=""
-    :style="{ backgroundImage: `url(${this.imgSrc})` }"
+    style=" background-blend-mode: overlay;"
+    :style="{ backgroundImage: `linear-gradient(gold, gold), url(${this.imgSrc})` }"
   >
     <div
       class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-36"
@@ -53,6 +54,7 @@ export default {
 </template>
 <style scoped>
 #background {
+  color: rgb(122, 111, 48);
   background-attachment: fixed;
   background-position: 49.31% 52.43%;
 }

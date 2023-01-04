@@ -34,8 +34,8 @@ export default {
 </script>
 <template>
   <div
-    class="h-[38rem] background bg-cover flex justify-center text-white font-medium p-20"
-    :style="{ backgroundImage: `url(${this.imgUrl})` }"
+    class="h-[38rem] background bg-cover bg-blend-overlay flex justify-center text-white font-medium p-20"
+    :style="{ backgroundImage: ` url(${this.imgUrl})` }"
   >
     <div class="container">
       <h1 class="text-4xl mt-20 md:text-6xl sm:text-5xl p-4 pb-0 italic">
@@ -51,5 +51,6 @@ export default {
 <style scoped>
 .background {
   background-position: 50.18% 90.35%;
+  
 }
 </style>

@@ -35,12 +35,12 @@ export default {
 };
 </script>
 <template>
-  <button @click="openModal"
+  <button
+    @click="openModal"
     class="text-white h-20 p-2 mt-4 bg-emerald-600 font-sans text-lg font-bold hover:bg-emerald-700 p-5transition duration-200 rounded-md"
   >
     {{ title }}
   </button>
   <Modal v-show="this.isModalVisible" @close="closeModal"></Modal>
 </template>
-<style scoped>
-</style>
+<style scoped></style>
