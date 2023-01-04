@@ -12,21 +12,22 @@ export default {
     return {
       appointmentData: {
         name: "",
-        phone: '',
+        phone: "",
         email: "",
         comment: "",
       },
       phoneInputResults: {},
       emailInputResults: {
-        isValid: false
+        isValid: false,
       },
-      regEx: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g
+      regEx:
+        /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g,
     };
   },
   methods: {
     close() {
       this.$emit("close");
-    }
+    },
   },
 };
 </script>
@@ -49,20 +50,18 @@ export default {
           </button>
         </div>
         <div class="pt-5">
-          <MazInput
-            color="primary"
-            label="ПІБ"
-            v-model="appointmentData.name"
-          >
+          <MazInput color="primary" label="ПІБ" v-model="appointmentData.name">
           </MazInput>
         </div>
         <div class="pt-5">
-          {{this.appointmentData.phone}}
+          {{ this.appointmentData.phone }}
           <MazPhoneNumberInput
             color="primary"
             @update="phoneInputResults = $event"
             :success="phoneInputResults?.isValid"
-            :error="!phoneInputResults?.isValid && this.appointmentData.phone === ''"
+            :error="
+              !phoneInputResults?.isValid && this.appointmentData.phone === ''
+            "
             default-country-code="UA"
             :preferred-countries="['UA', 'US', 'PL']"
             v-model="this.appointmentData.phone"
@@ -81,7 +80,10 @@ export default {
         <div class="pt-5">
           <MazInput
             :success="this.regEx.test(appointmentData.email)"
-            :error="!this.regEx.test(appointmentData.email) && this.appointmentData.email !== ''"
+            :error="
+              !this.regEx.test(appointmentData.email) &&
+              this.appointmentData.email !== ''
+            "
             color="primary"
             label="Email"
             v-model="appointmentData.email"
