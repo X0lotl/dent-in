@@ -15,6 +15,7 @@ export default {
     return {
       headerButtonsData: "",
       logoSrc: "",
+      
     };
   },
   mounted() {
@@ -35,7 +36,7 @@ export default {
       .catch((err) => {
         console.log(err);
       });
-  },
+  }
 };
 </script>
 <template>

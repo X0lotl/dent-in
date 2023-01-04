@@ -3,6 +3,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      align: {
+        center: "align-items: center"
+      },
       fontFamily: {
         body: ['"Roboto"', '"Open Sans"'],
       },

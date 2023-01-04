@@ -15,6 +15,4 @@ export default {
   <div class="flex justify-center">
     <div class="border-b border-emerald-500 w-12 h-5"></div>
   </div>
-  
 </template>
-

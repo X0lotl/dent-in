@@ -12,6 +12,7 @@ let locale
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    {path: "/", redirect: "/uk"},
     { path: "/:locale", name: "home", component: Home, props:  {locale: locale } },
     { path: "/about/:locale", name: "about", component: About },
     { path: "/team/:locale", name: "team", component: Team },
