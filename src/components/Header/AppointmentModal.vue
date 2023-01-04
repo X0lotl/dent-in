@@ -12,7 +12,7 @@ export default {
     return {
       appointmentData: {
         name: "",
-        phone: "",
+        phone: '',
         email: "",
         comment: "",
       },
@@ -51,16 +51,18 @@ export default {
         <div class="pt-5">
           <MazInput
             color="primary"
-            label="Ім'я та Прізвище"
+            label="ПІБ"
             v-model="appointmentData.name"
           >
           </MazInput>
         </div>
         <div class="pt-5">
+          {{this.appointmentData.phone}}
           <MazPhoneNumberInput
             color="primary"
             @update="phoneInputResults = $event"
             :success="phoneInputResults?.isValid"
+            :error="!phoneInputResults?.isValid && this.appointmentData.phone === ''"
             default-country-code="UA"
             :preferred-countries="['UA', 'US', 'PL']"
             v-model="this.appointmentData.phone"
@@ -79,7 +81,7 @@ export default {
         <div class="pt-5">
           <MazInput
             :success="this.regEx.test(appointmentData.email)"
-            
+            :error="!this.regEx.test(appointmentData.email) && this.appointmentData.email !== ''"
             color="primary"
             label="Email"
             v-model="appointmentData.email"
