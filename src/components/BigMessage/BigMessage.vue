@@ -33,15 +33,17 @@ export default {
 };
 </script>
 <template>
+  <div class="h-28"></div>
   <div
     class="h-[38rem] background bg-cover bg-blend-overlay flex justify-center text-white font-medium p-20"
-    :style="{ backgroundImage: ` url(${this.imgUrl})` }"
+    style="background-blend-mode: multiply;"
+    :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgUrl})` }"
   >
     <div class="container">
-      <h1 class="text-4xl mt-20 md:text-6xl sm:text-5xl p-4 pb-0 italic">
+      <h1 class="text-4xl mt-20 md:text-6xl sm:text-5xl italic">
         {{ this.bigMessageData.Title }}
       </h1>
-      <h2 class="text-2xl md:text-3xl sm:text-2xl mt-10 mb-16 p-1 pb-0">
+      <h2 class="text-2xl md:text-3xl sm:text-2xl mt-10 mb-16 pb-0">
         {{ this.bigMessageData.SubTitle }}
       </h2>
       <AppointmentButton></AppointmentButton>
@@ -50,7 +52,7 @@ export default {
 </template>
 <style scoped>
 .background {
-  background-position: 50.18% 90.35%;
-  
+  background-position: 50% 48.35%;
+
 }
 </style>

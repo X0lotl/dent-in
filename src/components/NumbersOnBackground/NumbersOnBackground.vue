@@ -39,7 +39,7 @@ export default {
     id="background"
     class=""
     style=" background-blend-mode: multiply;"
-    :style="{ backgroundImage: `linear-gradient(gray, gray), url(${this.imgSrc})` }"
+    :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgSrc})` }"
   >
     <div
       class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-36"

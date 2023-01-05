@@ -53,7 +53,7 @@ export default {
           <h1 class="text-2xl">Записатись на прийом</h1>
           <button
             @click="close()"
-            class="rounded-full h-10 w-10 border-4 border-red-400 hover:border-red-600 hover:rotate-180 transition duration-200"
+            class="rounded-full h-10 w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200"
           >
             <i class="fa-solid fa-xmark"></i>
           </button>
