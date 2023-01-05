@@ -86,10 +86,12 @@ export default {
           ></MazPhoneNumberInput>
         </div>
         <div class="pt-5">
-          {{ this.emailInputResults.isValid }}
           <MazInput
             @update:model-value="checkEmail"
-            :error="!this.emailInputResults.isValid && this.appointmentData.email !== ''"
+            :error="
+              !this.emailInputResults.isValid &&
+              this.appointmentData.email !== ''
+            "
             :success="this.emailInputResults.isValid"
             color="primary"
             label="Email"
