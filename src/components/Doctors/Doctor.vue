@@ -1,8 +1,17 @@
 <script>
+import DoctorModal from './DoctorModal.vue';
 export default {
   name: "Doctor",
+  components: {
+    DoctorModal,
+},
   props: {
     doctorData: Object,
+  },
+  data() {
+    return {
+      isModalVivible: false,
+    }
   },
   setup(props) {
     let doctorData = props.doctorData;
@@ -11,11 +20,20 @@ export default {
     }`;
     return { doctorData, imgSrc };
   },
+  methods: {
+    openModal() {
+      this.isModalVivible = true;
+    },
+    closeModal() {
+      this.isModalVivible = false;
+    }
+  }
 };
 </script>
 <template>
   <div
     class="p-8 m-4 pb-10 hover:bg-neutral-200 hover:border-emerald-500 border-b-4 transition duration-200 border rounded-xl bg-neutral-100 border-neutral-400"
+    @click="openModal()"
   >
     <div
       class="h-60 bg-center rounded-lg bg-cover avatar"
@@ -28,12 +46,9 @@ export default {
       {{ doctorData.Positions }}
     </p>
 
-    <p v-if="doctorData.Quote" class="text-sm pt-4 text-neutral-600">
-      <i class="fa-solid fa-quote-left text-emerald-500"></i>
-      {{ doctorData.Quote }}
-      <i class="fa-solid fa-quote-right text-emerald-500"></i>
-    </p>
+    
   </div>
+  <DoctorModal :doctorData="doctorData" :imgSrc="imgSrc" v-show="this.isModalVivible" @close="closeModal()"></DoctorModal>
 </template>
 <style scoped>
 .avatar {
