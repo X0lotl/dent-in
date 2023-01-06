@@ -37,7 +37,7 @@ export default {
         <p class="text-2xl font-normal">
           {{ imageWithTextData.Title }}
         </p>
-        <div class="text-stone-700 mt-5">
+        <div class="text-stone-700 mt-5 whitespace-pre-wrap">
           <p class="mb-2">{{ imageWithTextData.subTitle }}</p>
           {{ imageWithTextData.text }}
           <div class="text-stone-700 mt-5">

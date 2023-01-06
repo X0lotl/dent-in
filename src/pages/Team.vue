@@ -46,24 +46,31 @@ export default {
 };
 </script>
 <template>
-  <Header></Header>
-  <div class="p-10"></div>
+  <div class="content">
+    <Header></Header>
+    <div class="p-10"></div>
 
-  <SectionTitle
-    v-if="this.extraData"
-    :title="this.extraData.teamTitle"
-  ></SectionTitle>
+    <SectionTitle
+      v-if="this.extraData"
+      :title="this.extraData.teamTitle"
+    ></SectionTitle>
 
-  <div
-    v-if="this.doctorsData"
-    class="container p-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-  >
-    <Doctor
-      v-for="doctor in this.doctorsData"
-      :doctorData="doctor.attributes"
-    ></Doctor>
+    <div
+      v-if="this.doctorsData"
+      class="container p-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      <Doctor
+        v-for="doctor in this.doctorsData"
+        :doctorData="doctor.attributes"
+      ></Doctor>
+    </div>
+
+    <!-- <div class="h-96"></div> -->
   </div>
-
-  <!-- <div class="h-96"></div> -->
   <Footer></Footer>
 </template>
+<style scoped>
+.content {
+  min-height: calc(100vh - 160px);
+}
+</style>

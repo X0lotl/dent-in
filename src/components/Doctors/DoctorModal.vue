@@ -52,10 +52,10 @@ export default {
             <h1 class="text-4xl mr-5 border-b-2 border-b-emerald-500 p-4 pt-0">
               {{ doctorData.Name }}
             </h1>
-            <p class="text-xl pt-4 pr-20 text-neutral-600">
+            <p class="text-xl pt-4 whitespace-pre-wrap text-neutral-600">
               {{ doctorData.Positions }}
             </p>
-            <p v-if="doctorData.Quote" class="text-xl pt-4 text-neutral-600">
+            <p v-if="doctorData.Quote" class="whitespace-pre-wrap text-xl pt-4 text-neutral-600">
               <i class="fa-solid fa-quote-left text-emerald-500"></i>
               {{ doctorData.Quote }}
               <i class="fa-solid fa-quote-right text-emerald-500"></i>

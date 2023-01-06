@@ -42,7 +42,7 @@ export default {
     <h1 class="text-center text-xl text-neutral-600 font-bold pt-5">
       {{ doctorData.Name }}
     </h1>
-    <p class="text-sm pt-4 text-neutral-600">
+    <p class="text-sm pt-4 text-neutral-600 whitespace-pre-wrap">
       {{ doctorData.Positions }}
     </p>
 

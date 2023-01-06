@@ -16,7 +16,7 @@ export default {
 <template>
   <div class="m-4 p-2">
     <p class="text-center text-2xl text-slate-700 font-bold">{{ title }}</p>
-    <p class="mt-3 text-neutral-500">{{ text }}</p>
+    <p class="mt-3 text-neutral-500 whitespace-pre-wrap">{{ text }}</p>
     
   </div>
 </template>

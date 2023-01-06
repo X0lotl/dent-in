@@ -18,7 +18,7 @@ export default {
     <slot></slot>
     <div>
       <p class="text-2xl font-bold">{{ reviewerName }}</p>
-      <p class="pt-2 font-thin">{{ reviewText }}</p>
+      <p class="pt-2 font-thin whitespace-pre-wrap">{{ reviewText }}</p>
     </div>
   </div>
 </template>
