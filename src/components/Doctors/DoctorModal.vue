@@ -6,8 +6,8 @@ export default {
       this.$emit("close");
     },
     replaceWithBr(someInput) {
-      return 
-    }
+      return;
+    },
   },
   props: {
     imgSrc: String,
@@ -15,8 +15,8 @@ export default {
   },
   setup(props) {
     const doctorData = props.doctorData;
-    console.log(doctorData.MainText)
-    
+    console.log(doctorData.MainText);
+
     const imgSrc = props.imgSrc;
 
     return {
@@ -33,11 +33,11 @@ export default {
       class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center"
     >
       <div
-        class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl  w-[50rem]"
+        class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl border-[3px] border-emerald-500 w-[50rem]"
       >
-        <div class="grid md:grid-cols-2 sm:grid-cols-1">
+        <div class="grid md:grid-cols-2 grid-cols-2">
           <div
-            class="h-96 m-5 bg-center rounded-lg bg-cover avatar"
+            class="sm:h-96 h-52 m-5 bg-center rounded-lg bg-cover avatar"
             :style="{ backgroundImage: `url(${imgSrc})` }"
           ></div>
           <div>
@@ -49,20 +49,31 @@ export default {
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </div>
-            <h1 class="text-4xl mr-5 border-b-2 border-b-emerald-500 p-4 pt-0">
+            <h1 class="md:text-4xl sm:text-3xl  text-xl mr-5 border-b-2 border-b-emerald-500 p-4 pt-0">
               {{ doctorData.Name }}
             </h1>
-            <p class="text-xl pt-4 whitespace-pre-wrap text-neutral-600">
+            <p class="md:text-xl sm:text-sm pt-4 whitespace-pre-wrap text-neutral-600">
               {{ doctorData.Positions }}
             </p>
-            <p v-if="doctorData.Quote" class="whitespace-pre-wrap text-xl pt-4 text-neutral-600">
+            <p
+              v-if="doctorData.Quote"
+              class="hidden sm:flex whitespace-pre-wrap md:text-xl sm text-sm pt-4 text-neutral-600"
+            >
               <i class="fa-solid fa-quote-left text-emerald-500"></i>
               {{ doctorData.Quote }}
               <i class="fa-solid fa-quote-right text-emerald-500"></i>
             </p>
           </div>
         </div>
-        <p class="whitespace-pre-wrap text-neutral-600 p-5 leading-7">
+        <p
+              v-if="doctorData.Quote"
+              class="sm:hidden flex justify-between whitespace-pre-wrap md:text-xl text-sm pt-4 text-neutral-600"
+            >
+              <i class="fa-solid fa-quote-left text-emerald-500"></i>
+              {{ doctorData.Quote }}
+              <i class="fa-solid fa-quote-right text-emerald-500"></i>
+            </p>
+        <p class=" sm:text-base text-sm whitespace-pre-wrap text-neutral-600 p-5 leading-7">
           {{ doctorData.MainText }}
         </p>
       </div>

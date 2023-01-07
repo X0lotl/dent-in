@@ -3,6 +3,7 @@ import axios from "axios";
 import HeaderButton from "./HeaderButton.vue";
 import LanguagePicker from "./LanguagePicker.vue";
 import AppointmentButton from "./AppointmentButton.vue";
+import PhoneMenu from "./PhoneMenu.vue";
 
 export default {
   name: "Header",
@@ -10,11 +11,13 @@ export default {
     HeaderButton,
     LanguagePicker,
     AppointmentButton,
+    PhoneMenu,
   },
   data() {
     return {
       headerButtonsData: "",
       logoSrc: "",
+      isMenuOpened: false,
     };
   },
   mounted() {
@@ -36,30 +39,50 @@ export default {
         console.log(err);
       });
   },
+  methods: {
+    openCloseMenu() {
+      this.isMenuOpened = !this.isMenuOpened;
+    },
+  },
 };
 </script>
 <template>
-  <div class="bg-neutral-200 w-full flex justify-center fixed items-center">
-    <div class="flex justify-between container">
-      <router-link
-        :to="{
-          name: `home`,
-          params: {
-            locale: this.$route.params.locale,
-          },
-        }"
-      >
-        <img class="m6 p-2 h-28 mr-20" :src="this.logoSrc" />
-      </router-link>
+  <div class="bg-neutral-200 w-full fixed">
+    <div class="flex justify-center items-center">
+      <div class="flex justify-between container">
+        <router-link
+          :to="{
+            name: `home`,
+            params: {
+              locale: this.$route.params.locale,
+            },
+          }"
+        >
+          <img class="m6 p-2 h-28 mr-20" :src="this.logoSrc" />
+        </router-link>
+        <div class="md:flex justify-center hidden">
+          <HeaderButton
+            v-for="headerButton in this.headerButtonsData"
+            :buttonData="headerButton"
+          ></HeaderButton>
+        </div>
 
-      <HeaderButton
-        v-for="headerButton in this.headerButtonsData"
-        :buttonData="headerButton"
-      ></HeaderButton>
-
-      <LanguagePicker></LanguagePicker>
-
-      <AppointmentButton></AppointmentButton>
+        <LanguagePicker class="md:block hidden"></LanguagePicker>
+        <AppointmentButton></AppointmentButton>
+        <button
+          @click="openCloseMenu()"
+          class="md:hidden block bg-blue-400 font-bold text-white m-4 rounded-lg p-4"
+        >
+          Menu
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
     </div>
+
+    <PhoneMenu
+      v-if="this.headerButtonsData"
+      v-show="this.isMenuOpened"
+      :headerButtonsData="this.headerButtonsData"
+    ></PhoneMenu>
   </div>
 </template>
