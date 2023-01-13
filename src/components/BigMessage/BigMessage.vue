@@ -23,7 +23,7 @@ export default {
       .then(
         (res) => (
           (this.bigMessageData = res.data.data[0].attributes),
-          (this.imgUrl = `${import.meta.env.VITE_STRAPI_URL}${this.bigMessageData.Background.data.attributes.url}`)
+          (this.imgUrl = `${this.bigMessageData.Background.data.attributes.url}`)
         )
       )
       .catch((err) => {

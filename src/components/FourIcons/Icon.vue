@@ -6,7 +6,7 @@ export default {
   },
   setup(props) {
     const iconData = props.iconData;
-    const iconUrl = `${import.meta.env.VITE_STRAPI_URL}${iconData.icon.data.attributes.url}`
+    const iconUrl = `${iconData.icon.data.attributes.url}`
     return { iconData, iconUrl };
   }
 };
@@ -20,7 +20,7 @@ export default {
       <img :src=iconUrl>
       </div>
     </div>
-    <p class="text-2xl mt-7">{{ iconData.title }}</p>
-    <p class="mt-5 text-stone-700">{{ iconData.subTitle }}</p>
+    <p class="text-2xl mt-7">{{ iconData.Title }}</p>
+    <p class="mt-5 text-stone-700">{{ iconData.SubTitle }}</p>
   </div>
 </template>

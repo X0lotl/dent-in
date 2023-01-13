@@ -17,7 +17,7 @@ export default {
         },
       })
       .then(
-        (res) => (this.title = res.data.data[0].attributes.appointmentTitle)
+        (res) => (this.title = res.data.data[0].attributes.AppointmentTitle)
       )
       .catch((err) => {
         console.log(err);

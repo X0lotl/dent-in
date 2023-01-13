@@ -12,8 +12,9 @@ export default {
 };
 </script>
 <template>
+  
   <div class="text-white font-bold text-center m-6">
-    <p class="text-5xl m-4">{{ numberData.attributes.number }}</p>
-    <p class="text-xl">{{ numberData.attributes.text }}</p>
+    <p class="text-5xl m-4">{{ numberData.attributes.Number }}</p>
+    <p class="text-xl">{{ numberData.attributes.Text }}</p>
   </div>
 </template>

@@ -45,7 +45,7 @@ export default {
         console.log(err);
       });
     axios
-      .get(`${import.meta.env.VITE_STRAPI_URL}/api/imges-with-text/`, {
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/images-with-text/`, {
         params: {
           locale: this.$route.params.locale,
           populate: "deep",

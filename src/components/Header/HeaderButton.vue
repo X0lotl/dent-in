@@ -22,7 +22,7 @@ export default {
         },
       }"
     >
-      {{ buttonData.attributes.name }}
+      {{ buttonData.attributes.Name }}
     </router-link>
   </div>
 </template>

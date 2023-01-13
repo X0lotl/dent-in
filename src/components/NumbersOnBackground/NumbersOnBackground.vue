@@ -23,9 +23,7 @@ export default {
       .then(
         (res) => (
           (this.numbersOnBackgroundData = res.data.data),
-          (this.imgSrc = `${
-            import.meta.env.VITE_STRAPI_URL
-          }/uploads/background_691718a341.jpg?updated_at=2023-01-02T16:33:44.953Z`)
+          (this.imgSrc = `https://res.cloudinary.com/dprrzla0s/image/upload/v1673639043/background2_c237916e2e.jpg?updated_at=2023-01-13T19:44:04.002Z`)
         )
       )
       .catch((err) => {
@@ -38,8 +36,10 @@ export default {
   <div
     id="background"
     class=""
-    style=" background-blend-mode: multiply;"
-    :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgSrc})` }"
+    style="background-blend-mode: multiply"
+    :style="{
+      backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgSrc})`,
+    }"
   >
     <div
       class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-36"

@@ -38,8 +38,8 @@ export default {
     <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 mb-16">
       <Service
         v-for="(thisService, index) in this.servicesData"
-        :title="thisService.attributes.title"
-        :text="thisService.attributes.text"
+        :title="thisService.attributes.Title"
+        :text="thisService.attributes.Text"
       ></Service>
     </div>
   </div>

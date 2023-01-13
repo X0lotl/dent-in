@@ -7,7 +7,7 @@ export default {
   },
   setup(props) {
     const imageWithTextData = props.imageWithTextData;
-    let imgSrc = `${import.meta.env.VITE_STRAPI_URL}${imageWithTextData.Img.data[0].attributes.formats.small.url}`;
+    let imgSrc = imageWithTextData.Img.data[0].attributes.formats.small.url;
 
     return { imageWithTextData, imgSrc };
   },
@@ -38,8 +38,8 @@ export default {
           {{ imageWithTextData.Title }}
         </p>
         <div class="text-stone-700 mt-5 whitespace-pre-wrap">
-          <p class="mb-2">{{ imageWithTextData.subTitle }}</p>
-          {{ imageWithTextData.text }}
+          <p class="mb-2">{{ imageWithTextData.SubTitle }}</p>
+          {{ imageWithTextData.Text }}
           <div class="text-stone-700 mt-5">
             <p v-for="(item, index) in imageWithTextData.List">
               <i class="fa-solid fa-check text-emerald-500"></i> {{ item }}

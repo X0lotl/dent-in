@@ -30,9 +30,7 @@ export default {
       .then(
         (res) => (
           (this.headerButtonsData = res.data.data),
-          (this.logoSrc = `${
-            import.meta.env.VITE_STRAPI_URL
-          }/uploads/Logo_ai_8cf8214739.svg?updated_at=2023-01-02T13:34:48.176Z`)
+          (this.logoSrc = `https://res.cloudinary.com/dprrzla0s/image/upload/v1673613702/Logo_ai_50ea5b779a.svg?updated_at=2023-01-13T12:41:43.789Z`)
         )
       )
       .catch((err) => {
