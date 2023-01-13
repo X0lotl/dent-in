@@ -32,7 +32,7 @@ export default {
         console.log(err);
       });
     axios
-      .get(`${import.meta.env.VITE_STRAPI_URL}/api/doctorsp`, {
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/doctors`, {
         params: {
           locale: this.$route.params.locale,
           populate: "deep",

@@ -15,8 +15,6 @@ export default {
   },
   setup(props) {
     const doctorData = props.doctorData;
-    console.log(doctorData.MainText);
-
     const imgSrc = props.imgSrc;
 
     return {

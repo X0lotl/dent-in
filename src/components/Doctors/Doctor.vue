@@ -1,23 +1,21 @@
 <script>
-import DoctorModal from './DoctorModal.vue';
+import DoctorModal from "./DoctorModal.vue";
 export default {
   name: "Doctor",
   components: {
     DoctorModal,
-},
+  },
   props: {
     doctorData: Object,
   },
   data() {
     return {
       isModalVivible: false,
-    }
+    };
   },
   setup(props) {
     let doctorData = props.doctorData;
-    let imgSrc = `${import.meta.env.VITE_STRAPI_URL}${
-      doctorData.Avatar.data.attributes.url
-    }`;
+    let imgSrc = doctorData.Avatar.data.attributes.url;
     return { doctorData, imgSrc };
   },
   methods: {
@@ -26,8 +24,8 @@ export default {
     },
     closeModal() {
       this.isModalVivible = false;
-    }
-  }
+    },
+  },
 };
 </script>
 <template>
@@ -45,10 +43,13 @@ export default {
     <p class="text-sm pt-4 text-neutral-600 whitespace-pre-wrap">
       {{ doctorData.Positions }}
     </p>
-
-    
   </div>
-  <DoctorModal :doctorData="doctorData" :imgSrc="imgSrc" v-show="this.isModalVivible" @close="closeModal()"></DoctorModal>
+  <DoctorModal
+    :doctorData="doctorData"
+    :imgSrc="imgSrc"
+    v-show="this.isModalVivible"
+    @close="closeModal()"
+  ></DoctorModal>
 </template>
 <style scoped>
 .avatar {
