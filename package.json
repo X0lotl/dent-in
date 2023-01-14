@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "npx http-server -P http://0.0.0.0:${PORT} ./dist",
+    "start": "npx http-server -P http://0.0.0.0:8080 ./dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
