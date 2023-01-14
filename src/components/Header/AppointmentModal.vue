@@ -1,6 +1,7 @@
 <script>
 import MazPhoneNumberInput from "maz-ui/components/MazPhoneNumberInput";
 import MazInput from "maz-ui/components/MazInput";
+import axios from "axios";
 // read documentation https://louismazel.github.io/maz-ui-3/components/maz-phone-number-input
 export default {
   name: "AppoinrmentModal",
@@ -10,6 +11,7 @@ export default {
   },
   data() {
     return {
+      modalData: {},
       appointmentData: {
         name: "",
         phone: "",
@@ -38,6 +40,19 @@ export default {
       }
     },
   },
+  mounted() {
+    axios
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/appoinrment-modals`, {
+        params: {
+          locale: this.$route.params.locale,
+          populate: "deep",
+        },
+      })
+      .then((res) => (this.modalData = res.data.data[0].attributes))
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 </script>
 
@@ -50,7 +65,7 @@ export default {
         class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl"
       >
         <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
-          <h1 class="text-2xl">Записатись на прийом</h1>
+          <h1 class="text-2xl"> {{ this.modalData.Title }}</h1>
           <button
             @click="close()"
             class="rounded-full h-10 w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200"
@@ -58,8 +73,8 @@ export default {
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
-        <div class="pt-5">
-          <MazInput color="primary" label="ПІБ" v-model="appointmentData.name">
+        <div v-if="this.modalData" class="pt-5">
+          <MazInput color="primary" :label="this.modalData.NameLabel" v-model="appointmentData.name">
           </MazInput>
         </div>
         <div class="pt-5">
@@ -75,12 +90,12 @@ export default {
             v-model="this.appointmentData.phone"
             :translations="{
               countrySelector: {
-                placeholder: 'Код країни',
-                error: 'Choose country',
+                placeholder: this.modalData.CountrySelector,
+                error: this.modalData.CountryError,
               },
               phoneInput: {
-                placeholder: 'Номер телефону',
-                example: 'Приклад:',
+                placeholder: this.modalData.PhoneLabel,
+                example: this.modalData.Example,
               },
             }"
           ></MazPhoneNumberInput>
@@ -102,7 +117,7 @@ export default {
         <div class="pt-5">
           <MazInput
             color="primary"
-            label="Коментар"
+            :label="this.modalData.Comment"
             v-model="appointmentData.comment"
           >
           </MazInput>
@@ -111,7 +126,7 @@ export default {
           <button
             class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300"
           >
-            Записатись
+            {{ this.modalData.ButtonTitle}}
           </button>
         </div>
       </div>
