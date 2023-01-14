@@ -14,12 +14,12 @@ let locale
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    {path: "/", redirect: "/uk"},
-    { path: "/:locale", name: "home", component: Home, props:  {locale: locale } },
-    { path: "/about/:locale", name: "about", component: About },
-    { path: "/team/:locale", name: "team", component: Team },
-    { path: "/contacts/:locale", name: "contacts", component: Contacts},
-    { path: "/services/:locale", name: "services", component: ServicesPage}
+    { path: "/", redirect: "/uk/" },
+    { path: "/:locale/", name: "home", component: Home, props:  {locale: locale } },
+    { path: "/:locale/about", name: "about", component: About },
+    { path: "/:locale/team", name: "team", component: Team },
+    { path: "/:locale/contacts", name: "contacts", component: Contacts},
+    { path: "/:locale/services", name: "services", component: ServicesPage}
   ],
 });
 
