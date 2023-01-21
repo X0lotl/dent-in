@@ -7,7 +7,7 @@ export default {
   },
   setup(props) {
     const imageWithTextData = props.imageWithTextData;
-    let imgSrc = imageWithTextData.Img.data[0].attributes.formats.small.url;
+    let imgSrc = imageWithTextData.Img.data.attributes.formats.small.url;
 
     return { imageWithTextData, imgSrc };
   },
