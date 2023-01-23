@@ -19,7 +19,7 @@ export default {
 </script>
 <template>
   <Transition name="phoneMenu">
-    <div class="w-full md:h-[1px] h-72 bg-neutral-300 overflow-hidden">
+    <div class="w-full md:h-[1px] h-72 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md">
       <HeaderButton
         v-for="headerButton in headerButtonsData"
         :buttonData="headerButton"
@@ -33,7 +33,7 @@ export default {
 </template>
 <style scoped>
 .phoneMenu-enter {
-  height: 1000px;
+  height: 0px;
 }
 .phoneMenu-leave-to {
   height: 1px;
@@ -41,6 +41,7 @@ export default {
 
 .phoneMenu-enter-active,
 .phoneMenu-leave-active {
-  transition: 1s;
+  transition-duration: 1s;
+  transition-delay: 10ms;
 }
 </style>

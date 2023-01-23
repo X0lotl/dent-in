@@ -23,7 +23,7 @@ export default {
       .then(
         (res) => (
           (this.numbersOnBackgroundData = res.data.data),
-          (this.imgSrc = `https://res.cloudinary.com/dprrzla0s/image/upload/v1673639043/background2_c237916e2e.jpg?updated_at=2023-01-13T19:44:04.002Z`)
+          (this.imgSrc = `https://res.cloudinary.com/dprrzla0s/image/upload/v1674474526/pexels_polina_zimmerman_4687281_036bc8f03e.webp?updated_at=2023-01-23T11:48:55.308Z`)
         )
       )
       .catch((err) => {
@@ -55,6 +55,7 @@ export default {
 <style scoped>
 #background {
   color: yellow;
+  background-size: 100% auto;
   background-attachment: fixed;
   background-position: 49.31% 52.43%;
 }
