@@ -28,7 +28,7 @@ export default {
   <div class="container w-3/4">
     <div
       @click="this.opened = !this.opened"
-      class="mx-2 border border-emerald-500 border-b-4 rounded-lg my-5"
+      class="mx-2 border border-emerald-500 rounded-lg my-5 transition-all duration-300"
     >
       <div
         class="text-neutral-600 rounded-t-lg text-center text-2xl font-bold p-5 bg-neutral-200 flex justify-between"
@@ -43,12 +43,12 @@ export default {
       <div
         @click.stop
         :class="{ opened: this.opened }"
-        class="border-t border-t-emerald-500 overflow-hidden max-h-[1px] px-2 lg:px-20"
+        class="border-t border-y-emerald-500 border-b-4 max-h-0 transition-all duration-[1s]  overflow-hidden  px-2 lg:px-20"
       >
         <div class="sm:p-10 p-2">
           <div class="grid grid-cols-1 xl:grid-cols-2">
             <div>
-              <h2 class="md:text-3xl sm:text-2xl text-xl mb-5 font-bold">
+              <h2 class="md:text-3xl sm:text-2xl text-xl mb-5 font-bold ">
                 {{ this.serviceData.SubTitle }}
               </h2>
               <p class="md:text-xl text-sm mr-10 letter">
@@ -80,7 +80,6 @@ export default {
 </template>
 <style>
 .opened {
-  max-height: 100000px;
-  transition: max-height 3s ease-in-out;
+  max-height: 3000px;
 }
 </style>

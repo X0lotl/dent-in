@@ -23,7 +23,7 @@ export default {
       .get(`${import.meta.env.VITE_STRAPI_URL}/api/services-etended`, {
         params: {
           locale: this.$route.params.locale,
-          populate: "deep",
+          populate: ["prices", "Photo"],
         },
       })
       .then(

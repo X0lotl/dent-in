@@ -3,7 +3,7 @@ export default {
   name: "Price",
   props: {
     title: String,
-    price: Number,
+    price: String,
     currency: String
   },
   setup(props) {
