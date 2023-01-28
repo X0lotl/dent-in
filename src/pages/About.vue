@@ -1,15 +1,49 @@
 <script>
+import axios from "axios";
 import Header from "../components/Header/Header.vue";
 import SectionTitle from "../components/SectionTitle.vue";
+import Footer from "../components/Footer/Footer.vue";
+import ImgWithText from "../components/ImgWithText/ImgWithText.vue";
+
 export default {
   name: "About",
   components: {
     Header,
-    SectionTitle
+    SectionTitle,
+    Footer,
+    ImgWithText,
+  },
+  data() {
+    return {
+      aboutData: ""
+    }
+  },
+  mounted() {
+    axios
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/about-page-contents`, {
+        params: {
+          locale: this.$route.params.locale,
+          populate: "deep",
+        },
+      })
+      .then((res) => (this.aboutData = res.data.data[0].attributes))
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>
 <template>
-  <Header></Header>
-
+  <div class="content">
+    <Header></Header>
+    <div class="h-20"></div>
+    <SectionTitle title="Про нас"></SectionTitle>
+    <ImgWithText v-if="this.aboutData" :imageWithTextData="this.aboutData"></ImgWithText>
+  </div>
+  <Footer></Footer>
 </template>
+<style scoped>
+.content {
+  min-height: calc(100vh - 160px);
+}
+</style>

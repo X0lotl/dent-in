@@ -25,12 +25,12 @@ export default {
     class="pt-5 mt-10"
   >
     <div
-      class="container grid lg:grid-cols-2 md:grid-cols-1 pt-20 pb-20"
+      class="container grid lg:grid-cols-2 md:grid-cols-1 pt-5 pb-5"
       id="cards"
     >
       <img
         v-if="imageWithTextData.isImgLeft === true"
-        class="w-[160rem] p-4"
+        class="w-[160rem] p-4 rounded-3xl"
         :src="this.imgSrc"
       />
       <div class="ml-8 mr-8 p-4">
@@ -49,7 +49,7 @@ export default {
       </div>
       <img
         v-if="imageWithTextData.isImgLeft === false"
-        class="w-[160rem] p-4"
+        class="w-[160rem] p-4 rounded-3xl"
         :src="this.imgSrc"
       />
     </div>
