@@ -34,7 +34,7 @@ export default {
         class="text-neutral-600 rounded-t-lg text-center text-2xl font-bold p-5 bg-neutral-200 flex justify-between"
       >
         <div></div>
-        <p>{{ this.serviceData.Title }}</p>
+        <h2>{{ this.serviceData.Title }}</h2>
         <p class="text-base m-1">
           <i v-if="!this.opened" class="fa-solid fa-maximize"></i>
           <i v-if="this.opened" class="fa-solid fa-minimize"></i>
@@ -48,9 +48,9 @@ export default {
         <div class="sm:p-10 p-2">
           <div class="grid grid-cols-1 xl:grid-cols-2">
             <div>
-              <h2 class="md:text-3xl sm:text-2xl text-xl mb-5 font-bold ">
+              <h3 class="md:text-3xl sm:text-2xl text-xl mb-5 font-bold ">
                 {{ this.serviceData.SubTitle }}
-              </h2>
+              </h3>
               <p class="md:text-xl text-sm mr-10 letter">
                 {{ this.serviceData.Text }}
               </p>

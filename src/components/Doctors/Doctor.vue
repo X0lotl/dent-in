@@ -37,9 +37,9 @@ export default {
       class="h-60 bg-center rounded-lg bg-cover avatar"
       :style="{ backgroundImage: `url(${imgSrc})` }"
     ></div>
-    <h1 class="text-center text-xl text-neutral-600 font-bold pt-5">
+    <h3 class="text-center text-xl text-neutral-600 font-bold pt-5">
       {{ doctorData.Name }}
-    </h1>
+    </h3>
     <p class="text-sm pt-4 text-neutral-600 whitespace-pre-wrap">
       {{ doctorData.Positions }}
     </p>

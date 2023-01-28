@@ -55,5 +55,4 @@ export default {
     </div>
   </div>
 </template>
-o
 <style scoped></style>

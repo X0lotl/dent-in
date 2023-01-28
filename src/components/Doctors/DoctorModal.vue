@@ -47,9 +47,9 @@ export default {
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </div>
-            <h1 class="md:text-4xl sm:text-3xl  text-xl mr-5 border-b-2 border-b-emerald-500 p-4 pt-0">
+            <h3 class="md:text-4xl sm:text-3xl  text-xl mr-5 border-b-2 border-b-emerald-500 p-4 pt-0">
               {{ doctorData.Name }}
-            </h1>
+            </h3>
             <p class="md:text-xl sm:text-sm pt-4 whitespace-pre-wrap text-neutral-600">
               {{ doctorData.Positions }}
             </p>

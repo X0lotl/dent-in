@@ -15,7 +15,7 @@ export default {
 </script>
 <template>
   <div class="m-4 p-2">
-    <p class="text-center text-2xl text-slate-700 font-bold">{{ title }}</p>
+    <h3 class="text-center text-2xl text-slate-700 font-bold">{{ title }}</h3>
     <p class="mt-3 text-neutral-500 whitespace-pre-wrap">{{ text }}</p>
     
   </div>

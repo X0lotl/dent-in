@@ -4,6 +4,7 @@ import Header from "../components/Header/Header.vue";
 import SectionTitle from "../components/SectionTitle.vue";
 import Footer from "../components/Footer/Footer.vue";
 import ImgWithText from "../components/ImgWithText/ImgWithText.vue";
+import Works from "../components/Works/Works.vue";
 
 export default {
   name: "About",
@@ -12,6 +13,7 @@ export default {
     SectionTitle,
     Footer,
     ImgWithText,
+    Works,
   },
   data() {
     return {
@@ -39,6 +41,8 @@ export default {
     <div class="h-20"></div>
     <SectionTitle title="Про нас"></SectionTitle>
     <ImgWithText v-if="this.aboutData" :imageWithTextData="this.aboutData"></ImgWithText>
+    <SectionTitle title="Минулі роботи"></SectionTitle>
+    <Works></Works>
   </div>
   <Footer></Footer>
 </template>
