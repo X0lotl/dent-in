@@ -1,18 +1,26 @@
 <script>
 export default {
   name: "Work",
+  props: {
+    workData: Object,
+  },
+  setup(props) {
+    return {
+      workData: props.workData,
+    };
+  },
 };
 </script>
 <template>
-    <div class="flex justify-center mt-10 mb-20">
-        <div class="image w-full h-[1000px]"></div>
+  <div
+    :style="{ backgroundImage: `url(${this.workData.imgUrl})` }"
+    class="bg-no-repeat bg-cover h-80 m-5 grid place-items-end rounded-xl overflow-hidden"
+  >
+    <div class="h-3/4 mt-auto w-full bg-gradient-to-t from-black to-transparent">
+      <h3 class="text-white mt-44 text-2xl text-center font-bold">
+        {{ this.workData.title }}
+      </h3>
     </div>
-  
+  </div>
 </template>
-<style scoped>
-.image {
-  background-image: url(https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z);
-}
-</style>
-
-
+<style scoped></style>

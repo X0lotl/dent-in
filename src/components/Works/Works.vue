@@ -1,40 +1,40 @@
 <script>
 import Work from "./Work.vue";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
 
 export default {
   name: "Works",
   components: {
-    Swiper,
-    SwiperSlide,
     Work
   },
-  setup() {
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
+  data() {
     return {
-      onSwiper,
-      onSlideChange,
-    };
-  },
+      previusWorks: [
+        {
+          title: "Будь-яка назва роботи",
+          imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z"
+        },
+        {
+          title: "Будь-яка назва роботи",
+          imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z"
+        },
+        {
+          title: "Будь-яка назва роботи",
+          imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z"
+        },
+        {
+          title: "Будь-яка назва роботи",
+          imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z"
+        },
+      ]
+    }
+  }
 };
 </script>
 <template>
   <div class="container">
-    <swiper
-      :slides-per-view="1"
-      :space-between="50"
-      @swiper="onSwiper"
-      @slideChange="onSlideChange"
-    >
-      <swiper-slide><Work></Work></swiper-slide>
-      <swiper-slide>Slide 2</swiper-slide>
-      <swiper-slide>Slide 3</swiper-slide>
-    </swiper>
+    <div class="p-10 grid grid-cols-1 lg:grid-cols-2">
+      <Work v-for="workData in this.previusWorks" :workData="workData"></Work>
+    </div>
+    
   </div>
 </template>
