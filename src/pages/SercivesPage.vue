@@ -15,8 +15,8 @@ export default {
   },
   data() {
     return {
-        servicesData: ""
-    }
+      servicesData: "",
+    };
   },
   mounted() {
     axios
@@ -26,11 +26,7 @@ export default {
           populate: ["prices", "Photo"],
         },
       })
-      .then(
-        (res) => (
-          (this.servicesData = res.data.data)
-        )
-      )
+      .then((res) => (this.servicesData = res.data.data))
       .catch((err) => {
         console.log(err);
       });
@@ -38,14 +34,12 @@ export default {
 };
 </script>
 <template>
-  <div style="min-height: calc(100vh - 5rem);">
+  <div style="min-height: calc(100vh - 5rem)" class="pb-10">
     <SectionTitle title="Послуги та ціни"></SectionTitle>
-
-    
-    <ServiceExtended v-for="service in this.servicesData" :serviceData="service"></ServiceExtended>
-
-    
+    <ServiceExtended
+      v-for="service in this.servicesData"
+      :serviceData="service"
+    ></ServiceExtended>
   </div>
   <Footer></Footer>
 </template>
-
