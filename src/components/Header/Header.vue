@@ -78,6 +78,7 @@ export default {
     </div>
 
     <PhoneMenu
+      @click.stop="openCloseMenu()"
       v-if="this.headerButtonsData"
       v-show="this.isMenuOpened"
       :headerButtonsData="this.headerButtonsData"

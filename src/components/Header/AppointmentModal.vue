@@ -39,6 +39,9 @@ export default {
         this.emailInputResults.isValid = false;
       }
     },
+    sendMessage() {
+      console.log(this.appointmentData);
+    },
   },
   mounted() {
     axios
@@ -66,7 +69,7 @@ export default {
         class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl"
       >
         <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
-          <h2 class="text-2xl"> {{ this.modalData.Title }}</h2>
+          <h2 class="text-2xl">{{ this.modalData.Title }}</h2>
           <button
             @click.stop="close()"
             class="rounded-full h-10 w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200"
@@ -75,7 +78,11 @@ export default {
           </button>
         </div>
         <div v-if="this.modalData" class="pt-5">
-          <MazInput color="primary" :label="this.modalData.NameLabel" v-model="appointmentData.name">
+          <MazInput
+            color="primary"
+            :label="this.modalData.NameLabel"
+            v-model="appointmentData.name"
+          >
           </MazInput>
         </div>
         <div class="pt-5">
@@ -125,9 +132,10 @@ export default {
         </div>
         <div class="flex pt-5 justify-center">
           <button
+            @click.stop=""
             class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300"
           >
-            {{ this.modalData.ButtonTitle}}
+            {{ this.modalData.ButtonTitle }}
           </button>
         </div>
       </div>

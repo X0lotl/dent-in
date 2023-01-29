@@ -19,15 +19,16 @@ export default {
 </script>
 <template>
   <Transition name="phoneMenu">
-    <div class="w-full md:h-[1px] h-72 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md">
+    <div
+      class="w-full md:h-[1px] h-72 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md"
+    >
       <HeaderButton
         v-for="headerButton in headerButtonsData"
         :buttonData="headerButton"
       ></HeaderButton>
       <div class="flex justify-center">
-        <LanguagePicker></LanguagePicker>
+        <LanguagePicker @click.stop></LanguagePicker>
       </div>
-      
     </div>
   </Transition>
 </template>
