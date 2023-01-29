@@ -2,7 +2,7 @@
 export default {
   name: "LanguagePicker",
   data() {
-    return { selected: "" };
+    return { selected: "uk" };
   },
   methods: {
     changeLanguage(e) {
@@ -15,20 +15,22 @@ export default {
       });
     },
   },
-  mounted() {
-    this.selected = "uk"
-  }, 
-  updated() {
-    this.selected = this.$route.params.locale
-  }
+  watch: {
+    '$route.params.locale': {
+      handler: function(newLocale) {
+        this.selected = newLocale
+      },
+      immediate: true
+    }
+  },
 };
 </script>
 <template>
   
   <select
-    v-model="selected"
+    :value="selected"
     class="bg-transparent m-6 text-blue-500 font-sans font-bold text-lg appearance-none"
-    v-on:change="changeLanguage($event)"
+    @change="changeLanguage($event)"
   >
     <option value="uk">🇺🇦 Українська</option>
     <option value="en">🇬🇧 English</option>
