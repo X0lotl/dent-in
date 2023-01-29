@@ -30,7 +30,7 @@ export default {
     <div class="bg-neutral-800 text-neutral-400 p-5">
       <div class="container text-center flex justify-between">
         <p>Copyright © Dentin</p>
-        <p>Made by X0lotl</p>
+        <a href="https://t.me/X0lotle">Made by X0lotl</a>
       </div>
     </div>
   </footer>
