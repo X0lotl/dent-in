@@ -8,7 +8,7 @@ export default {
 };
 </script>
 <template>
-  <Header></Header>
+  <Header v-if="$route.params.locale"></Header>
   <div class="pt-10 h-20 "></div>
   <router-view :key="$route.fullPath"></router-view>
 </template>

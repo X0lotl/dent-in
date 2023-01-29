@@ -42,12 +42,30 @@ export default {
       this.isMenuOpened = !this.isMenuOpened;
     },
   },
+  watch: {
+    "$route.params.locale": {
+      handler: function (newLocale) {
+        this.headerButtonsData = "";
+        axios
+          .get(`${import.meta.env.VITE_STRAPI_URL}/api/header-link-buttons`, {
+            params: {
+              locale: newLocale,
+            },
+          })
+          .then((res) => (this.headerButtonsData = res.data.data))
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+      immediate: true,
+    },
+  },
 };
 </script>
 <template>
   <div class="bg-neutral-200 w-full fixed">
     <div class="flex justify-center items-center">
-      <div class="flex justify-between container">
+      <div v-if="this.headerButtonsData" class="flex justify-between container">
         <router-link
           :to="{
             name: `home`,
@@ -58,7 +76,10 @@ export default {
         >
           <img class="m6 p-2 h-28 mr-20" :src="this.logoSrc" />
         </router-link>
-        <div class="md:flex justify-center hidden">
+        <div
+          
+          class="md:flex justify-center hidden"
+        >
           <HeaderButton
             v-for="headerButton in this.headerButtonsData"
             :buttonData="headerButton"
