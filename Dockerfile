@@ -1,12 +1,10 @@
 FROM node:18 as build-stage
 
-RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm 
-
 WORKDIR /build
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install
+COPY package.json package-lock.json ./
+RUN npm install
 COPY ./ .
-RUN pnpm run build
+RUN npm run build
 
 FROM nginx:1.13.0-alpine as production-stage
 
