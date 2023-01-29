@@ -31,6 +31,7 @@ export default {
       class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center"
     >
       <div
+      @click.stop
         class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl border-[3px] border-emerald-500 w-[50rem] max-h-[90%]"
       >
         <div class="grid md:grid-cols-2 grid-cols-2">

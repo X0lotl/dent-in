@@ -40,6 +40,6 @@ export default {
   >
     {{ title }}
   </button>
-  <AppointmentModal v-show="this.isModalVisible" @close="closeModal"></AppointmentModal>
+  <AppointmentModal v-show="this.isModalVisible" @close="closeModal" @click="closeModal"></AppointmentModal>
 </template>
 <style scoped></style>

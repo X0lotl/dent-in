@@ -30,7 +30,7 @@ export default {
 </script>
 <template>
   <div
-    class="p-8 m-4 pb-10 hover:bg-neutral-200 hover:border-emerald-500 border-b-4 transition duration-200 border rounded-xl bg-neutral-100 border-neutral-400"
+    class="p-8 m-4 pb-10 hover:bg-neutral-200 hover:cursor-pointer hover:border-emerald-500 border-b-4 transition duration-200 border rounded-xl bg-neutral-100 border-neutral-400"
     @click="openModal()"
   >
     <div
@@ -49,6 +49,7 @@ export default {
     :imgSrc="imgSrc"
     v-show="this.isModalVivible"
     @close="closeModal()"
+    @click="closeModal()"
   ></DoctorModal>
 </template>
 <style scoped>
