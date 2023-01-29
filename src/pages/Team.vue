@@ -47,8 +47,7 @@ export default {
 </script>
 <template>
   <div class="content">
-    <Header></Header>
-    <div class="p-10"></div>
+    
 
     <SectionTitle
       v-if="this.extraData"

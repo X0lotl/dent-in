@@ -37,8 +37,6 @@ export default {
 </script>
 <template>
   <div class="content">
-    <Header></Header>
-    <div class="h-20"></div>
     <SectionTitle title="Про нас"></SectionTitle>
     <ImgWithText v-if="this.aboutData" :imageWithTextData="this.aboutData"></ImgWithText>
     <SectionTitle title="Минулі роботи"></SectionTitle>

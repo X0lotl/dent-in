@@ -60,7 +60,6 @@ export default {
 </script>
 
 <template>
-  <Header></Header>
   <BigMessage></BigMessage>
   <FourIcons
     v-if="this.extraData.careTitle"
