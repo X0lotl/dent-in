@@ -52,7 +52,7 @@ export default {
       <div>
         <iframe
           :src="this.contactsData.mapUrl"
-          class="h-96 w-[100%] rounded-lg"
+          class="h-96 w-[100%] rounded-lg p-4"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"

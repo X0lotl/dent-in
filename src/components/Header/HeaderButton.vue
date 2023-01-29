@@ -12,7 +12,7 @@ export default {
 </script>
 <template>
   <div
-    class="text-blue-500 md:m-1 md:p-4 md:mt-6 mt-1 p-2 text-center font-bold text-lg hover:text-cyan-300 transition duration-200"
+    class="text-blue-500 md:m-1 md:p-4 md:mt-6 mt-1 p-2 text-center font-bold lg:text-lg text-base hover:text-cyan-300 transition duration-200"
   >
     <router-link
       :to="{

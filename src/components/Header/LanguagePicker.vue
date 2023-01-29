@@ -29,7 +29,7 @@ export default {
   
   <select
     :value="selected"
-    class="bg-transparent m-6 text-blue-500 font-sans font-bold text-lg appearance-none"
+    class="bg-transparent m-6 text-blue-500 font-sans font-bold lg:text-lg text-base appearance-none"
     @change="changeLanguage($event)"
   >
     <option value="uk">🇺🇦 Українська</option>
