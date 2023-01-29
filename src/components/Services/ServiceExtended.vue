@@ -31,7 +31,7 @@ export default {
       class="mx-2 border border-emerald-500 rounded-lg my-5 transition-all duration-300"
     >
       <div
-        class="text-neutral-600 rounded-t-lg text-center text-2xl font-bold p-5 bg-neutral-200 flex justify-between"
+        class="text-neutral-600 rounded-t-lg text-center text-2xl font-bold p-5 bg-neutral-200 flex justify-between hover:cursor-pointer"
       >
         <div></div>
         <h2>{{ this.serviceData.Title }}</h2>
@@ -80,6 +80,6 @@ export default {
 </template>
 <style>
 .opened {
-  max-height: 1400px;
+  max-height: 1600px;
 }
 </style>
