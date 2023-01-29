@@ -43,7 +43,7 @@ export default {
       <div
         @click.stop
         :class="{ opened: this.opened }"
-        class="border-t border-y-emerald-500 border-b-4 max-h-0 transition-all duration-500 ease-in-out  overflow-hidden  px-2 lg:px-20"
+        class="border-t border-y-emerald-500 border-b-4 rounded-b max-h-0 transition-all duration-500 ease-in-out  overflow-hidden  px-2 lg:px-20"
       >
         <div class="sm:p-10 p-2">
           <div class="grid grid-cols-1 xl:grid-cols-2">
