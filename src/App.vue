@@ -9,6 +9,6 @@ export default {
 </script>
 <template>
   <Header></Header>
-  <div class="pt-10"></div>
+  <div class="pt-10 h-20 "></div>
   <router-view :key="$route.fullPath"></router-view>
 </template>
