@@ -27,7 +27,7 @@ export default {
   
   <select
     v-model="selected"
-    class="bg-transparent m-6 text-blue-500 font-sans font-bold text-lg"
+    class="bg-transparent m-6 text-blue-500 font-sans font-bold text-lg appearance-none"
     v-on:change="changeLanguage($event)"
   >
     <option value="uk">🇺🇦 Українська</option>
