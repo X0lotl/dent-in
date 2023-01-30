@@ -34,6 +34,7 @@ export default {
 </script>
 <template>
   <div
+    v-if="this.numbersOnBackgroundData"
     id="background"
     class=""
     style="background-blend-mode: multiply"
