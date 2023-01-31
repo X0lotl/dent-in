@@ -63,7 +63,7 @@ export default {
 };
 </script>
 <template>
-  <div class="bg-neutral-200 w-full fixed">
+  <div class="bg-neutral-200 w-full fixed border-b-2 border-b-emerald-500">
     <div class="flex justify-center items-center">
       <div v-if="this.headerButtonsData" class="flex justify-between container">
         <router-link
