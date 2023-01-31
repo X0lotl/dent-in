@@ -6,7 +6,7 @@ export default {
   name: "ServiceExtended",
   components: {
     Price,
-    AppointmentButton
+    AppointmentButton,
   },
   data() {
     return {
@@ -43,12 +43,12 @@ export default {
       <div
         @click.stop
         :class="{ opened: this.opened }"
-        class="border-t border-y-emerald-500 border-b-4 rounded-b max-h-0 transition-all duration-500 ease-in-out  overflow-hidden  px-2 lg:px-20"
+        class="border-t border-y-emerald-500 border-b-4 rounded-b max-h-0 transition-all duration-500 ease-in-out overflow-hidden px-2 lg:px-20"
       >
         <div class="sm:p-10 p-2">
           <div class="grid grid-cols-1 xl:grid-cols-2">
             <div>
-              <h3 class="md:text-3xl sm:text-2xl text-xl mb-5 font-bold ">
+              <h3 class="md:text-3xl sm:text-2xl text-xl mb-5 font-bold">
                 {{ this.serviceData.SubTitle }}
               </h3>
               <p class="md:text-xl text-sm mr-10 letter">
@@ -61,7 +61,13 @@ export default {
             />
           </div>
           <div class="h-10"></div>
-          <div class="border rounded-3xl bg-neutral-200">
+          <div class="border rounded-3xl bg-neutral-200 mx-10 mt-5 overflow-hidden">
+            <div
+              class="flex pt-6 pb-3 bg-neutral-300 justify-between lg:px-20 px-2 border-b-2 border-b-emerald-500 border font-bold md:text-2xl sm:text-xl text-base"
+            >
+              <h4 class="max-w-2xl">Послуга</h4>
+              <p class="mt-auto">Ціна</p>
+            </div>
             <Price
               v-for="price in this.serviceData.prices.data"
               :title="price.attributes.Title"
@@ -72,7 +78,6 @@ export default {
           <div class="flex justify-center pt-4">
             <AppointmentButton></AppointmentButton>
           </div>
-          
         </div>
       </div>
     </div>
