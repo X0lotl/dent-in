@@ -80,6 +80,6 @@ export default {
 </template>
 <style>
 .opened {
-  max-height: 1600px;
+  max-height: 1700px;
 }
 </style>
