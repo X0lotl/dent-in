@@ -3,6 +3,7 @@ import axios from "axios";
 import AppointmentModal from "./AppointmentModal.vue";
 export default {
   name: "AppointmentButton",
+  emits: ["smsSucces"],
   components: {
     AppointmentModal,
   },
@@ -30,6 +31,9 @@ export default {
     closeModal() {
       this.isModalVisible = false;
     },
+    showSucces() {
+      this.$emit("smsSucces");
+    }
   },
 };
 </script>
@@ -40,6 +44,6 @@ export default {
   >
     {{ title }}
   </button>
-  <AppointmentModal v-show="this.isModalVisible" @close="closeModal" @click="closeModal"></AppointmentModal>
+  <AppointmentModal @smsSended="showSucces()" v-show="this.isModalVisible" @close="closeModal" @click="closeModal"></AppointmentModal>
 </template>
 <style scoped></style>

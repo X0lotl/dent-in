@@ -93,7 +93,7 @@ export default {
         </div>
 
         <LanguagePicker class="md:block hidden"></LanguagePicker>
-        <AppointmentButton></AppointmentButton>
+        <AppointmentButton @smsSucces="openCloseMessage() "></AppointmentButton>
         <button
           @click="openCloseMenu()"
           class="md:hidden block bg-blue-400 font-bold text-white m-4 rounded-lg p-4"
@@ -111,5 +111,5 @@ export default {
       :headerButtonsData="this.headerButtonsData"
     ></PhoneMenu>
   </div>
-  <MessageModal @close="this.isMessageModalOpened = false" :isModalOpened="this.isMessageModalOpened"></MessageModal>
+  <MessageModal @closeModal="this.isMessageModalOpened = false" :isModalOpened="this.isMessageModalOpened"></MessageModal>
 </template>
