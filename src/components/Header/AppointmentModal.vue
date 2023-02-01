@@ -39,15 +39,21 @@ export default {
         this.emailInputResults.isValid = false;
       }
     },
-    sendMessage() {
-      axios
-        .post(import.meta.env.VITE_API_URL, {
+    async sendMessage() {
+      try {
+        let res = await axios({
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          url: import.meta.env.VITE_API_URL,
           data: this.appointmentData,
-        })
-        .then((res) => console.log(res))
-        .catch((err) => {
-          console.log(err);
         });
+
+        console.log(res.data);
+      } catch (err) {
+        console.error(err);
+      }
     },
   },
   mounted() {
