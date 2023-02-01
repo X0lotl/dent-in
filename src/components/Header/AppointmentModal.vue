@@ -40,7 +40,7 @@ export default {
       }
     },
     sendMessage() {
-      axios.post
+      this.$emit("smsSended")
     },
   },
   mounted() {
