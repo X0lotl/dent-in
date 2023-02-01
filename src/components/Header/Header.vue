@@ -4,7 +4,6 @@ import HeaderButton from "./HeaderButton.vue";
 import LanguagePicker from "./LanguagePicker.vue";
 import AppointmentButton from "./AppointmentButton.vue";
 import PhoneMenu from "./PhoneMenu.vue";
-import MessageModal from "./MessageModal.vue";
 
 export default {
   name: "Header",
@@ -12,15 +11,13 @@ export default {
     HeaderButton,
     LanguagePicker,
     AppointmentButton,
-    PhoneMenu,
-    MessageModal,
+    PhoneMenu
   },
   data() {
     return {
       headerButtonsData: "",
       logoSrc: "",
-      isMenuOpened: false,
-      isMessageModalOpened: false
+      isMenuOpened: false
     };
   },
   mounted() {
@@ -43,9 +40,6 @@ export default {
   methods: {
     openCloseMenu() {
       this.isMenuOpened = !this.isMenuOpened;
-    },
-    openCloseMessage() {
-      this.isMessageModalOpened = !this.isMessageModalOpened
     }
   },
   watch: {
@@ -93,7 +87,7 @@ export default {
         </div>
 
         <LanguagePicker class="md:block hidden"></LanguagePicker>
-        <AppointmentButton @smsSucces="openCloseMessage() "></AppointmentButton>
+        <AppointmentButton ></AppointmentButton>
         <button
           @click="openCloseMenu()"
           class="md:hidden block bg-blue-400 font-bold text-white m-4 rounded-lg p-4"
@@ -111,5 +105,4 @@ export default {
       :headerButtonsData="this.headerButtonsData"
     ></PhoneMenu>
   </div>
-  <MessageModal @closeModal="this.isMessageModalOpened = false" :isModalOpened="this.isMessageModalOpened"></MessageModal>
 </template>

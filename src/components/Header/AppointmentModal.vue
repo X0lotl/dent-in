@@ -40,7 +40,7 @@ export default {
       }
     },
     sendMessage() {
-      this.$emit("smsSended")
+     
     },
   },
   mounted() {
