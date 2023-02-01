@@ -40,7 +40,7 @@ export default {
       }
     },
     sendMessage() {
-      console.log(this.appointmentData);
+      axios.post
     },
   },
   mounted() {
@@ -132,7 +132,7 @@ export default {
         </div>
         <div class="flex pt-5 justify-center">
           <button
-            @click.stop=""
+            @click.stop="sendMessage()"
             class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300"
           >
             {{ this.modalData.ButtonTitle }}
