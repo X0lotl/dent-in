@@ -40,7 +40,14 @@ export default {
       }
     },
     sendMessage() {
-     
+      axios
+        .post(import.meta.env.VITE_API_URL, {
+          data: this.appointmentData,
+        })
+        .then((res) => console.log(res))
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   mounted() {
