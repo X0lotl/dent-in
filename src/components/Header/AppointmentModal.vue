@@ -5,18 +5,24 @@ import axios from "axios";
 // read documentation https://louismazel.github.io/maz-ui-3/components/maz-phone-number-input
 export default {
   name: "AppoinrmentModal",
+  emits: ["closeModal"],
   components: {
     MazPhoneNumberInput,
     MazInput,
   },
   data() {
     return {
+      smsStatus: null,
+      wait: false,
       modalData: {},
       appointmentData: {
         name: "",
         phone: "",
         email: "",
         comment: "",
+      },
+      nameInputResult: {
+        isValid: false,
       },
       phoneInputResults: {},
       emailInputResults: {
@@ -27,32 +33,62 @@ export default {
     };
   },
   methods: {
-    close() {
-      this.$emit("close");
+    closeModal() {
+      this.$emit("closeModal");
+      this.appointmentData = {
+        name: "",
+        phone: "",
+        email: "",
+        comment: "",
+      };
     },
     checkEmail() {
       if (this.regEx.test(this.appointmentData.email)) {
-        console.log(true);
         this.emailInputResults.isValid = true;
       } else {
-        console.log(false);
+        this.emailInputResults.isValid = false;
+      }
+    },
+    checkName() {
+      if (this.appointmentData.name !== "") {
+        this.nameInputResult.isValid = true;
+      } else {
         this.emailInputResults.isValid = false;
       }
     },
     async sendMessage() {
-      try {
-        let res = await axios({
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          url: import.meta.env.VITE_API_URL,
-          data: this.appointmentData,
-        });
+      if (
+        this.emailInputResults.isValid &&
+        this.phoneInputResults.isValid &&
+        this.nameInputResult.isValid
+      ) {
+        try {
+          this.wait = true;
+          let res = await axios({
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            url: import.meta.env.VITE_API_URL,
+            data: this.appointmentData,
+          });
 
-        console.log(res.data);
-      } catch (err) {
-        console.error(err);
+          if (res.data.status === "delivered") {
+            this.smsStatus = true;
+          } else {
+            this.smsStatus = false;
+          }
+
+          this.wait = false;
+
+          setTimeout(() => {
+            this.closeModal();
+            this.smsStatus = null;
+          }, 300);
+        } catch (err) {
+          console.error(err);
+        }
+      } else {
       }
     },
   },
@@ -75,7 +111,12 @@ export default {
 <template>
   <transition name="modal-fade">
     <div
-      class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center"
+      :class="{
+        success: this.smsStatus,
+        error: this.smsStatus === false,
+        'cursor-wait': this.wait,
+      }"
+      class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200"
     >
       <div
         @click.stop
@@ -84,68 +125,75 @@ export default {
         <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
           <h2 class="text-2xl">{{ this.modalData.Title }}</h2>
           <button
-            @click.stop="close()"
+            @click.stop="closeModal()"
             class="rounded-full h-10 w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200"
           >
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
-        <div v-if="this.modalData" class="pt-5">
-          <MazInput
-            color="primary"
-            :label="this.modalData.NameLabel"
-            v-model="appointmentData.name"
-          >
-          </MazInput>
+        <div>
+          <div v-if="this.modalData" class="pt-5">
+            <MazInput
+              @update:model-value="checkName"
+              :success="this.appointmentData.name !== ''"
+              :error="this.appointmentData.name === ''"
+              color="primary"
+              :label="this.modalData.NameLabel"
+              v-model="appointmentData.name"
+            >
+            </MazInput>
+          </div>
+          <div class="pt-5">
+            <MazPhoneNumberInput
+              color="primary"
+              @update="phoneInputResults = $event"
+              :success="phoneInputResults?.isValid"
+              :error="
+                !phoneInputResults?.isValid && this.appointmentData.phone === ''
+              "
+              default-country-code="UA"
+              :preferred-countries="['UA', 'US', 'PL']"
+              v-model="this.appointmentData.phone"
+              :translations="{
+                countrySelector: {
+                  placeholder: this.modalData.CountrySelector,
+                  error: this.modalData.CountryError,
+                },
+                phoneInput: {
+                  placeholder: this.modalData.PhoneLabel,
+                  example: this.modalData.Example,
+                },
+              }"
+            ></MazPhoneNumberInput>
+          </div>
+          <div class="pt-5">
+            <MazInput
+              @update:model-value="checkEmail"
+              :error="
+                !this.emailInputResults.isValid &&
+                this.appointmentData.email !== ''
+              "
+              :success="this.emailInputResults.isValid"
+              color="primary"
+              label="Email"
+              v-model="appointmentData.email"
+            >
+            </MazInput>
+          </div>
+          <div class="pt-5">
+            <MazInput
+              color="primary"
+              :label="this.modalData.Comment"
+              v-model="appointmentData.comment"
+            >
+            </MazInput>
+          </div>
         </div>
-        <div class="pt-5">
-          <MazPhoneNumberInput
-            color="primary"
-            @update="phoneInputResults = $event"
-            :success="phoneInputResults?.isValid"
-            :error="
-              !phoneInputResults?.isValid && this.appointmentData.phone === ''
-            "
-            default-country-code="UA"
-            :preferred-countries="['UA', 'US', 'PL']"
-            v-model="this.appointmentData.phone"
-            :translations="{
-              countrySelector: {
-                placeholder: this.modalData.CountrySelector,
-                error: this.modalData.CountryError,
-              },
-              phoneInput: {
-                placeholder: this.modalData.PhoneLabel,
-                example: this.modalData.Example,
-              },
-            }"
-          ></MazPhoneNumberInput>
-        </div>
-        <div class="pt-5">
-          <MazInput
-            @update:model-value="checkEmail"
-            :error="
-              !this.emailInputResults.isValid &&
-              this.appointmentData.email !== ''
-            "
-            :success="this.emailInputResults.isValid"
-            color="primary"
-            label="Email"
-            v-model="appointmentData.email"
-          >
-          </MazInput>
-        </div>
-        <div class="pt-5">
-          <MazInput
-            color="primary"
-            :label="this.modalData.Comment"
-            v-model="appointmentData.comment"
-          >
-          </MazInput>
-        </div>
+
         <div class="flex pt-5 justify-center">
           <button
             @click.stop="sendMessage()"
+            :class="{ 'cursor-wait': this.wait }"
             class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300"
           >
             {{ this.modalData.ButtonTitle }}
@@ -165,5 +213,12 @@ export default {
 .modal-fade-enter-active,
 .modal-fade-leave-active {
   transition: opacity 0.5s ease;
+}
+
+.success {
+  background-color: rgba(0, 128, 0, 0.6);
+}
+.error {
+  background-color: rgba(255, 0, 0, 0.6);
 }
 </style>
