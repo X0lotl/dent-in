@@ -1,40 +1,39 @@
 <script>
+import axios from "axios";
 import Work from "./Work.vue";
 
 export default {
   name: "Works",
   components: {
-    Work
+    Work,
   },
   data() {
     return {
-      previusWorks: [
-        {
-          title: "Будь-яка назва роботи",
-          imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z"
+      previusWorks: "",
+    };
+  },
+  mounted() {
+    axios
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/works`, {
+        params: {
+          locale: this.$route.params.locale,
+          populate: "deep",
         },
-        {
-          title: "Будь-яка назва роботи",
-          imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z"
-        },
-        {
-          title: "Будь-яка назва роботи",
-          imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z"
-        },
-        {
-          title: "Будь-яка назва роботи",
-          imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1674489301/pexels_cedric_fauntleroy_4269362_1820238ed2.jpg?updated_at=2023-01-23T15:55:02.580Z"
-        },
-      ]
-    }
-  }
+      })
+      .then((res) => (this.previusWorks = res.data.data))
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 </script>
 <template>
-  <div class="container">
+  <div v-if="this.previusWorks" class="container">
     <div class="p-10 grid grid-cols-1 lg:grid-cols-2">
-      <Work v-for="workData in this.previusWorks" :workData="workData"></Work>
+      <Work
+        v-for="workData in this.previusWorks"
+        :workData="workData.attributes"
+      ></Work>
     </div>
-    
   </div>
 </template>
