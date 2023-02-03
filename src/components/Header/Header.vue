@@ -74,7 +74,7 @@ export default {
             },
           }"
         >
-          <img class="m6 p-2 h-28 mr-20" :src="this.logoSrc" />
+          <img v-if="this.logoSrc" class="m6 p-2 h-28 mr-20" :src="this.logoSrc" />
         </router-link>
         <div
           
