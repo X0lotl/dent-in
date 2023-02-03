@@ -17,8 +17,9 @@ export default {
   },
   data() {
     return {
-      aboutData: ""
-    }
+      aboutData: "",
+      extraData: "",
+    };
   },
   mounted() {
     axios
@@ -32,14 +33,33 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+    axios
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/extra-data-p`, {
+        params: {
+          locale: this.$route.params.locale,
+        },
+      })
+      .then((res) => (this.extraData = res.data.data[0].attributes))
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>
 <template>
   <div class="content">
-    <SectionTitle title="Про нас"></SectionTitle>
-    <ImgWithText v-if="this.aboutData" :imageWithTextData="this.aboutData"></ImgWithText>
-    <SectionTitle title="Минулі роботи"></SectionTitle>
+    <SectionTitle
+      v-if="this.extraData"
+      :title="this.extraData.aboutTitle"
+    ></SectionTitle>
+    <ImgWithText
+      v-if="this.aboutData"
+      :imageWithTextData="this.aboutData"
+    ></ImgWithText>
+    <SectionTitle
+      v-if="this.extraData"
+      :title="this.extraData.worksTitle"
+    ></SectionTitle>
     <Works></Works>
   </div>
   <Footer></Footer>
