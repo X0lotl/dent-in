@@ -11,13 +11,13 @@ export default {
     HeaderButton,
     LanguagePicker,
     AppointmentButton,
-    PhoneMenu
+    PhoneMenu,
   },
   data() {
     return {
       headerButtonsData: "",
       logoSrc: "",
-      isMenuOpened: false
+      isMenuOpened: false,
     };
   },
   mounted() {
@@ -40,7 +40,7 @@ export default {
   methods: {
     openCloseMenu() {
       this.isMenuOpened = !this.isMenuOpened;
-    }
+    },
   },
   watch: {
     "$route.params.locale": {
@@ -74,20 +74,21 @@ export default {
             },
           }"
         >
-          <img v-if="this.logoSrc" class="m6 p-2 h-28 mr-20" :src="this.logoSrc" />
+          <img
+            v-if="this.logoSrc"
+            class="m6 p-2 h-28 mr-20"
+            :src="this.logoSrc"
+          />
         </router-link>
-        <div
-          
-          class="md:flex justify-center hidden"
-        >
+        <nav class="md:flex justify-center hidden">
           <HeaderButton
             v-for="headerButton in this.headerButtonsData"
             :buttonData="headerButton"
           ></HeaderButton>
-        </div>
+        </nav>
 
         <LanguagePicker class="md:block hidden"></LanguagePicker>
-        <AppointmentButton ></AppointmentButton>
+        <AppointmentButton></AppointmentButton>
         <button
           @click="openCloseMenu()"
           class="md:hidden block bg-blue-400 font-bold text-white m-4 rounded-lg p-4"
