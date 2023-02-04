@@ -33,7 +33,7 @@ export default {
 };
 </script>
 <template>
-  <div
+  <section
     v-if="this.numbersOnBackgroundData"
     id="background"
     class=""
@@ -51,7 +51,7 @@ export default {
         :numberData="numberData"
       ></Number>
     </div>
-  </div>
+  </section>
 </template>
 <style scoped>
 #background {

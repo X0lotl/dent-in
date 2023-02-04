@@ -39,7 +39,7 @@ export default {
 };
 </script>
 <template>
-  <div class="bg-slate-100">
+  <section class="bg-slate-100">
     <div class="container pt-1 pb-10">
       <SectionTitle :title="this.sectionTitle"></SectionTitle>
       <div v-if="reviews" class="pt-10 grid lg:grid-cols-2 md:grid-cols-1">
@@ -51,5 +51,5 @@ export default {
         /></Review>
       </div>
     </div> 
-  </div>
+  </section>
 </template>

@@ -33,7 +33,7 @@ export default {
 };
 </script>
 <template>
-  <div
+  <section
     class="h-[38rem] background bg-cover bg-blend-overlay flex justify-center text-white font-medium sm:p-20 p-5"
     style="background-blend-mode: multiply;"
     :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgUrl})` }"
@@ -47,7 +47,7 @@ export default {
       </h2>
       <AppointmentButton></AppointmentButton>
     </div>
-  </div>
+  </section>
 </template>
 <style scoped>
 .background {

@@ -47,24 +47,22 @@ export default {
 </script>
 <template>
   <div class="content">
-    
+    <section>
+      <SectionTitle
+        v-if="this.extraData"
+        :title="this.extraData.teamTitle"
+      ></SectionTitle>
 
-    <SectionTitle
-      v-if="this.extraData"
-      :title="this.extraData.teamTitle"
-    ></SectionTitle>
-
-    <div
-      v-if="this.doctorsData"
-      class="container p-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-    >
-      <Doctor
-        v-for="doctor in this.doctorsData"
-        :doctorData="doctor.attributes"
-      ></Doctor>
-    </div>
-
-    <!-- <div class="h-96"></div> -->
+      <div
+        v-if="this.doctorsData"
+        class="container p-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        <Doctor
+          v-for="doctor in this.doctorsData"
+          :doctorData="doctor.attributes"
+        ></Doctor>
+      </div>
+    </section>
   </div>
   <Footer></Footer>
 </template>

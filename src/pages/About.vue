@@ -48,14 +48,16 @@ export default {
 </script>
 <template>
   <div class="content">
-    <SectionTitle
-      v-if="this.extraData"
-      :title="this.extraData.aboutTitle"
-    ></SectionTitle>
-    <ImgWithText
-      v-if="this.aboutData"
-      :imageWithTextData="this.aboutData"
-    ></ImgWithText>
+    <section>
+      <SectionTitle
+        v-if="this.extraData"
+        :title="this.extraData.aboutTitle"
+      ></SectionTitle>
+      <ImgWithText
+        v-if="this.aboutData"
+        :imageWithTextData="this.aboutData"
+      ></ImgWithText>
+    </section>
     <SectionTitle
       v-if="this.extraData"
       :title="this.extraData.worksTitle"

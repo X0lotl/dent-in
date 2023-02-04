@@ -35,11 +35,13 @@ export default {
 </script>
 <template>
   <div style="min-height: calc(100vh - 19rem)" class="pb-10">
-    <SectionTitle title="Послуги та ціни"></SectionTitle>
-    <ServiceExtended
-      v-for="service in this.servicesData"
-      :serviceData="service"
-    ></ServiceExtended>
+    <section>
+      <SectionTitle title="Послуги та ціни"></SectionTitle>
+      <ServiceExtended
+        v-for="service in this.servicesData"
+        :serviceData="service"
+      ></ServiceExtended>
+    </section>
   </div>
   <Footer></Footer>
 </template>

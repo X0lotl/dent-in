@@ -33,7 +33,7 @@ export default {
 };
 </script>
 <template>
-  <div class="container text-black">
+  <section class="container text-black">
     <SectionTitle :title="sectionTitle"></SectionTitle>
     <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 mb-16">
       <Service
@@ -42,5 +42,5 @@ export default {
         :text="thisService.attributes.Text"
       ></Service>
     </div>
-  </div>
+  </section>
 </template>

@@ -28,12 +28,12 @@ export default {
 };
 </script>
 <template>
-  <div v-if="this.previusWorks" class="container">
+  <section v-if="this.previusWorks" class="container">
     <div class="p-10 grid grid-cols-1 lg:grid-cols-2">
       <Work
         v-for="workData in this.previusWorks"
         :workData="workData.attributes"
       ></Work>
     </div>
-  </div>
+  </section>
 </template>

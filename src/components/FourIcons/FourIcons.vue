@@ -37,7 +37,7 @@ export default {
 };
 </script>
 <template>
-  <div class="container text-center">
+  <section class="container text-center">
     <SectionTitle :title="sectionTitle"></SectionTitle>
     <div id="icons" class="grid">
       <Icon
@@ -45,7 +45,7 @@ export default {
         :iconData="newIcon.attributes"
       ></Icon>
     </div>
-  </div>
+  </section>
 </template>
 <style scoped>
 #icons {

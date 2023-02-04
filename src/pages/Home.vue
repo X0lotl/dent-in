@@ -66,10 +66,12 @@ export default {
     :sectionTitle="this.extraData.careTitle"
   ></FourIcons>
   <template v-if="this.imagesWithTextData">
-    <ImgWithText
-      v-for="image in this.imagesWithTextData"
-      :imageWithTextData="image.attributes"
-    ></ImgWithText>
+    <section>
+      <ImgWithText
+        v-for="image in this.imagesWithTextData"
+        :imageWithTextData="image.attributes"
+      ></ImgWithText>
+    </section>
   </template>
   <NumbersOnBackground></NumbersOnBackground>
   <Services
