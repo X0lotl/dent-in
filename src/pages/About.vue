@@ -66,6 +66,6 @@ export default {
 </template>
 <style scoped>
 .content {
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 19rem);
 }
 </style>

@@ -41,7 +41,7 @@ export default {
 };
 </script>
 <template>
-  <div style="min-height: calc(100vh - 160px);">
+  <div style="min-height: calc(100vh - 19rem);">
     <SectionTitle
       v-if="this.extraData"
       :title="this.extraData.contactsTitle"
