@@ -54,6 +54,6 @@ export default {
 </template>
 <style scoped>
 .avatar {
-  background-position: 50% 12%;
+  background-position: 50% 10%;
 }
 </style>

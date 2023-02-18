@@ -30,7 +30,7 @@ export default {
     >
       <img
         v-if="imageWithTextData.isImgLeft === true"
-        class="w-[160rem] p-4 rounded-3xl"
+        class=" p-4 rounded-3xl"
         :src="this.imgSrc"
       />
       <div class="ml-8 mr-8 p-4">

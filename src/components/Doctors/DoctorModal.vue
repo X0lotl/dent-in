@@ -81,6 +81,9 @@ export default {
 </template>
 
 <style scoped>
+.avatar {
+  background-position: 50% 10%;
+}
 .modal-fade-enter,
 .modal-fade-leave-to {
   opacity: 0;
