@@ -61,7 +61,7 @@ export default {
             />
           </div>
           <div class="h-10"></div>
-          <div class="border rounded-3xl bg-neutral-200 mx-10 mt-5 overflow-hidden">
+          <div class="border rounded-3xl bg-neutral-200 sm:mx-10 mt-5 overflow-hidden">
             <div
               class="flex pt-6 pb-3 bg-neutral-300 justify-between lg:px-20 px-2 border-b-2 border-b-emerald-500 border font-bold md:text-2xl sm:text-xl text-base"
             >
