@@ -85,14 +85,14 @@ export default {
           this.wait = false;
 
           if (res.data.status === "delivered") {
-            this.toast.success("Зайвка прийнята, зачекайте найближчим часом з вами зв'яжуться наші менеджери!")
+            this.toast.success(this.modalData.smsSucces);
           } else {
-            this.toast.error("Нажаль сталася помилка, вона з нашої сторони. Будь ласка зателефонуйте або напишіть нам.")
+            this.toast.error(this.modalData.smsError);
           }
         } catch (err) {
           this.closeModal();
           this.wait = false;
-          this.toast.error("Нажаль сталася помилка, вона з нашої сторони. Будь ласка зателефонуйте або напишіть нам.")
+          this.toast.error(this.modalData.smsError);
           console.error(err);
         }
       } else {
@@ -174,7 +174,7 @@ export default {
           </button>
         </div>
         <span v-if="this.fieldsError" class="text-red-500 text-center p-2 mt-4">
-          Перевірте щоб всі поля були заповненими
+          {{ this.modalData.fieldsError }}
         </span>
       </div>
     </div>
