@@ -16,6 +16,7 @@ export default {
   data() {
     return {
       servicesData: "",
+      extraData: ""
     };
   },
   mounted() {
@@ -30,17 +31,24 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+    axios
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/extra-data-p`, {
+        params: {
+          locale: this.$route.params.locale
+        },
+      })
+      .then((res) => (this.extraData = res.data.data[0].attributes))
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>
 <template>
   <div style="min-height: calc(100vh - 19rem)" class="pb-10">
     <section>
-      <SectionTitle title="Послуги та ціни"></SectionTitle>
-      <ServiceExtended
-        v-for="service in this.servicesData"
-        :serviceData="service"
-      ></ServiceExtended>
+      <SectionTitle v-if="this.extraData" :title="this.extraData.servicesExtendedTitle"></SectionTitle>
+      <ServiceExtended v-for="service in this.servicesData" :extraData="extraData" :serviceData="service"></ServiceExtended>
     </section>
   </div>
   <Footer></Footer>

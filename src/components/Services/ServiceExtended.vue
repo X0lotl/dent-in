@@ -16,6 +16,7 @@ export default {
   },
   props: {
     serviceData: Object,
+    extraData: Object
   },
   setup(props) {
     let serviceData = props.serviceData.attributes;
@@ -65,8 +66,8 @@ export default {
             <div
               class="flex pt-6 pb-3 bg-neutral-300 justify-between lg:px-20 px-2 border-b-2 border-b-emerald-500 border font-bold md:text-2xl sm:text-xl text-base"
             >
-              <h4 class="max-w-2xl">Послуга</h4>
-              <p class="mt-auto">Ціна</p>
+              <h4 class="max-w-2xl">{{ this.extraData.serviceTitle }}</h4>
+              <p class="mt-auto">{{ this.extraData.priceTitle }}</p>
             </div>
             <Price
               v-for="price in this.serviceData.prices.data"
