@@ -56,7 +56,7 @@ export default {
             </p>
             <p
               v-if="doctorData.Quote"
-              class="hidden sm:flex whitespace-pre-wrap ml-4 md:text-xl sm text-sm pt-4 text-neutral-600"
+              class="hidden sm:flex whitespace-pre-wrap ml-6 md:text-xl sm text-sm pt-4 text-neutral-600 text-center"
             >
               <i class="fa-solid fa-quote-left text-emerald-500"></i>
               {{ doctorData.Quote }}
@@ -66,7 +66,7 @@ export default {
         </div>
         <p
               v-if="doctorData.Quote"
-              class="sm:hidden flex justify-between whitespace-pre-wrap md:text-xl text-sm pt-4 text-neutral-600"
+              class="sm:hidden flex justify-between whitespace-pre-wrap md:text-xl text-sm pt-4 text-neutral-600 text-center"
             >
               <i class="fa-solid fa-quote-left text-emerald-500"></i>
               {{ doctorData.Quote }}
