@@ -122,7 +122,7 @@ export default {
       'cursor-wait': this.wait,
     }"
       class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200">
-      <div @click.stop class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl">
+      <div @click.stop class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl m-2">
         <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
           <h2 class="text-2xl">{{ this.modalData.Title }}</h2>
           <button @click.stop="closeModal()"
