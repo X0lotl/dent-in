@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       wait: false,
+      fieldsError: false,
       modalData: {},
       appointmentData: {
         name: "",
@@ -33,7 +34,7 @@ export default {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     };
   },
-  setup(){
+  setup() {
     const toast = useToast();
 
     return { toast }
@@ -63,6 +64,7 @@ export default {
       }
     },
     async sendMessage() {
+      this.fieldsError = false;
       if (
         this.emailInputResults.isValid &&
         this.phoneInputResults.isValid &&
@@ -94,7 +96,7 @@ export default {
           console.error(err);
         }
       } else {
-        
+        this.fieldsError = true;
       }
     },
   },
@@ -116,49 +118,31 @@ export default {
 
 <template>
   <transition name="modal-fade">
-    <div
-      :class="{
-        'cursor-wait': this.wait,
-      }"
-      class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200"
-    >
-      <div
-        @click.stop
-        class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl"
-      >
+    <div :class="{
+      'cursor-wait': this.wait,
+    }"
+      class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200">
+      <div @click.stop class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl">
         <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
           <h2 class="text-2xl">{{ this.modalData.Title }}</h2>
-          <button
-            @click.stop="closeModal()"
-            class="rounded-full h-10 w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200"
-          >
+          <button @click.stop="closeModal()"
+            class="rounded-full h-10 w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
         <div>
           <div v-if="this.modalData" class="pt-5">
-            <MazInput
-              @update:model-value="checkName"
-              :success="this.appointmentData.name !== ''"
-              :error="this.appointmentData.name === ''"
-              color="primary"
-              :label="this.modalData.NameLabel"
-              v-model="appointmentData.name"
-            >
+            <MazInput @update:model-value="checkName" :success="this.appointmentData.name !== ''"
+              :error="this.appointmentData.name === ''" color="primary" :label="this.modalData.NameLabel"
+              v-model="appointmentData.name">
             </MazInput>
           </div>
           <div class="pt-5">
-            <MazPhoneNumberInput
-              color="primary"
-              @update="phoneInputResults = $event"
-              :success="phoneInputResults?.isValid"
-              :error="
+            <MazPhoneNumberInput color="primary" @update="phoneInputResults = $event"
+              :success="phoneInputResults?.isValid" :error="
                 !phoneInputResults?.isValid && this.appointmentData.phone === ''
-              "
-              default-country-code="UA"
-              :preferred-countries="['UA', 'US', 'PL']"
-              v-model="this.appointmentData.phone"
-              :translations="{
+              " default-country-code="UA" :preferred-countries="['UA', 'US', 'PL']"
+              v-model="this.appointmentData.phone" :translations="{
                 countrySelector: {
                   placeholder: this.modalData.CountrySelector,
                   error: this.modalData.CountryError,
@@ -167,42 +151,31 @@ export default {
                   placeholder: this.modalData.PhoneLabel,
                   example: this.modalData.Example,
                 },
-              }"
-            ></MazPhoneNumberInput>
+              }"></MazPhoneNumberInput>
           </div>
           <div class="pt-5">
-            <MazInput
-              @update:model-value="checkEmail"
-              :error="
-                !this.emailInputResults.isValid &&
-                this.appointmentData.email !== ''
-              "
-              :success="this.emailInputResults.isValid"
-              color="primary"
-              label="Email"
-              v-model="appointmentData.email"
-            >
+            <MazInput @update:model-value="checkEmail" :error="
+              !this.emailInputResults.isValid &&
+              this.appointmentData.email !== ''
+            " :success="this.emailInputResults.isValid" color="primary" label="Email"
+              v-model="appointmentData.email">
             </MazInput>
           </div>
           <div class="pt-5">
-            <MazInput
-              color="primary"
-              :label="this.modalData.Comment"
-              v-model="appointmentData.comment"
-            >
+            <MazInput color="primary" :label="this.modalData.Comment" v-model="appointmentData.comment">
             </MazInput>
           </div>
         </div>
 
         <div class="flex pt-5 justify-center">
-          <button
-            @click.stop="sendMessage()"
-            :class="{ 'cursor-wait': this.wait }"
-            class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300"
-          >
+          <button @click.stop="sendMessage()" :class="{ 'cursor-wait': this.wait }"
+            class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300">
             {{ this.modalData.ButtonTitle }}
           </button>
         </div>
+        <span v-if="this.fieldsError" class="text-red-500 text-center p-2 mt-4">
+          Перевірте щоб всі поля були заповненими
+        </span>
       </div>
     </div>
   </transition>
