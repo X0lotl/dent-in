@@ -2,7 +2,9 @@
 import MazPhoneNumberInput from "maz-ui/components/MazPhoneNumberInput";
 import MazInput from "maz-ui/components/MazInput";
 import axios from "axios";
+import { useToast } from "vue-toastification";
 // read documentation https://louismazel.github.io/maz-ui-3/components/maz-phone-number-input
+
 export default {
   name: "AppoinrmentModal",
   emits: ["closeModal"],
@@ -12,7 +14,6 @@ export default {
   },
   data() {
     return {
-      smsStatus: null,
       wait: false,
       modalData: {},
       appointmentData: {
@@ -31,6 +32,11 @@ export default {
       regEx:
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     };
+  },
+  setup(){
+    const toast = useToast();
+
+    return { toast }
   },
   methods: {
     closeModal() {
@@ -73,22 +79,22 @@ export default {
             data: this.appointmentData,
           });
 
-          if (res.data.status === "delivered") {
-            this.smsStatus = true;
-          } else {
-            this.smsStatus = false;
-          }
-
+          this.closeModal();
           this.wait = false;
 
-          setTimeout(() => {
-            this.closeModal();
-            this.smsStatus = null;
-          }, 300);
+          if (res.data.status === "delivered") {
+            this.toast.success("Зайвка прийнята, зачекайте найближчим часом з вами зв'яжуться наші менеджери!")
+          } else {
+            this.toast.error("Нажаль сталася помилка, вона з нашої сторони. Будь ласка зателефонуйте або напишіть нам.")
+          }
         } catch (err) {
+          this.closeModal();
+          this.wait = false;
+          this.toast.error("Нажаль сталася помилка, вона з нашої сторони. Будь ласка зателефонуйте або напишіть нам.")
           console.error(err);
         }
       } else {
+        
       }
     },
   },
@@ -112,8 +118,6 @@ export default {
   <transition name="modal-fade">
     <div
       :class="{
-        success: this.smsStatus,
-        error: this.smsStatus === false,
         'cursor-wait': this.wait,
       }"
       class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200"
@@ -213,12 +217,5 @@ export default {
 .modal-fade-enter-active,
 .modal-fade-leave-active {
   transition: opacity 0.5s ease;
-}
-
-.success {
-  background-color: rgba(0, 128, 0, 0.6);
-}
-.error {
-  background-color: rgba(255, 0, 0, 0.6);
 }
 </style>
