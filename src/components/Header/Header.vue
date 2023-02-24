@@ -40,6 +40,7 @@ export default {
   methods: {
     openCloseMenu() {
       this.isMenuOpened = !this.isMenuOpened;
+      console.log(this.isMenuOpened);
     },
   },
   watch: {
@@ -102,7 +103,7 @@ export default {
     <PhoneMenu
       @click.stop="openCloseMenu()"
       v-if="this.headerButtonsData"
-      v-show="this.isMenuOpened"
+      :opened="this.isMenuOpened"
       :headerButtonsData="this.headerButtonsData"
     ></PhoneMenu>
   </header>

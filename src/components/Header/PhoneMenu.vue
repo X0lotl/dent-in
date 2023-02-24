@@ -10,9 +10,12 @@ export default {
   },
   props: {
     headerButtonsData: Object,
+    opened: Boolean
   },
   setup(props) {
     const headerButtonsData = props.headerButtonsData;
+    
+    
     return { headerButtonsData };
   },
 };
@@ -20,7 +23,8 @@ export default {
 <template>
   <Transition name="phoneMenu">
     <div
-      class="w-full grid gap-y-2 md:h-0 h-72 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md"
+      :class="{'opened':opened}"
+      class="w-full grid gap-y-2 md:h-0 max-h-0 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md transition-all duration-300 ease-in-out"
     >
       <HeaderButton
         v-for="headerButton in headerButtonsData"
@@ -33,16 +37,7 @@ export default {
   </Transition>
 </template>
 <style scoped>
-.phoneMenu-enter {
-  height: 0px;
-}
-.phoneMenu-leave-to {
-  height: 1px;
-}
-
-.phoneMenu-enter-active,
-.phoneMenu-leave-active {
-  transition-duration: 1s;
-  transition-delay: 10ms;
+.opened {
+  max-height: 500px !important;
 }
 </style>
