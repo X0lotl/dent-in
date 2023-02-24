@@ -80,7 +80,7 @@ export default {
             :src="this.logoSrc"
           />
         </router-link>
-        <nav class="md:flex justify-center hidden">
+        <nav class="md:flex min-h-1 justify-center gap-1 md:gap-4 lg:gap-10 items-center hidden">
           <HeaderButton
             v-for="headerButton in this.headerButtonsData"
             :buttonData="headerButton"

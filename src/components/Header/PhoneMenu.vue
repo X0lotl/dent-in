@@ -20,7 +20,7 @@ export default {
 <template>
   <Transition name="phoneMenu">
     <div
-      class="w-full md:h-0 h-72 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md"
+      class="w-full grid gap-y-2 md:h-0 h-72 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md"
     >
       <HeaderButton
         v-for="headerButton in headerButtonsData"
