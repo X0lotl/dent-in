@@ -11,13 +11,7 @@ export default {
   props: {
     headerButtonsData: Object,
     opened: Boolean
-  },
-  setup(props) {
-    const headerButtonsData = props.headerButtonsData;
-    
-    
-    return { headerButtonsData };
-  },
+  }
 };
 </script>
 <template>
