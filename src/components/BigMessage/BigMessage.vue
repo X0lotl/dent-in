@@ -51,7 +51,7 @@ export default {
 </template>
 <style scoped>
 .background {
-  background-position: 50% 48.35%;
+  background-position: 50% 60.35%;
 
 }
 </style>
