@@ -34,7 +34,7 @@ export default {
 </script>
 <template>
   <section
-    class="h-[38rem] background bg-cover bg-blend-overlay flex justify-center text-white font-medium sm:p-20 p-5"
+    class="h-[80vh] background bg-cover bg-blend-overlay flex justify-center text-white font-medium sm:p-20 p-5"
     style="background-blend-mode: multiply;"
     :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgUrl})` }"
   >
