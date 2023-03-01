@@ -39,7 +39,7 @@ export default {
     class=""
     style="background-blend-mode: multiply"
     :style="{
-      backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgSrc})`,
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.imgSrc})`,
     }"
   >
     <div
