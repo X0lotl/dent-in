@@ -70,7 +70,7 @@ export default {
               <p class="mt-auto">{{ this.extraData.priceTitle }}</p>
             </div>
             <Price
-              v-for="price in this.serviceData.prices.data"
+              v-for="price in this.serviceData.prices.data.sort((a,b) => (a.id - b.id))"
               :title="price.attributes.Title"
               :price="price.attributes.Price"
               :currency="price.attributes.CurrencyName"

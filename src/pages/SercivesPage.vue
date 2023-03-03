@@ -27,7 +27,7 @@ export default {
           populate: ["prices", "Photo"],
         },
       })
-      .then((res) => (this.servicesData = res.data.data))
+      .then((res) => (this.servicesData = res.data.data.sort((a,b) => (a.id - b.id))))
       .catch((err) => {
       console.log(err);
     });
