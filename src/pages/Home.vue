@@ -51,7 +51,7 @@ export default {
           populate: "deep",
         },
       })
-      .then((res) => (this.imagesWithTextData = res.data.data))
+      .then((res) => (this.imagesWithTextData = res.data.data.sort((a,b) => (a.id - b.id))))
       .catch((err) => {
         console.log(err);
       });

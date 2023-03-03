@@ -53,7 +53,7 @@ export default {
               locale: newLocale,
             },
           })
-          .then((res) => (this.headerButtonsData = res.data.data))
+          .then((res) => (this.headerButtonsData = res.data.data.sort((a,b) => (a.id - b.id))))
           .catch((err) => {
             console.log(err);
           });
