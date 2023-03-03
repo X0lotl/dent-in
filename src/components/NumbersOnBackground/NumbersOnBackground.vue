@@ -22,7 +22,7 @@ export default {
       })
       .then(
         (res) => (
-          (this.numbersOnBackgroundData = res.data.data),
+          (this.numbersOnBackgroundData = res.data.data.sort((a,b) => a.id - b.id)),
           (this.imgSrc = `https://res.cloudinary.com/dprrzla0s/image/upload/v1674474526/pexels_polina_zimmerman_4687281_036bc8f03e.webp?updated_at=2023-01-23T11:48:55.308Z`)
         )
       )
