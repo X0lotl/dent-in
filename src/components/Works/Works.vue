@@ -44,7 +44,7 @@ export default {
       get(`${import.meta.env.VITE_STRAPI_URL}/api/work-categories`, {
         params: {
           locale: this.$route.params.locale,
-          populate: ["works", "Img"],
+          populate: "works.Img",
         }
       })
       .then((res) => { this.worksCategory = res.data.data })
@@ -69,13 +69,19 @@ export default {
 </script>
 <template>
   <section id="works" v-if="this.previusWorks" class="container">
-    {{ this.worksCategory }}
-    <swiper :modules="modules" :slides-per-view="1" :space-between="50" navigation :pagination="{ clickable: true }"
-      :scrollbar="{ draggable: true }" @swiper="onSwiper" @slideChange="onSlideChange">
-      <swiper-slide class="!h-40 bg-red-500">Slide 1</swiper-slide>
-      <swiper-slide class="!h-40 bg-red-200">Slide 2</swiper-slide>
-      <swiper-slide class="! h-40 bg-red-400">Slide 3</swiper-slide>
+    <div class="grid lg:grid-cols-2 grid-cols-1 pb-20 gap-20">
+      <div class="" v-for="category in this.worksCategory">
+        <h2 class="w-full text-3xl font-bold text-center">{{ category.attributes.title }}</h2>
+        <swiper class="w-full" :modules="modules" :slides-per-view="1" :space-between="30" navigation
+          :pagination="{ clickable: true }" :scrollbar="{ draggable: true }" @swiper="onSwiper"
+          @slideChange="onSlideChange">
+          <swiper-slide v-for="work in category.attributes.works.data">
+            <Work :workData="work.attributes"></Work>
+          </swiper-slide>
+        </swiper>
+        
+      </div>
 
-    </swiper>
+    </div>
   </section>
 </template>
