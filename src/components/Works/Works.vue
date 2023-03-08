@@ -69,13 +69,13 @@ export default {
 </script>
 <template>
   <section id="works" v-if="this.previusWorks" class="container">
-    <div class="grid lg:grid-cols-2 grid-cols-1 pb-20 gap-20">
+    <div class="grid px-2 lg:grid-cols-2 grid-cols-1 py-10 gap-20">
       <div class="" v-for="category in this.worksCategory">
-        <h2 class="w-full text-3xl font-bold text-center">{{ category.attributes.title }}</h2>
-        <swiper class="w-full" :modules="modules" :slides-per-view="1" :space-between="30" navigation
-          :pagination="{ clickable: true }" :scrollbar="{ draggable: true }" @swiper="onSwiper"
+        <h2 class="w-full text-3xl font-base text-center">{{ category.attributes.title }}</h2>
+        <swiper class="w-full mt-5" :modules="modules" :slides-per-view="1" :space-between="30" navigation
+          :pagination="{ clickable: true }"  @swiper="onSwiper"
           @slideChange="onSlideChange">
-          <swiper-slide v-for="work in category.attributes.works.data">
+          <swiper-slide class="" v-for="work in category.attributes.works.data">
             <Work :workData="work.attributes"></Work>
           </swiper-slide>
         </swiper>
