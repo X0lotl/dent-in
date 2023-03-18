@@ -118,7 +118,7 @@ export default {
 
 <template>
   <transition name="modal-fade">
-    <div :class="{
+    <div v-if="this.modalData" :class="{
       'cursor-wait': this.wait,
     }"
       class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200">

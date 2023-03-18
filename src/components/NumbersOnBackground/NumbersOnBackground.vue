@@ -36,14 +36,14 @@ export default {
   <section
     v-if="this.numbersOnBackgroundData"
     id="background"
-    class=""
+    class="bg-no-repeat"
     style="background-blend-mode: multiply"
     :style="{
       backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.imgSrc})`,
     }"
   >
     <div
-      class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-36"
+      class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:py-32 p-10 gap-10"
       v-if="this.numbersOnBackgroundData"
     >
       <Number
@@ -56,7 +56,7 @@ export default {
 <style scoped>
 #background {
   color: yellow;
-  background-size: 100% auto;
+  background-size: cover;
   background-attachment: fixed;
   background-position: 49.31% 52.43%;
 }
