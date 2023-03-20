@@ -126,7 +126,7 @@ export default {
         <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
           <h2 class="text-2xl">{{ this.modalData.Title }}</h2>
           <button @click.stop="closeModal()"
-            class="rounded-full h-10 w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200">
+            class="rounded-full !h-10 !w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>

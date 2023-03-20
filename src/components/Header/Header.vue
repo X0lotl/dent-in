@@ -64,7 +64,7 @@ export default {
 };
 </script>
 <template>
-  <header class="bg-neutral-200 z-10 w-full fixed border-b-2 border-b-emerald-500">
+  <header class="bg-neutral-200 z-10 w-full fixed border-b-2 border-b-emerald-500 overflow-hidden">
     <div class="flex justify-center items-center">
       <div v-if="this.headerButtonsData" class="flex justify-between container">
         <router-link
@@ -77,7 +77,7 @@ export default {
         >
           <img
             v-if="this.logoSrc"
-            class="m6 p-2 h-28 mr-20"
+            class="p-2 h-28 mr-20"
             :src="this.logoSrc"
           />
         </router-link>
@@ -92,7 +92,7 @@ export default {
         <AppointmentButton></AppointmentButton>
         <button
           @click="openCloseMenu()"
-          class="md:hidden block bg-blue-400 font-bold text-white m-4 rounded-lg p-4"
+          class="md:hidden block bg-blue-400 font-bold sm:text-base text-xs text-white m-4 rounded-lg p-4"
         >
           Menu
           <i class="fa-solid fa-bars"></i>

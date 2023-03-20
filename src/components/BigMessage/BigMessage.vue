@@ -39,10 +39,10 @@ export default {
     :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgUrl})` }"
   >
     <div class="container">
-      <h1 class="text-4xl mt-20 md:text-6xl sm:text-5xl italic">
+      <h1 class="mt-20 md:text-6xl sm:text-4xl text-4xl italic">
         {{ this.bigMessageData.Title }}
       </h1>
-      <h2 class="text-2xl md:text-3xl sm:text-2xl mt-10 mb-16 pb-0">
+      <h2 class="md:text-3xl sm:text-3xl text-3xl mt-10 mb-16 pb-0">
         {{ this.bigMessageData.SubTitle }}
       </h2>
       <AppointmentButton></AppointmentButton>

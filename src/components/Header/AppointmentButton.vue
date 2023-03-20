@@ -36,7 +36,7 @@ export default {
 <template>
   <button
     @click="openModal"
-    class="text-white h-20 p-2 mt-4 bg-emerald-500 font-sans lg:text-lg text-base font-bold hover:bg-blue-400 p-5transition duration-200 rounded-md"
+    class="text-white h-20 p-2 mt-4 bg-emerald-500 font-sans lg:text-lg text-base font-bold hover:bg-blue-400 transition duration-200 rounded-md"
   >
     {{ title }}
   </button>
