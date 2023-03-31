@@ -7,7 +7,7 @@ export default {
   },
   setup(props) {
     const imageWithTextData = props.imageWithTextData;
-    let imgSrc = imageWithTextData.Img.data.attributes.formats.small.url;
+    let imgSrc = imageWithTextData.Img.data.attributes.url;
 
     return { imageWithTextData, imgSrc };
   },
@@ -31,7 +31,7 @@ export default {
       <img
         v-if="imageWithTextData.isImgLeft === true"
         class=" p-4 rounded-3xl"
-        :src="imgSrc"
+        :src="imageWithTextData.Img.data.attributes.url"
       >
       <div class="ml-8 mr-8 p-4">
         <p class="text-2xl font-normal">
@@ -52,7 +52,7 @@ export default {
       <img
         v-if="imageWithTextData.isImgLeft === false"
         class="w-[160rem] p-4 rounded-3xl"
-        :src="imgSrc"
+        :src="imageWithTextData.Img.data.attributes.url"
       >
     </div>
   </div>
