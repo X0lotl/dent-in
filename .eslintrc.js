@@ -1,13 +1,71 @@
 module.exports = {
+  root: true,
   env: {
     node: true,
+    browser: true,
+    es2021: true,
+  },
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: 'module',
   },
   extends: [
     'eslint:recommended',
-    'plugin:vue/vue3-recommended',
   ],
   rules: {
-    // override/add rules settings here, such as:
-    // 'vue/no-unused-vars': 'error'
-  }
-}
+    // Possible Errors
+    'no-await-in-loop': 'error',
+    'no-console': 'warn',
+    'no-template-curly-in-string': 'error',
+    'no-unreachable': 'error',
+    'no-unsafe-finally': 'error',
+    'no-unsafe-negation': 'error',
+    'valid-typeof': 'error',
+    'no-extra-semi': 'error',
+    'no-debugger': 'error',
+
+    // Best Practices
+    'array-callback-return': 'error',
+    'consistent-return': 'error',
+    'curly': 'error',
+    'default-case': 'error',
+    'eqeqeq': 'error',
+    'no-eval': 'error',
+    'no-extend-native': 'error',
+    'no-extra-bind': 'error',
+    'no-multi-spaces': 'error',
+    'no-new': 'error',
+    'no-param-reassign': 'error',
+    'no-return-assign': 'error',
+    'no-self-compare': 'error',
+    'no-useless-concat': 'error',
+    'no-useless-return': 'error',
+    'prefer-promise-reject-errors': 'error',
+
+    // Variables
+    'no-shadow': 'error',
+    'no-unused-vars': 'error',
+
+    // Stylistic Issues
+    'array-bracket-spacing': 'error',
+    'block-spacing': 'error',
+    'brace-style': 'error',
+    'comma-dangle': ['error', 'always-multiline'],
+    'comma-spacing': 'error',
+    'eol-last': 'error',
+    'indent': ['error', 2],
+    'linebreak-style': ['error', 'unix'],
+    'no-mixed-spaces-and-tabs': 'error',
+    'no-multiple-empty-lines': ['error', { 'max': 1, 'maxEOF': 1, 'maxBOF': 0 }],
+    'object-curly-spacing': ['error', 'always'],
+    'quotes': ['error', 'single'],
+    'semi': ['error', 'always'],
+    'semi-spacing': 'error',
+    'space-before-blocks': 'error',
+    'space-before-function-paren': ['error', { 'anonymous': 'always', 'named': 'never' }],
+    'space-in-parens': 'error',
+    'space-infix-ops': 'error',
+    'space-unary-ops': 'error',
+    'template-curly-spacing': 'error',
+  },
+};

@@ -35,7 +35,9 @@ export default {
       emailInputResults: {
         isValid: false,
       },
+      //regEx for email
       regEx:
+        // eslint-disable-next-line no-useless-escape
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     };
   },
@@ -146,8 +148,8 @@ export default {
             class="pt-5"
           >
             <MazInput
-              :success="appointmentData.name !== ''"
               v-model="appointmentData.name"
+              :success="appointmentData.name !== ''"
               :error="appointmentData.name === ''"
               color="primary"
               :label="modalData.NameLabel"
@@ -156,9 +158,9 @@ export default {
           </div>
           <div class="pt-5">
             <MazPhoneNumberInput
+              v-model="appointmentData.phone"
               color="primary"
               :success="phoneInputResults?.isValid"
-              v-model="appointmentData.phone"
               :error="
                 !phoneInputResults?.isValid && appointmentData.phone === ''
               "
@@ -179,11 +181,11 @@ export default {
           </div>
           <div class="pt-5">
             <MazInput
+              v-model="appointmentData.email"
               :error="
                 !emailInputResults.isValid &&
                   appointmentData.email !== ''
               "
-              v-model="appointmentData.email"
               :success="emailInputResults.isValid"
               color="primary"
               label="Email"
