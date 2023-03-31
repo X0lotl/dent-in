@@ -22,10 +22,10 @@ export default {
     >
       <HeaderButton
         v-for="headerButton in headerButtonsData"
-        :buttonData="headerButton"
-      ></HeaderButton>
+        :button-data="headerButton"
+      />
       <div class="flex justify-center">
-        <LanguagePicker @click.stop></LanguagePicker>
+        <LanguagePicker @click.stop />
       </div>
     </div>
   </Transition>

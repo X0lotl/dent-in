@@ -35,11 +35,15 @@ export default {
 </script>
 <template>
   <button
-    @click="openModal"
     class="text-white h-20 p-2 mt-4 bg-emerald-500 font-sans lg:text-lg text-base font-bold hover:bg-blue-400 transition duration-200 rounded-md"
+    @click="openModal"
   >
     {{ title }}
   </button>
-  <AppointmentModal v-show="this.isModalVisible" @closeModal="closeModal" @click="closeModal"></AppointmentModal>
+  <AppointmentModal
+    v-show="isModalVisible"
+    @closeModal="closeModal"
+    @click="closeModal"
+  />
 </template>
 <style scoped></style>

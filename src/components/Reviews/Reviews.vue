@@ -41,14 +41,21 @@ export default {
 <template>
   <section class="bg-slate-100">
     <div class="container pt-1 pb-10">
-      <SectionTitle :title="this.sectionTitle"></SectionTitle>
-      <div v-if="reviews" class="pt-10 grid lg:grid-cols-2 md:grid-cols-1">
+      <SectionTitle :title="sectionTitle" />
+      <div
+        v-if="reviews"
+        class="pt-10 grid lg:grid-cols-2 md:grid-cols-1"
+      >
         <Review
           v-for="thisReview in reviews"
-          :reviewerName="thisReview.attributes.Name"
-          :reviewText="thisReview.attributes.Text"
-          ><img class="w-32 h-32 rounded-[50%] mr-10" :src="thisReview.attributes.avatar.data.attributes.url"
-        /></Review>
+          :reviewer-name="thisReview.attributes.Name"
+          :review-text="thisReview.attributes.Text"
+        >
+          <img
+            class="w-32 h-32 rounded-[50%] mr-10"
+            :src="thisReview.attributes.avatar.data.attributes.url"
+          >
+        </Review>
       </div>
     </div> 
   </section>

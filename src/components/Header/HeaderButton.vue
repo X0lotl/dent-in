@@ -18,7 +18,7 @@ export default {
       :to="{
         name: buttonData.attributes.LinkToPage,
         params: {
-          locale: this.$route.params.locale,
+          locale: $route.params.locale,
         },
       }"
     >

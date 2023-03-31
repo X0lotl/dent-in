@@ -43,40 +43,40 @@ export default {
 <template>
   <div style="min-height: calc(100vh - 19rem)">
     <SectionTitle
-      v-if="this.extraData"
-      :title="this.extraData.contactsTitle"
-    ></SectionTitle>
+      v-if="extraData"
+      :title="extraData.contactsTitle"
+    />
     <div class="container pt-20 grid md:grid-cols-2 sm:grid-cols-1">
       <section>
         <iframe
-          :src="this.contactsData.mapUrl"
+          :src="contactsData.mapUrl"
           class="h-96 w-[100%] rounded-lg p-4"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+        />
       </section>
       <section>
         <div class="m-8 text-xl">
           <p class="p-2">
             <i
               class="fa-solid fa-location-dot text-emerald-500 text-2xl pr-2"
-            ></i>
-            {{ this.contactsData.adress }}
+            />
+            {{ contactsData.adress }}
           </p>
           <p class="p-2">
             <i
               class="fa-solid fa-phone-volume text-emerald-500 text-2xl pr-2"
-            ></i>
-            {{ this.contactsData.phone }}
+            />
+            {{ contactsData.phone }}
           </p>
           <p class="p-2">
-            <i class="fa-solid fa-envelope text-emerald-500 text-2xl pr-2"></i>
-            {{ this.contactsData.email }}
+            <i class="fa-solid fa-envelope text-emerald-500 text-2xl pr-2" />
+            {{ contactsData.email }}
           </p>
         </div>
       </section>
     </div>
   </div>
-  <Footer></Footer>
+  <Footer />
 </template>

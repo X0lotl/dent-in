@@ -8,15 +8,15 @@ export default {
   props: {
     doctorData: Object,
   },
-  data() {
-    return {
-      isModalVivible: false,
-    };
-  },
   setup(props) {
     let doctorData = props.doctorData;
     let imgSrc = doctorData.Avatar.data.attributes.url;
     return { doctorData, imgSrc };
+  },
+  data() {
+    return {
+      isModalVivible: false,
+    };
   },
   methods: {
     openModal() {
@@ -36,7 +36,7 @@ export default {
     <div
       class="h-60 bg-center rounded-lg bg-cover avatar"
       :style="{ backgroundImage: `url(${imgSrc})` }"
-    ></div>
+    />
     <h3 class=" text-xl text-neutral-600 font-bold pt-5">
       {{ doctorData.Name }}
     </h3>
@@ -45,12 +45,12 @@ export default {
     </p>
   </div>
   <DoctorModal
-    :doctorData="doctorData"
-    :imgSrc="imgSrc"
-    v-show="this.isModalVivible"
+    v-show="isModalVivible"
+    :doctor-data="doctorData"
+    :img-src="imgSrc"
     @close="closeModal()"
     @click="closeModal()"
-  ></DoctorModal>
+  />
 </template>
 <style scoped>
 .avatar {

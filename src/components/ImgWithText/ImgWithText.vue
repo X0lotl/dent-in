@@ -25,24 +25,26 @@ export default {
     class="pt-5 mt-10"
   >
     <div
-      class="container grid lg:grid-cols-2 md:grid-cols-1 pt-5 pb-5"
       id="cards"
+      class="container grid lg:grid-cols-2 md:grid-cols-1 pt-5 pb-5"
     >
       <img
         v-if="imageWithTextData.isImgLeft === true"
         class=" p-4 rounded-3xl"
-        :src="this.imgSrc"
-      />
+        :src="imgSrc"
+      >
       <div class="ml-8 mr-8 p-4">
         <p class="text-2xl font-normal">
           {{ imageWithTextData.Title }}
         </p>
         <div class="text-stone-700 mt-5 whitespace-pre-wrap">
-          <p class="mb-2">{{ imageWithTextData.SubTitle }}</p>
+          <p class="mb-2">
+            {{ imageWithTextData.SubTitle }}
+          </p>
           {{ imageWithTextData.Text }}
           <div class="text-stone-700 mt-5">
             <p v-for="(item, index) in imageWithTextData.List">
-              <i class="fa-solid fa-check text-emerald-500"></i> {{ item }}
+              <i class="fa-solid fa-check text-emerald-500" /> {{ item }}
             </p>
           </div>
         </div>
@@ -50,8 +52,8 @@ export default {
       <img
         v-if="imageWithTextData.isImgLeft === false"
         class="w-[160rem] p-4 rounded-3xl"
-        :src="this.imgSrc"
-      />
+        :src="imgSrc"
+      >
     </div>
   </div>
 </template>

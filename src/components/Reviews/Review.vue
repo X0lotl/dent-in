@@ -15,10 +15,14 @@ export default {
 </script>
 <template>
   <div class="bg-white m-3 p-5 grid grid-cols-1 gap-y-4 md:flex md:justify-between rounded-md">
-    <slot></slot>
+    <slot />
     <div>
-      <h3 class="text-2xl font-bold">{{ reviewerName }}</h3>
-      <p class="pt-2 font-thin whitespace-pre-wrap">{{ reviewText }}</p>
+      <h3 class="text-2xl font-bold">
+        {{ reviewerName }}
+      </h3>
+      <p class="pt-2 font-thin whitespace-pre-wrap">
+        {{ reviewText }}
+      </p>
     </div>
   </div>
 </template>

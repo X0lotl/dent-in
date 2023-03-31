@@ -36,16 +36,16 @@ export default {
   <section
     class="h-[80vh] background bg-cover bg-blend-overlay flex justify-center text-white font-medium sm:p-20 p-5"
     style="background-blend-mode: multiply;"
-    :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${this.imgUrl})` }"
+    :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${imgUrl})` }"
   >
     <div class="container">
       <h1 class="mt-20 md:text-6xl sm:text-4xl text-4xl italic">
-        {{ this.bigMessageData.Title }}
+        {{ bigMessageData.Title }}
       </h1>
       <h2 class="md:text-3xl sm:text-3xl text-3xl mt-10 mb-16 pb-0">
-        {{ this.bigMessageData.SubTitle }}
+        {{ bigMessageData.SubTitle }}
       </h2>
-      <AppointmentButton></AppointmentButton>
+      <AppointmentButton />
     </div>
   </section>
 </template>

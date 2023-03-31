@@ -13,7 +13,7 @@ export default {
           >
             <i
               class="fa-brands fa-facebook-f flex justify-center align-middle m-5"
-            ></i>
+            />
           </div>
         </a>
         <a href="https://www.instagram.com/dentinkiev/">
@@ -22,7 +22,7 @@ export default {
           >
             <i
               class="fa-brands fa-instagram flex justify-center align-middle m-5"
-            ></i>
+            />
           </div>
         </a>
       </div>

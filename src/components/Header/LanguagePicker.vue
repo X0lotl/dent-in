@@ -4,6 +4,14 @@ export default {
   data() {
     return { selected: "uk" };
   },
+  watch: {
+    '$route.params.locale': {
+      handler: function(newLocale) {
+        this.selected = newLocale
+      },
+      immediate: true
+    }
+  },
   methods: {
     changeLanguage(e) {
       this.$router.push({
@@ -15,24 +23,19 @@ export default {
       });
     },
   },
-  watch: {
-    '$route.params.locale': {
-      handler: function(newLocale) {
-        this.selected = newLocale
-      },
-      immediate: true
-    }
-  },
 };
 </script>
 <template>
-  
   <select
     :value="selected"
     class="bg-transparent m-6 text-blue-500 font-sans font-bold lg:text-lg text-base appearance-none"
     @change="changeLanguage($event)"
   >
-    <option value="uk">🇺🇦 Українська</option>
-    <option value="en">🇬🇧 English</option>
+    <option value="uk">
+      🇺🇦 Українська
+    </option>
+    <option value="en">
+      🇬🇧 English
+    </option>
   </select>
 </template>

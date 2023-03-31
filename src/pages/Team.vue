@@ -49,22 +49,22 @@ export default {
   <div class="content">
     <section>
       <SectionTitle
-        v-if="this.extraData"
-        :title="this.extraData.teamTitle"
-      ></SectionTitle>
+        v-if="extraData"
+        :title="extraData.teamTitle"
+      />
 
       <div
-        v-if="this.doctorsData"
+        v-if="doctorsData"
         class="container p-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
         <Doctor
-          v-for="doctor in this.doctorsData"
-          :doctorData="doctor.attributes"
-        ></Doctor>
+          v-for="doctor in doctorsData"
+          :doctor-data="doctor.attributes"
+        />
       </div>
     </section>
   </div>
-  <Footer></Footer>
+  <Footer />
 </template>
 <style scoped>
 .content {

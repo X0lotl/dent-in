@@ -60,29 +60,29 @@ export default {
 </script>
 
 <template>
-  <BigMessage></BigMessage>
+  <BigMessage />
   <FourIcons
-    v-if="this.extraData.careTitle"
-    :sectionTitle="this.extraData.careTitle"
-  ></FourIcons>
-  <template v-if="this.imagesWithTextData">
+    v-if="extraData.careTitle"
+    :section-title="extraData.careTitle"
+  />
+  <template v-if="imagesWithTextData">
     <section>
       <ImgWithText
-        v-for="image in this.imagesWithTextData"
-        :imageWithTextData="image.attributes"
-      ></ImgWithText>
+        v-for="image in imagesWithTextData"
+        :image-with-text-data="image.attributes"
+      />
     </section>
   </template>
-  <NumbersOnBackground></NumbersOnBackground>
+  <NumbersOnBackground />
   <Services
-    v-if="this.extraData"
-    :sectionTitle="this.extraData.servicesTitle"
-  ></Services>
+    v-if="extraData"
+    :section-title="extraData.servicesTitle"
+  />
   <Reviews
-    v-if="this.extraData"
-    :sectionTitle="this.extraData.reviewsTitle"
-  ></Reviews>
-  <Footer></Footer>
+    v-if="extraData"
+    :section-title="extraData.reviewsTitle"
+  />
+  <Footer />
 </template>
 
 <style scoped></style>

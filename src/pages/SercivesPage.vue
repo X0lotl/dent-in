@@ -45,12 +45,22 @@ export default {
 };
 </script>
 <template>
-  <div style="min-height: calc(100vh - 19rem)" class="pb-10">
+  <div
+    style="min-height: calc(100vh - 19rem)"
+    class="pb-10"
+  >
     <section>
-      <SectionTitle v-if="this.extraData" :title="this.extraData.servicesExtendedTitle"></SectionTitle>
-      <ServiceExtended v-for="service in this.servicesData" :key="service.attributes.id" :extraData="extraData" :serviceData="service">
-      </ServiceExtended>
+      <SectionTitle
+        v-if="extraData"
+        :title="extraData.servicesExtendedTitle"
+      />
+      <ServiceExtended
+        v-for="service in servicesData"
+        :key="service.attributes.id"
+        :extra-data="extraData"
+        :service-data="service"
+      />
     </section>
   </div>
-  <Footer></Footer>
+  <Footer />
 </template>

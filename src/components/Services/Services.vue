@@ -6,16 +6,16 @@ import { toHandlers } from "vue";
 
 export default {
   name: "Services",
+  components: {
+    SectionTitle,
+    Service,
+  },
   props: {
     sectionTitle: String
   },
   setup(props) {
     const sectionTitle = props.sectionTitle;
     return {sectionTitle}
-  },
-  components: {
-    SectionTitle,
-    Service,
   },
   data() {
     return { servicesData: [], url: `${import.meta.env.VITE_STRAPI_URL}/api/services` };
@@ -34,13 +34,13 @@ export default {
 </script>
 <template>
   <section class="container text-black">
-    <SectionTitle :title="sectionTitle"></SectionTitle>
+    <SectionTitle :title="sectionTitle" />
     <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 mb-16">
       <Service
-        v-for="(thisService, index) in this.servicesData"
+        v-for="(thisService, index) in servicesData"
         :title="thisService.attributes.Title"
         :text="thisService.attributes.Text"
-      ></Service>
+      />
     </div>
   </section>
 </template>

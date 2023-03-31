@@ -20,6 +20,24 @@ export default {
       isMenuOpened: false,
     };
   },
+  watch: {
+    "$route.params.locale": {
+      handler: function (newLocale) {
+        this.headerButtonsData = "";
+        axios
+          .get(`${import.meta.env.VITE_STRAPI_URL}/api/header-link-buttons`, {
+            params: {
+              locale: newLocale,
+            },
+          })
+          .then((res) => (this.headerButtonsData = res.data.data.sort((a,b) => (a.id - b.id))))
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+      immediate: true,
+    },
+  },
   mounted() {
     axios
       .get(`${import.meta.env.VITE_STRAPI_URL}/api/header-link-buttons`, {
@@ -43,68 +61,53 @@ export default {
       console.log(this.isMenuOpened);
     },
   },
-  watch: {
-    "$route.params.locale": {
-      handler: function (newLocale) {
-        this.headerButtonsData = "";
-        axios
-          .get(`${import.meta.env.VITE_STRAPI_URL}/api/header-link-buttons`, {
-            params: {
-              locale: newLocale,
-            },
-          })
-          .then((res) => (this.headerButtonsData = res.data.data.sort((a,b) => (a.id - b.id))))
-          .catch((err) => {
-            console.log(err);
-          });
-      },
-      immediate: true,
-    },
-  },
 };
 </script>
 <template>
   <header class="bg-neutral-200 z-10 w-full fixed border-b-2 border-b-emerald-500 overflow-hidden">
     <div class="flex justify-center items-center">
-      <div v-if="this.headerButtonsData" class="flex justify-between container">
+      <div
+        v-if="headerButtonsData"
+        class="flex justify-between container"
+      >
         <router-link
           :to="{
             name: `home`,
             params: {
-              locale: this.$route.params.locale,
+              locale: $route.params.locale,
             },
           }"
         >
           <img
-            v-if="this.logoSrc"
+            v-if="logoSrc"
             class="p-2 h-28 mr-20"
-            :src="this.logoSrc"
-          />
+            :src="logoSrc"
+          >
         </router-link>
         <nav class="md:flex min-h-1 justify-center gap-1 md:gap-4 lg:gap-10 items-center hidden">
           <HeaderButton
-            v-for="headerButton in this.headerButtonsData"
-            :buttonData="headerButton"
-          ></HeaderButton>
+            v-for="headerButton in headerButtonsData"
+            :button-data="headerButton"
+          />
         </nav>
 
-        <LanguagePicker class="md:block hidden"></LanguagePicker>
-        <AppointmentButton></AppointmentButton>
+        <LanguagePicker class="md:block hidden" />
+        <AppointmentButton />
         <button
-          @click="openCloseMenu()"
           class="md:hidden block bg-blue-400 font-bold sm:text-base text-xs text-white m-4 rounded-lg p-4"
+          @click="openCloseMenu()"
         >
           Menu
-          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-bars" />
         </button>
       </div>
     </div>
 
     <PhoneMenu
+      v-if="headerButtonsData"
+      :opened="isMenuOpened"
+      :header-buttons-data="headerButtonsData"
       @click.stop="openCloseMenu()"
-      v-if="this.headerButtonsData"
-      :opened="this.isMenuOpened"
-      :headerButtonsData="this.headerButtonsData"
-    ></PhoneMenu>
+    />
   </header>
 </template>

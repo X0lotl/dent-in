@@ -7,10 +7,15 @@ import { useToast } from "vue-toastification";
 
 export default {
   name: "AppoinrmentModal",
-  emits: ["closeModal"],
   components: {
     MazPhoneNumberInput,
     MazInput,
+  },
+  emits: ["closeModal"],
+  setup() {
+    const toast = useToast();
+
+    return { toast }
   },
   data() {
     return {
@@ -34,10 +39,18 @@ export default {
         /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     };
   },
-  setup() {
-    const toast = useToast();
-
-    return { toast }
+  mounted() {
+    axios
+      .get(`${import.meta.env.VITE_STRAPI_URL}/api/appoinrment-modals`, {
+        params: {
+          locale: this.$route.params.locale,
+          populate: "deep",
+        },
+      })
+      .then((res) => (this.modalData = res.data.data[0].attributes))
+      .catch((err) => {
+        console.log(err);
+      });
   },
   methods: {
     closeModal() {
@@ -100,81 +113,106 @@ export default {
       }
     },
   },
-  mounted() {
-    axios
-      .get(`${import.meta.env.VITE_STRAPI_URL}/api/appoinrment-modals`, {
-        params: {
-          locale: this.$route.params.locale,
-          populate: "deep",
-        },
-      })
-      .then((res) => (this.modalData = res.data.data[0].attributes))
-      .catch((err) => {
-        console.log(err);
-      });
-  },
 };
 </script>
 
 <template>
   <transition name="modal-fade">
-    <div v-if="this.modalData" :class="{
-      'cursor-wait': this.wait,
-    }"
-      class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200">
-      <div @click.stop class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl m-2">
+    <div
+      v-if="modalData"
+      :class="{
+        'cursor-wait': wait,
+      }"
+      class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200"
+    >
+      <div
+        class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl m-2"
+        @click.stop
+      >
         <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
-          <h2 class="text-2xl">{{ this.modalData.Title }}</h2>
-          <button @click.stop="closeModal()"
-            class="rounded-full !h-10 !w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200">
-            <i class="fa-solid fa-xmark"></i>
+          <h2 class="text-2xl">
+            {{ modalData.Title }}
+          </h2>
+          <button
+            class="rounded-full !h-10 !w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200"
+            @click.stop="closeModal()"
+          >
+            <i class="fa-solid fa-xmark" />
           </button>
         </div>
         <div>
-          <div v-if="this.modalData" class="pt-5">
-            <MazInput @update:model-value="checkName" :success="this.appointmentData.name !== ''"
-              :error="this.appointmentData.name === ''" color="primary" :label="this.modalData.NameLabel"
-              v-model="appointmentData.name">
-            </MazInput>
+          <div
+            v-if="modalData"
+            class="pt-5"
+          >
+            <MazInput
+              :success="appointmentData.name !== ''"
+              v-model="appointmentData.name"
+              :error="appointmentData.name === ''"
+              color="primary"
+              :label="modalData.NameLabel"
+              @update:model-value="checkName"
+            />
           </div>
           <div class="pt-5">
-            <MazPhoneNumberInput color="primary" @update="phoneInputResults = $event"
-              :success="phoneInputResults?.isValid" :error="
-                !phoneInputResults?.isValid && this.appointmentData.phone === ''
-              " default-country-code="UA" :preferred-countries="['UA', 'US', 'PL']"
-              v-model="this.appointmentData.phone" :translations="{
+            <MazPhoneNumberInput
+              color="primary"
+              :success="phoneInputResults?.isValid"
+              v-model="appointmentData.phone"
+              :error="
+                !phoneInputResults?.isValid && appointmentData.phone === ''
+              "
+              default-country-code="UA"
+              :preferred-countries="['UA', 'US', 'PL']"
+              :translations="{
                 countrySelector: {
-                  placeholder: this.modalData.CountrySelector,
-                  error: this.modalData.CountryError,
+                  placeholder: modalData.CountrySelector,
+                  error: modalData.CountryError,
                 },
                 phoneInput: {
-                  placeholder: this.modalData.PhoneLabel,
-                  example: this.modalData.Example,
+                  placeholder: modalData.PhoneLabel,
+                  example: modalData.Example,
                 },
-              }"></MazPhoneNumberInput>
+              }"
+              @update="phoneInputResults = $event"
+            />
           </div>
           <div class="pt-5">
-            <MazInput @update:model-value="checkEmail" :error="
-              !this.emailInputResults.isValid &&
-              this.appointmentData.email !== ''
-            " :success="this.emailInputResults.isValid" color="primary" label="Email"
-              v-model="appointmentData.email">
-            </MazInput>
+            <MazInput
+              :error="
+                !emailInputResults.isValid &&
+                  appointmentData.email !== ''
+              "
+              v-model="appointmentData.email"
+              :success="emailInputResults.isValid"
+              color="primary"
+              label="Email"
+              @update:model-value="checkEmail"
+            />
           </div>
           <div class="pt-5">
-            <MazInput color="primary" :label="this.modalData.Comment" v-model="appointmentData.comment">
-            </MazInput>
+            <MazInput
+              v-model="appointmentData.comment"
+              color="primary"
+              :label="modalData.Comment"
+            />
           </div>
         </div>
 
         <div class="flex pt-5 justify-center">
-          <button @click.stop="sendMessage()" :class="{ 'cursor-wait': this.wait }"
-            class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300">
-            {{ this.modalData.ButtonTitle }}
+          <button
+            :class="{ 'cursor-wait': wait }"
+            class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300"
+            @click.stop="sendMessage()"
+          >
+            {{ modalData.ButtonTitle }}
           </button>
         </div>
-        <span v-if="this.fieldsError" class="text-red-500 text-center p-2 mt-4">
-          {{ this.modalData.fieldsError }}
+        <span
+          v-if="fieldsError"
+          class="text-red-500 text-center p-2 mt-4"
+        >
+          {{ modalData.fieldsError }}
         </span>
       </div>
     </div>

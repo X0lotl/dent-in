@@ -8,17 +8,17 @@ export default {
     SectionTitle,
     Icon,
   },
-  data() {
-    return {
-      fourIconsData: "",
-    };
-  },
   props: {
     sectionTitle: String,
   },
   setup(props) {
     let sectionTitle = props.sectionTitle;
     return { sectionTitle };
+  },
+  data() {
+    return {
+      fourIconsData: "",
+    };
   },
   mounted() {  
     axios
@@ -38,12 +38,15 @@ export default {
 </script>
 <template>
   <section class="container text-center">
-    <SectionTitle :title="sectionTitle"></SectionTitle>
-    <div id="icons" class="grid">
+    <SectionTitle :title="sectionTitle" />
+    <div
+      id="icons"
+      class="grid"
+    >
       <Icon
         v-for="newIcon in fourIconsData"
-        :iconData="newIcon.attributes"
-      ></Icon>
+        :icon-data="newIcon.attributes"
+      />
     </div>
   </section>
 </template>

@@ -34,22 +34,22 @@ export default {
 </script>
 <template>
   <section
-    v-if="this.numbersOnBackgroundData"
+    v-if="numbersOnBackgroundData"
     id="background"
     class="bg-no-repeat"
     style="background-blend-mode: multiply"
     :style="{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${this.imgSrc})`,
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${imgSrc})`,
     }"
   >
     <div
+      v-if="numbersOnBackgroundData"
       class="container grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:py-32 p-10 gap-10"
-      v-if="this.numbersOnBackgroundData"
     >
       <Number
-        v-for="numberData in this.numbersOnBackgroundData"
-        :numberData="numberData"
-      ></Number>
+        v-for="numberData in numbersOnBackgroundData"
+        :number-data="numberData"
+      />
     </div>
   </section>
 </template>

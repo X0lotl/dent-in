@@ -50,21 +50,21 @@ export default {
   <div class="content">
     <section>
       <SectionTitle
-        v-if="this.extraData"
-        :title="this.extraData.aboutTitle"
-      ></SectionTitle>
+        v-if="extraData"
+        :title="extraData.aboutTitle"
+      />
       <ImgWithText
-        v-if="this.aboutData"
-        :imageWithTextData="this.aboutData"
-      ></ImgWithText>
+        v-if="aboutData"
+        :image-with-text-data="aboutData"
+      />
     </section>
     <SectionTitle
-      v-if="this.extraData"
-      :title="this.extraData.worksTitle"
-    ></SectionTitle>
-    <Works></Works>
+      v-if="extraData"
+      :title="extraData.worksTitle"
+    />
+    <Works />
   </div>
-  <Footer></Footer>
+  <Footer />
 </template>
 <style scoped>
 .content {
