@@ -35,9 +35,9 @@ export default {
         @click.stop
       >
         <div class="grid md:grid-cols-2 grid-cols-2">
-          <div
-            class="sm:h-96 h-52 m-5 sm:m-3 bg-center rounded-lg bg-cover avatar"
-            :style="{ backgroundImage: `url(${imgSrc})` }"
+          <img
+            class="sm:h-96 h-52 m-5 sm:m-3 object-cover"
+            :src="imgSrc"
           />
           <div>
             <div class="flex justify-end pb-4">
@@ -81,9 +81,6 @@ export default {
 </template>
 
 <style scoped>
-.avatar {
-  background-position: 50% 10%;
-}
 .modal-fade-enter,
 .modal-fade-leave-to {
   opacity: 0;
