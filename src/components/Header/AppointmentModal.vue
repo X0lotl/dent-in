@@ -99,7 +99,7 @@ export default {
           this.closeModal();
           this.wait = false;
 
-          if (res.data.status === "delivered") {
+          if (res.status == 200) {
             this.toast.success(this.modalData.smsSucces);
           } else {
             this.toast.error(this.modalData.smsError);
@@ -203,6 +203,7 @@ export default {
 
         <div class="flex pt-5 justify-center">
           <button
+            :disabled="wait"
             :class="{ 'cursor-wait': wait }"
             class="text-white bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700 transition duration-300"
             @click.stop="sendMessage()"
