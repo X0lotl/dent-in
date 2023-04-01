@@ -125,7 +125,7 @@ export default {
       :class="{
         'cursor-wait': wait,
       }"
-      class="text-black fixed top-0 bottom-0 left-0 right-0 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200"
+      class="text-black fixed top-0 bottom-0 left-0 right-0 z-20 flex bg-black bg-opacity-60 justify-center items-center transition-colors duration-200"
     >
       <div
         class="overflow-auto shadow-2xl flex flex-col bg-white p-10 rounded-3xl m-2"
