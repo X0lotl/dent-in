@@ -37,7 +37,8 @@ export default {
   data() {
     return {
       previusWorks: "",
-      worksCategory: ""
+      worksCategory: "",
+      extraData: "",
     };
   },
   mounted() {
@@ -64,6 +65,18 @@ export default {
       .catch((err) => {
         console.log(err);
       })
+
+    
+    axios.
+      get(`${import.meta.env.VITE_STRAPI_URL}/api/extra-data-p`, {
+        params: {
+          locale: this.$route.params.locale,
+        }
+      })
+      .then((res) => { this.extraData = res.data.data[0] })
+      .catch((err) => {
+        console.log(err);
+      })
   },
 };
 </script>
@@ -71,12 +84,12 @@ export default {
   <section
     v-if="previusWorks"
     id="works"
-    class="container"
+    class="container grid place-items-center"
   >
-    <div class="grid px-2 lg:grid-cols-2 grid-cols-1 py-10 gap-20">
+    <div class="grid px-2 md:w-3/4 grid-cols-1 py-10 gap-20">
       <div
         v-for="category in worksCategory"
-        class=""
+        :key="category.id"
       >
         <h2 class="w-full text-3xl font-base text-center">
           {{ category.attributes.title }}
@@ -93,9 +106,13 @@ export default {
         >
           <swiper-slide
             v-for="work in category.attributes.works.data"
+            :key="work.id"
             class=""
           >
-            <Work :work-data="work.attributes" />
+            <Work
+              :extra-data="extraData.attributes"
+              :work-data="work.attributes"
+            />
           </swiper-slide>
         </swiper>
       </div>
