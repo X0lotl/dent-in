@@ -91,7 +91,10 @@ export default {
         v-for="category in worksCategory"
         :key="category.id"
       >
-        <h2 class="w-full text-3xl font-base text-center">
+        <h2
+          v-if="category.attributes.title"
+          class="w-full text-3xl font-base text-center"
+        >
           {{ category.attributes.title }}
         </h2>
         <swiper
