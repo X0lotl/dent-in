@@ -38,6 +38,7 @@ import { createApp } from 'vue';
 import 'maz-ui/css/main.css';
 import './style.css';
 import { createRouter, createWebHistory } from 'vue-router';
+import { createHead } from '@vueuse/head'
 import App from './App.vue';
 import About from './pages/About.vue';
 import Home from './pages/Home.vue';
@@ -50,6 +51,8 @@ import 'vue-toastification/dist/index.css';
 // read about Toast https://github.com/Maronato/vue-toastification
 
 let locale;
+
+const head = createHead();
 
 const router = createRouter({
   history: createWebHistory(),
@@ -68,4 +71,4 @@ const router = createRouter({
   ],
 });
 
-createApp(App).use(router).use(Toast).mount('#app');
+createApp(App).use(router).use(Toast).use(head).mount('#app');

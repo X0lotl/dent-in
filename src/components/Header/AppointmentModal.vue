@@ -132,14 +132,14 @@ export default {
         @click.stop
       >
         <div class="flex justify-between border-b-2 pb-4 border-b-emerald-500">
-          <h2 class="text-2xl">
+          <p class="text-2xl">
             {{ modalData.Title }}
-          </h2>
+          </p>
           <button
             class="rounded-full !h-10 !w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200"
             @click.stop="closeModal()"
           >
-            <i class="fa-solid fa-xmark" />
+            <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
         <div>

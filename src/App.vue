@@ -1,14 +1,16 @@
 <script>
-import Header from './components/Header/Header.vue';
+import HeaderVue from './components/Header/Header.vue';
+
 export default {
   name: "App",
   components: {
-    Header,
-  }
+    HeaderVue,
+  },
 };
 </script>
 <template>
-  <Header v-if="$route.params.locale" />
-  <div class="pt-10 h-16 " />
+  <HeaderVue v-if="$route.params.locale" />
+  <div class="pt-10 h-16 "></div>
+  {{ }}
   <router-view :key="$route.fullPath" />
 </template>

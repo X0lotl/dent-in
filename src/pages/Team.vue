@@ -1,18 +1,12 @@
 <script>
 import axios from "axios";
-import Header from "../components/Header/Header.vue";
-import AppointmentButton from "../components/Header/AppointmentButton.vue";
 import SectionTitle from "../components/SectionTitle.vue";
 import Doctor from "../components/Doctors/Doctor.vue";
-import Footer from "../components/Footer/Footer.vue";
 export default {
   name: "Team",
   components: {
-    Header,
-    AppointmentButton,
     SectionTitle,
     Doctor,
-    Footer,
   },
   data() {
     return {
@@ -59,6 +53,7 @@ export default {
       >
         <Doctor
           v-for="doctor in doctorsData"
+          :key="doctor.id"
           :doctor-data="doctor.attributes"
         />
       </div>

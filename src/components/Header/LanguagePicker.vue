@@ -1,6 +1,56 @@
 <script>
+import { useHead } from '@vueuse/head'
+import { useRoute } from 'vue-router'
 export default {
   name: "LanguagePicker",
+  setup() {
+    const route = useRoute()
+    const host = "https://dent-in.com.ua"
+    useHead({
+      title: "Стоматологічний центр «Дент- ін»",
+      meta: [
+        {
+          name: "description",
+          content: "Вищий пілотаж у стоматології. Ми працюємо для тих, хто обирає найкраще!"
+        },
+        {
+          name: "og:description",
+          content: "Вищий пілотаж у стоматології. Ми працюємо для тих, хто обирає найкращe!"
+        },
+        {
+          name: "og:locale",
+          content: route.params.locale
+        },
+        {
+          name: "og:image",
+          content: "https://res.cloudinary.com/dprrzla0s/image/upload/v1675470792/logo1_31c28b0c41.webp?updated_at=2023-02-04T00:33:13.405Z"
+        },
+        {
+          name: "og:title",
+          content: "Стоматологічний центр «Дент- ін»"
+        },
+        {
+          name: "og:type",
+          content: "website"
+        },
+        {
+          name: "og:url",
+          content: host + route.fullPath
+        }
+
+      ],
+      "link": [
+        {
+          rel: "canonical",
+          href: host + "/" + route.params.locale + "/"
+        },
+        {
+          rel: "alternate",
+          href: host + route.fullPath
+        }
+      ]
+    })
+  },
   data() {
     return { selected: "uk" };
   },
@@ -22,7 +72,7 @@ export default {
         }
       });
     },
-  },
+  }
 };
 </script>
 <template>

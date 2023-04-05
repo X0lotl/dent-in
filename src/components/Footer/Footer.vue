@@ -13,16 +13,18 @@ export default {
           >
             <i
               class="fa-brands fa-facebook-f flex justify-center align-middle m-5"
-            />
+            ></i>
           </div>
         </a>
-        <a href="https://www.instagram.com/dentinkiev/">
+        <a
+          href="https://www.instagram.com/dentinkiev/"
+        >
           <div
             class="w-40 hover:bg-[#C13584] transition duration-500 text-center text-6xl text"
           >
             <i
               class="fa-brands fa-instagram flex justify-center align-middle m-5"
-            />
+            ></i>
           </div>
         </a>
       </div>

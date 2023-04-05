@@ -12,10 +12,6 @@ export default {
   props: {
     sectionTitle: String
   },
-  setup(props) {
-    const sectionTitle = props.sectionTitle;
-    return { sectionTitle };
-  },
   data() {
     return {
       reviews: "",
@@ -30,7 +26,7 @@ export default {
           populate: "deep",
         },
       })
-      .then((res) => (this.reviews = res.data.data),
+      .then((res) => (this.reviews = res.data.data.sort((a,b) => a.id - b.id)),
       (this.imgSrc = `${import.meta.env.VITE_STRAPI_URL}`))
       .catch((err) => {
         console.log(err);
@@ -48,13 +44,14 @@ export default {
       >
         <Review
           v-for="thisReview in reviews"
+          :key="thisReview.id"
           :reviewer-name="thisReview.attributes.Name"
           :review-text="thisReview.attributes.Text"
         >
           <img
             class="w-32 h-32 rounded-[50%] mr-10"
             :src="thisReview.attributes.avatar.data.attributes.url"
-          >
+          />
         </Review>
       </div>
     </div> 

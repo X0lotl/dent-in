@@ -6,7 +6,7 @@ import AppointmentButton from "./AppointmentButton.vue";
 import PhoneMenu from "./PhoneMenu.vue";
 
 export default {
-  name: "Header",
+  name: "HeaderVue",
   components: {
     HeaderButton,
     LanguagePicker,
@@ -80,13 +80,15 @@ export default {
         >
           <img
             v-if="logoSrc"
+            alt="Logo"
             class="p-2 h-28 mr-20"
             :src="logoSrc"
-          >
+          />
         </router-link>
         <nav class="md:flex min-h-1 justify-center gap-1 md:gap-4 lg:gap-10 items-center hidden">
           <HeaderButton
             v-for="headerButton in headerButtonsData"
+            :key="headerButton.id"
             :button-data="headerButton"
           />
         </nav>
@@ -98,7 +100,7 @@ export default {
           @click="openCloseMenu()"
         >
           Menu
-          <i class="fa-solid fa-bars" />
+          <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
