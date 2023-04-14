@@ -1,25 +1,21 @@
 <script>
-import Header from "../components/Header/Header.vue";
 import BigMessage from "../components/BigMessage/BigMessage.vue";
 import FourIcons from "../components/FourIcons/FourIcons.vue";
 import ImgWithText from "../components/ImgWithText/ImgWithText.vue";
 import NumbersOnBackground from "../components/NumbersOnBackground/NumbersOnBackground.vue";
 import Services from "../components/Services/Services.vue";
 import Reviews from "../components/Reviews/Reviews.vue";
-import Footer from "../components/Footer/Footer.vue";
 import axios from "axios";
 
 export default {
   name: "Home",
   components: {
-    Header,
     BigMessage,
     FourIcons,
     ImgWithText,
     NumbersOnBackground,
     Services,
     Reviews,
-    Footer,
   },
   props: {
     locale: {
@@ -69,6 +65,7 @@ export default {
     <section>
       <ImgWithText
         v-for="image in imagesWithTextData"
+        :key="image.id"
         :image-with-text-data="image.attributes"
       />
     </section>
@@ -82,7 +79,6 @@ export default {
     v-if="extraData"
     :section-title="extraData.reviewsTitle"
   />
-  <Footer />
 </template>
 
 <style scoped></style>

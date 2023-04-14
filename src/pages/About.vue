@@ -1,17 +1,13 @@
 <script>
 import axios from "axios";
-import Header from "../components/Header/Header.vue";
 import SectionTitle from "../components/SectionTitle.vue";
-import Footer from "../components/Footer/Footer.vue";
 import ImgWithText from "../components/ImgWithText/ImgWithText.vue";
 import Works from "../components/Works/Works.vue";
 
 export default {
   name: "About",
   components: {
-    Header,
     SectionTitle,
-    Footer,
     ImgWithText,
     Works,
   },
@@ -64,7 +60,6 @@ export default {
     />
     <Works />
   </div>
-  <Footer />
 </template>
 <style scoped>
 .content {

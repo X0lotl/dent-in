@@ -1,6 +1,10 @@
 <script>
+import { Icon } from "@iconify/vue"
 export default {
   name: "Footer",
+  components: {
+    Icon,
+  }
 };
 </script>
 <template>
@@ -9,22 +13,24 @@ export default {
       <div class="container flex justify-center">
         <a href="https://facebook.com/dentinkiev/">
           <div
-            class="w-40 hover:bg-[#3b5998] transition duration-500 text-center text-6xl text"
+            class="w-40 py-5 hover:bg-[#3b5998] transition duration-500 text-center text-6xl text"
           >
-            <i
-              class="fa-brands fa-facebook-f flex justify-center align-middle m-5"
-            ></i>
+            <Icon
+              icon="bx:bxl-facebook"
+              class="text-center w-full"
+            />
           </div>
         </a>
         <a
           href="https://www.instagram.com/dentinkiev/"
         >
           <div
-            class="w-40 hover:bg-[#C13584] transition duration-500 text-center text-6xl text"
+            class="w-40 py-5 hover:bg-[#C13584] transition duration-500 text-center text-6xl text"
           >
-            <i
-              class="fa-brands fa-instagram flex justify-center align-middle m-5"
-            ></i>
+            <Icon
+              icon="mdi:instagram"
+              class="text-center w-full"
+            />
           </div>
         </a>
       </div>

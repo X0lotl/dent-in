@@ -1,17 +1,13 @@
 <script>
 import axios from "axios";
-import Header from "../components/Header/Header.vue";
 import SectionTitle from "../components/SectionTitle.vue";
 import ServiceExtended from "../components/Services/ServiceExtended.vue";
-import Footer from "../components/Footer/Footer.vue";
 
 export default {
   name: "ServicesPage",
   components: {
-    Header,
     SectionTitle,
     ServiceExtended,
-    Footer,
   },
   data() {
     return {
@@ -62,5 +58,4 @@ export default {
       />
     </section>
   </div>
-  <Footer />
 </template>

@@ -3,6 +3,7 @@ import MazPhoneNumberInput from "maz-ui/components/MazPhoneNumberInput";
 import MazInput from "maz-ui/components/MazInput";
 import axios from "axios";
 import { useToast } from "vue-toastification";
+import { Icon } from "@iconify/vue"
 // read documentation https://louismazel.github.io/maz-ui-3/components/maz-phone-number-input
 
 export default {
@@ -10,6 +11,7 @@ export default {
   components: {
     MazPhoneNumberInput,
     MazInput,
+    Icon,
   },
   emits: ["closeModal"],
   setup() {
@@ -139,7 +141,10 @@ export default {
             class="rounded-full !h-10 !w-10 border-4 border-red-500 hover:border-red-600 hover:rotate-180 transition duration-200"
             @click.stop="closeModal()"
           >
-            <i class="fa-solid fa-xmark"></i>
+            <Icon
+              icon="mdi:close-thick"
+              class="text-1xl ml-2"
+            />
           </button>
         </div>
         <div>

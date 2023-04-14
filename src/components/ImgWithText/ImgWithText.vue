@@ -1,6 +1,11 @@
 <script>
+import { Icon } from "@iconify/vue"
+
 export default {
   name: "ImgWithText",
+  components: {
+    Icon,
+  },
   props: {
     imageWithTextData: Object,
   }
@@ -19,6 +24,7 @@ export default {
       <img
         v-if="imageWithTextData.isImgLeft === true"
         class="h-[23rem] p-4 rounded-3xl"
+        :alt="imageWithTextData.Title"
         :src="imageWithTextData.Img.data.attributes.url"
       />
       <div class="ml-8 mr-8 p-4">
@@ -30,12 +36,17 @@ export default {
             {{ imageWithTextData.SubTitle }}
           </p>
           {{ imageWithTextData.Text }}
-          <div class="text-stone-700 mt-5">
+          <div class="text-stone-700 mt-5 grid grid-cols-1 gap-1">
             <p
               v-for="(item, index) in imageWithTextData.List"
               :key="index"
+              class="flex justify-start gap-2"
             >
-              <i class="fa-solid fa-check text-emerald-500"></i> {{ item }}
+              <Icon
+                icon="ic:twotone-check"
+                class="text-emerald-500 text-xl mt-[2px]"
+              />
+              {{ item }}
             </p>
           </div>
         </div>
@@ -43,6 +54,7 @@ export default {
       <img
         v-if="imageWithTextData.isImgLeft === false"
         class="h-[23rem] p-4 rounded-3xl"
+        :alt="imageWithTextData.Title"
         :src="imageWithTextData.Img.data.attributes.url"
       />
     </div>

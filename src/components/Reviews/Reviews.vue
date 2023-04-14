@@ -50,6 +50,7 @@ export default {
         >
           <img
             class="w-32 h-32 rounded-[50%] mr-10"
+            :alt="thisReview.attributes.Name"
             :src="thisReview.attributes.avatar.data.attributes.url"
           />
         </Review>

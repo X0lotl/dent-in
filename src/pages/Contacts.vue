@@ -1,14 +1,13 @@
 <script>
 import axios from "axios";
-import Header from "../components/Header/Header.vue";
 import SectionTitle from "../components/SectionTitle.vue";
-import Footer from "../components/Footer/Footer.vue";
+import { Icon } from "@iconify/vue"
+
 export default {
   name: "Contacts",
   components: {
-    Header,
     SectionTitle,
-    Footer,
+    Icon,
   },
   data() {
     return {
@@ -54,24 +53,29 @@ export default {
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-        />
+        ></iframe>
       </section>
       <section>
-        <div class="m-8 text-xl">
-          <p class="p-2">
-            <i
-              class="fa-solid fa-location-dot text-emerald-500 text-2xl pr-2"
+        <div class="m-8 grid grid-cols-1 gap-4 text-xl">
+          <p class="p-2 flex justify-start gap-4">
+            <Icon
+              icon="material-symbols:location-on-rounded"
+              class="text-emerald-500 text-3xl"
             />
             {{ contactsData.adress }}
           </p>
-          <p class="p-2">
-            <i
-              class="fa-solid fa-phone-volume text-emerald-500 text-2xl pr-2"
+          <p class="p-2 flex justify-start gap-4">
+            <Icon
+              icon="material-symbols:call"
+              class="text-emerald-500 text-3xl"
             />
             {{ contactsData.phone }}
           </p>
-          <p class="p-2">
-            <i class="fa-solid fa-envelope text-emerald-500 text-2xl pr-2" />
+          <p class="p-2 flex justify-start gap-4">
+            <Icon
+              icon="ic:outline-mail"
+              class="text-emerald-500 text-3xl"
+            />
             {{ contactsData.email }}
           </p>
         </div>

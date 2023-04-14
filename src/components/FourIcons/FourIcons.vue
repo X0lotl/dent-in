@@ -1,19 +1,15 @@
 <script>
 import axios from "axios";
 import SectionTitle from "../SectionTitle.vue";
-import Icon from "./Icon.vue";
+import CustomIcon from "./CustomIcon.vue";
 export default {
   name: "FourIcons",
   components: {
     SectionTitle,
-    Icon,
+    CustomIcon,
   },
   props: {
     sectionTitle: String,
-  },
-  setup(props) {
-    let sectionTitle = props.sectionTitle;
-    return { sectionTitle };
   },
   data() {
     return {
@@ -43,8 +39,9 @@ export default {
       id="icons"
       class="grid"
     >
-      <Icon
+      <CustomIcon
         v-for="newIcon in fourIconsData"
+        :key="newIcon.id"
         :icon-data="newIcon.attributes"
       />
     </div>

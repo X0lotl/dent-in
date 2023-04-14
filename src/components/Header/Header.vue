@@ -4,6 +4,7 @@ import HeaderButton from "./HeaderButton.vue";
 import LanguagePicker from "./LanguagePicker.vue";
 import AppointmentButton from "./AppointmentButton.vue";
 import PhoneMenu from "./PhoneMenu.vue";
+import { Icon } from "@iconify/vue"
 
 export default {
   name: "HeaderVue",
@@ -12,6 +13,7 @@ export default {
     LanguagePicker,
     AppointmentButton,
     PhoneMenu,
+    Icon,
   },
   data() {
     return {
@@ -100,7 +102,10 @@ export default {
           @click="openCloseMenu()"
         >
           Menu
-          <i class="fa-solid fa-bars"></i>
+          <Icon
+            icon="fa6-solid:bars"
+            class="w-full text-center mt-1 text-[15px]"
+          />
         </button>
       </div>
     </div>

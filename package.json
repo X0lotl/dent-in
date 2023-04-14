@@ -27,6 +27,7 @@
     "yarn": "^1.22.19"
   },
   "devDependencies": {
+    "@iconify/vue": "^4.1.1",
     "@vitejs/plugin-vue": "^4.0.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.37.0",

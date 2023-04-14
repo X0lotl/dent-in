@@ -17,21 +17,24 @@ export default {
 <template>
   <Transition name="phoneMenu">
     <div
-      :class="{'opened':opened}"
-      class="w-full grid gap-y-2 md:h-0 max-h-0 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md transition-all duration-300 ease-in-out"
+      :class="{ 'opened': opened }"
+      class="w-full md:h-0 max-h-0 bg-neutral-300 overflow-hidden border-b-2 border-b-emerald-500 rounded-b-md transition-all duration-300 ease-in-out"
     >
-      <HeaderButton
-        v-for="headerButton in headerButtonsData"
-        :button-data="headerButton"
-      />
-      <div class="flex justify-center">
-        <LanguagePicker @click.stop />
+      <div class="w-full grid grid-cols-1 gap-4 mt-4">
+        <HeaderButton
+          v-for="headerButton in headerButtonsData"
+          :key="headerButton"
+          :button-data="headerButton"
+        />
+        <div class="flex justify-center">
+          <LanguagePicker @click.stop />
+        </div>
       </div>
     </div>
   </Transition>
 </template>
 <style scoped>
 .opened {
-  max-height: 500px !important;
+  max-height: 800px !important;
 }
 </style>

@@ -1,12 +1,13 @@
 <script>
 import Price from "./Price.vue";
 import AppointmentButton from "../Header/AppointmentButton.vue";
-
+import { Icon } from "@iconify/vue"
 export default {
   name: "ServiceExtended",
   components: {
     Price,
     AppointmentButton,
+    Icon,
   },
   props: {
     serviceData: Object,
@@ -34,16 +35,16 @@ export default {
       <div
         class="text-neutral-600 rounded-t-lg text-center text-2xl font-bold p-5 bg-neutral-200 flex justify-between hover:cursor-pointer"
       >
-        <div />
+        <div></div>
         <h2>{{ serviceData.Title }}</h2>
-        <p class="text-base m-1">
-          <i
+        <p class="text-xl m-1">
+          <Icon
             v-if="!opened"
-            class="fa-solid fa-maximize"
+            icon="tabler:arrows-maximize"
           />
-          <i
+          <Icon
             v-if="opened"
-            class="fa-solid fa-minimize"
+            icon="tabler:arrows-minimize"
           />
         </p>
       </div>
@@ -64,10 +65,12 @@ export default {
             </div>
             <img
               class="w-full rounded-xl mt-5"
+              :alt="serviceData.Title"
+              loading="lazy"
               :src="serviceData.Photo.data.attributes.url"
-            >
+            />
           </div>
-          <div class="h-10" />
+          <div class="h-10"></div>
           <div class="border rounded-3xl bg-neutral-200 sm:mx-10 mt-5 overflow-hidden">
             <div
               class="flex pt-6 pb-3 bg-neutral-300 justify-between lg:px-20 px-2 border-b-2 border-b-emerald-500 border font-bold md:text-2xl sm:text-xl text-base"
@@ -81,6 +84,7 @@ export default {
             </div>
             <Price
               v-for="price in serviceData.prices.data.sort((a,b) => (a.id - b.id))"
+              :key="price.id"
               :title="price.attributes.Title"
               :price="price.attributes.Price"
               :currency="price.attributes.CurrencyName"
