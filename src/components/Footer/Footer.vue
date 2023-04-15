@@ -13,7 +13,7 @@ export default {
       <div class="container flex justify-center">
         <a
           href="https://facebook.com/dentinkiev/" 
-          name="facebook"
+          aria-label="Facebook"
         >
           <div
             class="w-40 py-5 hover:bg-[#3b5998] transition duration-500 text-center text-6xl text"
@@ -26,7 +26,7 @@ export default {
         </a>
         <a
           href="https://www.instagram.com/dentinkiev/"
-          name="instagram"
+          aria-label="Instagram"
         >
           <div
             class="w-40 py-5 hover:bg-[#C13584] transition duration-500 text-center text-6xl text"
