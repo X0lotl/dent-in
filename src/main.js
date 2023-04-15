@@ -40,15 +40,17 @@ import './style.css';
 import { createRouter, createWebHistory } from 'vue-router';
 import { createHead } from '@vueuse/head'
 import App from './App.vue';
-import About from './pages/About.vue';
-import Home from './pages/Home.vue';
-import Team from './pages/Team.vue';
-import Contacts from './pages/Contacts.vue';
-import ServicesPage from './pages/SercivesPage.vue';
 
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 // read about Toast https://github.com/Maronato/vue-toastification
+
+const Home = () => import('./pages/Home.vue');
+const About = () => import( './pages/About.vue');
+const Team = () => import( './pages/Team.vue');
+const Contacts = () => import('./pages/Contacts.vue');
+const ServicesPage = () => import('./pages/ServicesPage.vue');
+
 
 let locale;
 
@@ -56,6 +58,8 @@ const head = createHead();
 
 const router = createRouter({
   history: createWebHistory(),
+  mode: 'history',
+  base: "https://dent-in.com.ua/",
   routes: [
     { path: '/', redirect: '/uk/' },
     {
