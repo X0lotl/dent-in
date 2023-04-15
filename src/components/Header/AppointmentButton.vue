@@ -35,7 +35,7 @@ export default {
 </script>
 <template>
   <button
-    class="text-white h-20 p-2 mt-4 bg-emerald-500 font-sans lg:text-lg text-base font-bold hover:bg-blue-400 transition duration-200 rounded-md"
+    class="text-white h-20 p-2 mt-4 bg-blue-500/95 font-sans lg:text-lg text-base font-bold hover:bg-blue-700/95 transition duration-200 rounded-md"
     @click="openModal"
   >
     {{ title }}

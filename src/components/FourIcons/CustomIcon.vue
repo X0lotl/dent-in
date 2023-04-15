@@ -11,12 +11,14 @@ export default {
 };
 </script>
 <template>
-  <div class=" p-2 text-center">
+  <div class="text-center">
     <div class="flex justify-center">
       <div
         class="rounded-[50%] h-40 w-40 flex justify-center align-middle p-8 hover:bg-blue-400 transition duration-700"
       >
         <img
+          width="96"
+          height="96"
           :alt="iconData.Title"
           :src="iconUrl"
         />

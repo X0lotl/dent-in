@@ -37,7 +37,7 @@ export default {
     <SectionTitle :title="sectionTitle" />
     <div
       id="icons"
-      class="grid"
+      class="grid gap-4"
     >
       <CustomIcon
         v-for="newIcon in fourIconsData"
