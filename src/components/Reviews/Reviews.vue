@@ -49,7 +49,7 @@ export default {
           :review-text="thisReview.attributes.Text"
         >
           <img
-            class="w-32 h-32 rounded-[50%] mr-10"
+            class="w-32 h-32 rounded-[50%]"
             :alt="thisReview.attributes.Name"
             :src="thisReview.attributes.avatar.data.attributes.url"
           />
