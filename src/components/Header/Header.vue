@@ -83,7 +83,10 @@ export default {
           <img
             v-if="logoSrc"
             alt="Logo"
-            class="p-2 h-28 mr-20"
+            class="p-2 h-28"
+            width="164"
+            height="80"
+            loading="lazy"
             :src="logoSrc"
           />
         </router-link>

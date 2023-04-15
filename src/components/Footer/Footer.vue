@@ -11,7 +11,10 @@ export default {
   <footer>
     <div class="bg-neutral-800 text-neutral-200">
       <div class="container flex justify-center">
-        <a href="https://facebook.com/dentinkiev/">
+        <a
+          href="https://facebook.com/dentinkiev/" 
+          name="facebook"
+        >
           <div
             class="w-40 py-5 hover:bg-[#3b5998] transition duration-500 text-center text-6xl text"
           >
@@ -23,6 +26,7 @@ export default {
         </a>
         <a
           href="https://www.instagram.com/dentinkiev/"
+          name="instagram"
         >
           <div
             class="w-40 py-5 hover:bg-[#C13584] transition duration-500 text-center text-6xl text"
