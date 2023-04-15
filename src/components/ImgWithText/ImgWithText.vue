@@ -23,7 +23,9 @@ export default {
     >
       <img
         v-if="imageWithTextData.isImgLeft === true"
-        class="h-[23rem] p-4 rounded-3xl"
+        class="h-[23rem] p-4 rounded-3xl !object-cover"
+        width="625"
+        height="368"
         :alt="imageWithTextData.Title"
         :src="imageWithTextData.Img.data.attributes.url"
       />
@@ -53,9 +55,11 @@ export default {
       </div>
       <img
         v-if="imageWithTextData.isImgLeft === false"
-        class="h-[23rem] p-4 rounded-3xl"
+        class="h-[23rem] p-4 rounded-3xl !object-cover"
         :alt="imageWithTextData.Title"
         :src="imageWithTextData.Img.data.attributes.url"
+        width="625"
+        height="368"
       />
     </div>
   </div>

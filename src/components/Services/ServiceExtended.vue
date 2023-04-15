@@ -64,8 +64,10 @@ export default {
               </p>
             </div>
             <img
-              class="w-full rounded-xl mt-5"
+              class="w-full rounded-xl mt-5 object-cover"
               :alt="serviceData.Title"
+              width="496"
+              height="362"
               loading="lazy"
               :src="serviceData.Photo.data.attributes.url"
             />
