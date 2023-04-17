@@ -17,7 +17,32 @@ export default {
   },
   data() {
     return {
-      headerButtonsData: "",
+      headerButtonsData: [
+        {
+          id: "1",
+          attributes: {
+            Title: "Про нас"
+          }
+        },
+        {
+          id: "2",
+          attributes: {
+            Title: "Команда"
+          }
+        },
+        {
+          id: "3",
+          attributes: {
+            Title: "Контакти"
+          }
+        },
+        {
+          id: "4",
+          attributes: {
+            Title: "Послуги та ціни"
+          }
+        }
+      ],
       logoSrc: "",
       isMenuOpened: false,
     };
@@ -32,7 +57,7 @@ export default {
               locale: newLocale,
             },
           })
-          .then((res) => (this.headerButtonsData = res.data.data.sort((a,b) => (a.id - b.id))))
+          .then((res) => (this.headerButtonsData = res.data.data.sort((a, b) => (a.id - b.id))))
           .catch((err) => {
             console.log(err);
           });
@@ -66,10 +91,10 @@ export default {
 };
 </script>
 <template>
-  <header class="bg-neutral-200 z-10 w-full fixed border-b-2 border-b-emerald-500 overflow-hidden">
+  <header class="bg-neutral-200 ming-h-[116px] z-10 w-full fixed border-b-2 border-b-emerald-500 overflow-hidden">
     <div class="flex justify-center items-center">
       <div
-        v-if="headerButtonsData"
+        :key="headerButtonsData"
         class="flex justify-between container"
       >
         <router-link
@@ -97,7 +122,6 @@ export default {
             :button-data="headerButton"
           />
         </nav>
-
         <LanguagePicker class="md:block hidden" />
         <AppointmentButton />
         <button

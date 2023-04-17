@@ -11,10 +11,11 @@ export default {
 </script>
 <template>
   <Suspense class="min-h-10">
-    <HeaderVue v-if="$route.params.locale" />
+    <HeaderVue :key="$route.params.locale" />
   </Suspense>
   <div class="pt-10 h-16 "></div>
-  {{ }}
-  <router-view :key="$route.fullPath" />
+  <div class="min-h-[110vh]">
+    <router-view :key="$route.fullPath" />
+  </div>
   <Footer />
 </template>
