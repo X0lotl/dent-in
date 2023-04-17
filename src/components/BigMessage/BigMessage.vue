@@ -8,7 +8,10 @@ export default {
   },
   data() {
     return {
-      bigMessageData: [],
+      bigMessageData: {
+        Title: "Стоматологічний центр «Дент- ін»",
+        SubTitle: "Вищий пілотаж у стоматології. Ми працюємо для тих, хто обирає найкраще!"
+      },
       imgUrl: "",
     };
   },
@@ -34,9 +37,9 @@ export default {
 </script>
 <template>
   <section
-    loading="lazy"
     class="h-[80vh] background bg-cover bg-blend-overlay flex justify-center text-white font-medium sm:p-20 p-5"
     style="background-blend-mode: multiply;"
+    fetchpriority="high"
     :style="{ backgroundImage: `linear-gradient(lightgray, lightgray), url(${imgUrl})` }"
   >
     <div class="container">

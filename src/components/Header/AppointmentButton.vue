@@ -7,7 +7,7 @@ export default {
     AppointmentModal,
   },
   data() {
-    return { title: "", isModalVisible: false };
+    return { title: "Записатись на прийом", isModalVisible: false };
   },
   mounted() {
     axios

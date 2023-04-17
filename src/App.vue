@@ -10,7 +10,9 @@ export default {
 };
 </script>
 <template>
-  <HeaderVue v-if="$route.params.locale" />
+  <Suspense class="min-h-10">
+    <HeaderVue v-if="$route.params.locale" />
+  </Suspense>
   <div class="pt-10 h-16 "></div>
   {{ }}
   <router-view :key="$route.fullPath" />

@@ -57,28 +57,32 @@ export default {
 
 <template>
   <BigMessage />
-  <FourIcons
-    v-if="extraData.careTitle"
-    :section-title="extraData.careTitle"
-  />
-  <template v-if="imagesWithTextData">
+  <Suspense>
     <section>
-      <ImgWithText
-        v-for="image in imagesWithTextData"
-        :key="image.id"
-        :image-with-text-data="image.attributes"
+      <FourIcons
+        :key="extraData.careTitle"
+        :section-title="extraData.careTitle"
+      />
+      <template v-if="imagesWithTextData">
+        <section>
+          <ImgWithText
+            v-for="image in imagesWithTextData"
+            :key="image.id"
+            :image-with-text-data="image.attributes"
+          />
+        </section>
+      </template>
+      <NumbersOnBackground />
+      <Services
+        v-if="extraData"
+        :section-title="extraData.servicesTitle"
+      />
+      <Reviews
+        v-if="extraData"
+        :section-title="extraData.reviewsTitle"
       />
     </section>
-  </template>
-  <NumbersOnBackground />
-  <Services
-    v-if="extraData"
-    :section-title="extraData.servicesTitle"
-  />
-  <Reviews
-    v-if="extraData"
-    :section-title="extraData.reviewsTitle"
-  />
+  </Suspense>
 </template>
 
 <style scoped></style>
