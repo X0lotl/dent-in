@@ -12,7 +12,7 @@ export default {
         Title: "Стоматологічний центр «Дент- ін»",
         SubTitle: "Вищий пілотаж у стоматології. Ми працюємо для тих, хто обирає найкраще!"
       },
-      imgUrl: "",
+      imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1681553018/thumbnail_IMG_3088_4b81ce7fb5.webp",
     };
   },
   mounted() {
