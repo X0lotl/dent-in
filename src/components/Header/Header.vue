@@ -43,7 +43,7 @@ export default {
           }
         }
       ],
-      logoSrc: "",
+      logoSrc: "https://res.cloudinary.com/dprrzla0s/image/upload/v1673613702/Logo_ai_50ea5b779a.svg?updated_at=2023-01-13T12:41:43.789Z",
       isMenuOpened: false,
     };
   },
@@ -74,8 +74,7 @@ export default {
       })
       .then(
         (res) => (
-          (this.headerButtonsData = res.data.data),
-          (this.logoSrc = `https://res.cloudinary.com/dprrzla0s/image/upload/v1673613702/Logo_ai_50ea5b779a.svg?updated_at=2023-01-13T12:41:43.789Z`)
+          this.headerButtonsData = res.data.data
         )
       )
       .catch((err) => {
@@ -106,7 +105,6 @@ export default {
           }"
         >
           <img
-            v-if="logoSrc"
             alt="Logo"
             class="p-2 h-28"
             width="164"
