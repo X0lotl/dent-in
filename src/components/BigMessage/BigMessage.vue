@@ -12,7 +12,7 @@ export default {
         Title: "Стоматологічний центр «Дент- ін»",
         SubTitle: "Вищий пілотаж у стоматології. Ми працюємо для тих, хто обирає найкраще!"
       },
-      imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1681553018/thumbnail_IMG_3088_4b81ce7fb5.webp",
+      imgUrl: "https://res.cloudinary.com/dprrzla0s/image/upload/v1681553019/large_IMG_3088_4b81ce7fb5.webp",
     };
   },
   mounted() {
@@ -25,8 +25,7 @@ export default {
       })
       .then(
         (res) => (
-          (this.bigMessageData = res.data.data[0].attributes),
-          (this.imgUrl = `${this.bigMessageData.Background.data.attributes.url}`)
+          this.bigMessageData = res.data.data[0].attributes
         )
       )
       .catch((err) => {
