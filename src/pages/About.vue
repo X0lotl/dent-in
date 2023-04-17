@@ -46,11 +46,11 @@ export default {
   <div class="content">
     <section>
       <SectionTitle
-        v-if="extraData"
+        :key="extraData"
         :title="extraData.aboutTitle"
       />
       <ImgWithText
-        v-if="aboutData"
+        :key="aboutData"
         :image-with-text-data="aboutData"
       />
     </section>
