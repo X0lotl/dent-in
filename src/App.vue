@@ -11,7 +11,7 @@ export default {
 </script>
 <template>
   <Suspense class="min-h-10">
-    <HeaderVue :key="$route.params.locale" />
+    <HeaderVue v-if="$route.params.locale" />
   </Suspense>
   <div class="pt-10 h-16 "></div>
   <div class="min-h-[110vh]">
