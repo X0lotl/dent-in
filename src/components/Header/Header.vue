@@ -109,7 +109,6 @@ export default {
             class="p-2 h-28"
             width="164"
             height="80"
-            loading="lazy"
             :src="logoSrc"
           />
         </router-link>

@@ -11,8 +11,14 @@ export default {
   },
   data() {
     return {
-      extraData: "",
-      contactsData: "",
+      extraData: {
+        contactsTitle: "Контакти"
+      },
+      contactsData: {
+        adress: "Адреса: Київ, вул. Михаила Бойчука, 11 , Україна",
+        phone: "Тел: +380-50-440-83-92",
+        email: "E-mail: oksadenta@gmail.com"
+      },
     };
   },
   mounted() {
@@ -42,7 +48,7 @@ export default {
 <template>
   <div style="min-height: calc(100vh - 19rem)">
     <SectionTitle
-      v-if="extraData"
+      :key="extraData"
       :title="extraData.contactsTitle"
     />
     <div class="container pt-20 grid md:grid-cols-2 sm:grid-cols-1">
@@ -50,6 +56,8 @@ export default {
         <iframe
           :src="contactsData.mapUrl"
           class="h-96 w-[100%] rounded-lg p-4"
+          width="343"
+          height="352"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
