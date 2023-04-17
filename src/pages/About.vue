@@ -13,7 +13,23 @@ export default {
   },
   data() {
     return {
-      aboutData: "",
+      aboutData: {
+        isImgLeft: false,
+        Title: "Ми піклуємось про ваші зуби",
+        Img: {
+          data: {
+            attributes: {
+              url: "https://res.cloudinary.com/dprrzla0s/image/upload/v1680297055/thumbnail_about_0412f87a4c.webp"
+            }
+          }
+        },
+        Text: "Ми надаємо комплексні високоякісні стоматологічні послуги сучасним діловим людям, професіоналам і тим, хто цінує  свій час, а також їх сім’ям, керуючись високими стандартами якості, сучасними інноваційними техніками лікування і використанням новітнього обладнання. Щодня команда досвідчених лікарів об’єднує  зусилля в спільній турботі про здорові і щасливі посмішки наших клієнтів ",
+        List: [
+          "Технологічність",
+          "Клієнтоорієнтування",
+          "Комплексні послуги"
+        ]
+      },
       extraData: "",
     };
   },
@@ -47,7 +63,7 @@ export default {
     <section>
       <SectionTitle
         :key="extraData"
-        :title="extraData.aboutTitle"
+        :title="extraData.aboutTitle || 'Про нас'"
       />
       <ImgWithText
         :key="aboutData"
@@ -55,8 +71,8 @@ export default {
       />
     </section>
     <SectionTitle
-      v-if="extraData"
-      :title="extraData.worksTitle"
+      :key="extraData"
+      :title="extraData.worksTitle || 'Наші роботи'"
     />
     <Works />
   </div>
