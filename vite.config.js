@@ -1,11 +1,18 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
-
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
+import copy from 'rollup-plugin-copy';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     VueI18nPlugin(),
-  ],
+    {
+      ...copy({
+        targets: [{ src: 'robots.txt', dest: 'dist' }],
+        verbose: true,
+      }),
+      enforce: 'post',
+    },
+  ]
 });
